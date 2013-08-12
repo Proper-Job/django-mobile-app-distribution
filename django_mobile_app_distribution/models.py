@@ -5,14 +5,14 @@ from django.contrib.sites.models import Site
 from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.utils.translation import ugettext as _
-from ota_manager.exceptions import MobileAppDistributionConfigurationException
+from exceptions import MobileAppDistributionConfigurationException
 
-import settings as app_dist_settings
+import django_mobile_app_distribution.settings as app_dist_settings
 
 
 log = logging.getLogger(__name__)
 
-class AppModel(models.Model):
+class App(models.Model):
 	user = models.ForeignKey(User, related_name='apps', verbose_name=_('User'))
 	name = models.CharField(max_length=200, verbose_name=_('App name'))
 	comment = models.CharField(max_length=200, verbose_name=_('Comment'), blank=True, null=True)
@@ -24,7 +24,7 @@ class AppModel(models.Model):
 	def __unicode__(self):
 		return self.name
 
-class IosApp(AppModel):
+class IosApp(App):
 
 	file_name = models.CharField(max_length=200, verbose_name=_('File name'))
 	operating_system = models.CharField( max_length=50, choices=app_dist_settings.OS_CHOICES, default=app_dist_settings.IOS, verbose_name=_('Operating system'), editable=False)
@@ -61,7 +61,7 @@ class IosApp(AppModel):
 
 fs = FileSystemStorage(location=app_dist_settings.MOBILE_APP_DISTRIBUTION_ANDROID_FILE_STORAGE_PATH)
 
-class AndroidApp(AppModel):
+class AndroidApp(App):
 	operating_system = models.CharField( max_length=50, choices=app_dist_settings.OS_CHOICES, default=app_dist_settings.ANDROID, verbose_name=_('Operating system'), editable=False)
 	app_binary = models.FileField(upload_to='apk', verbose_name=_('APK file'), storage=fs)
 

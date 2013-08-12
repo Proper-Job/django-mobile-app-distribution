@@ -2,11 +2,12 @@ import logging
 import uuid
 
 from django.conf import settings
+from django_mobile_app_distribution import settings as app_dist_settings
 from django.contrib import admin
 from django.contrib.sites.models import Site
 from django.forms import ModelForm
 from django.utils.translation import ugettext as _, string_concat
-from ota_manager.models import IosApp, AndroidApp
+from django_mobile_app_distribution.models import IosApp, AndroidApp
 
 
 log = logging.getLogger(__name__)
@@ -41,7 +42,7 @@ class IosAppAdminForm(ModelForm):
 			_('Ad Hoc URL:'),
 			' ',
 			'<span style=color:red;>',
-			'/'.join(s.strip('/') for s in (Site.objects.get_current().domain, settings.MEDIA_URL, settings.MOBILE_APP_DISTRIBUTION_UPLOAD_TO_DIRECTORY_NAME, filename)),
+			'/'.join(s.strip('/') for s in (Site.objects.get_current().domain, settings.MEDIA_URL, app_dist_settings.MOBILE_APP_DISTRIBUTION_UPLOAD_TO_DIRECTORY_NAME, filename)),
 			'</span>')
 
 class IosAppAdmin(admin.ModelAdmin):
