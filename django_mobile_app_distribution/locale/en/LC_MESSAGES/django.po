@@ -7,95 +7,95 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ota Manager 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-12 11:40+0200\n"
-"PO-Revision-Date: 2013-04-12 11:40+0100\n"
+"POT-Creation-Date: 2013-08-12 15:34+0200\n"
+"PO-Revision-Date: 2013-08-12 15:35+0100\n"
 "Last-Translator: Moritz Pfeiffer <moritz.pfeiffer@alp-phone.ch>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.7\n"
 
-#: admin.py:28
+#: admin.py:32
 msgid "Don't change this file name!"
 msgstr "Don't change this file name!"
 
-#: admin.py:28
+#: admin.py:34
 msgid ""
 "Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc dialog."
 msgstr ""
 "Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc dialog."
 
-#: admin.py:28
+#: admin.py:36
 msgid "File name:"
 msgstr "File name:"
 
-#: admin.py:28
+#: admin.py:41
 msgid "Ad Hoc URL:"
 msgstr "Ad Hoc URL:"
 
-#: admin.py:39
-msgid "app info"
+#: admin.py:53 admin.py:65
+msgid "App info"
 msgstr "App info"
 
-#: admin.py:42
-msgid "binary info"
+#: admin.py:56 admin.py:68
+msgid "Binary info"
 msgstr "File info"
 
-#: models.py:12
-msgid "user"
-msgstr "User"
+#: models.py:16
+msgid "User"
+msgstr ""
 
-#: models.py:13
-msgid "app name"
+#: models.py:17
+msgid "App name"
 msgstr "App name"
 
-#: models.py:14 templates/ota_manager/app_list.html:38
-msgid "comment"
+#: models.py:18
+msgid "Comment"
 msgstr "Comment"
 
-#: models.py:15 templates/ota_manager/app_list.html:36
-msgid "version"
+#: models.py:19
+msgid "Version"
 msgstr "Version"
 
-#: models.py:16 templates/ota_manager/app_list.html:37
-msgid "build date"
+#: models.py:20
+msgid "Build date"
 msgstr "Created on"
 
-#: models.py:25
-msgid "file name"
-msgstr "File name"
+#: models.py:29
+msgid "File name"
+msgstr "File name:"
 
-#: models.py:26 models.py:61
-msgid "operating system"
+#: models.py:30 models.py:65
+msgid "Operating system"
 msgstr "Operating System"
 
-#: models.py:27
-msgid "ad hoc ipa file"
+#: models.py:31
+msgid "Ad Hoc ipa file"
 msgstr "Ad Hoc ipa file"
 
-#: models.py:28
-msgid "ad hoc plist"
+#: models.py:32
+msgid "Ad Hoc plist"
 msgstr "Ad Hoc plist"
 
-#: models.py:53
-msgid "ios app"
-msgstr "iOS app"
+#: models.py:57
+msgid "iOS App"
+msgstr ""
 
-#: models.py:54
-msgid "ios apps"
-msgstr "iOS Apps"
-
-#: models.py:62
-msgid "apk file"
-msgstr "Apk file"
-
-#: models.py:65
-msgid "android app"
-msgstr "Android app"
+#: models.py:58
+msgid "iOS Apps"
+msgstr ""
 
 #: models.py:66
-msgid "android apps"
+msgid "APK file"
+msgstr "APK file"
+
+#: models.py:69
+msgid "Android App"
+msgstr "Android app"
+
+#: models.py:70
+msgid "Android Apps"
 msgstr "Android apps"
 
 #: templates/admin/base_site.html:4
@@ -106,39 +106,52 @@ msgstr "Ad Hoc management"
 msgid "Django administration"
 msgstr "Over the air Ad Hoc management"
 
-#: templates/ota_manager/app_list.html:3
+#: templates/django_mobile_app_distribution/app_list.html:3
+#: templates/django_mobile_app_distribution/app_list.html:8
 msgid "app list view"
 msgstr "App overview"
 
-#: templates/ota_manager/app_list.html:7
+#: templates/django_mobile_app_distribution/app_list.html:6
 msgid "logout"
 msgstr "Logout"
 
-#: templates/ota_manager/app_list.html:39
+#: templates/django_mobile_app_distribution/app_list.html:38
+msgid "version"
+msgstr "Version"
+
+#: templates/django_mobile_app_distribution/app_list.html:44
+msgid "build date"
+msgstr "Created on"
+
+#: templates/django_mobile_app_distribution/app_list.html:50
+msgid "comment"
+msgstr "Comment"
+
+#: templates/django_mobile_app_distribution/app_list.html:56
 msgid "download file"
 msgstr "File"
 
-#: templates/ota_manager/base.html:7
+#: templates/django_mobile_app_distribution/base.html:7
 msgid "over the air ad hoc app management"
 msgstr "Over the air Ad Hoc App Management"
 
-#: templates/ota_manager/login.html:4
+#: templates/django_mobile_app_distribution/login.html:4
 msgid "customer login"
 msgstr "Customer center"
 
-#: templates/ota_manager/login.html:27
+#: templates/django_mobile_app_distribution/login.html:19
 msgid "invalid login credentials"
 msgstr "The combination of user name and password you entered is invalid."
 
-#: templates/ota_manager/login.html:33
+#: templates/django_mobile_app_distribution/login.html:23
 msgid "login"
 msgstr "Login"
 
-#: templates/ota_manager/logout.html:3
+#: templates/django_mobile_app_distribution/logout.html:3
 msgid "logged out successfully"
 msgstr "Logged out successfully"
 
-#: templates/ota_manager/logout.html:7
+#: templates/django_mobile_app_distribution/logout.html:7
 #, python-format
 msgid ""
 "\n"
@@ -150,6 +163,18 @@ msgstr ""
 "\t\tYou were logged out successfully. <a href=\"%(login_url)s\">Log in</a> "
 "again.\n"
 "\t"
+
+#~ msgid "user"
+#~ msgstr "User"
+
+#~ msgid "file name"
+#~ msgstr "File name"
+
+#~ msgid "ios app"
+#~ msgstr "iOS app"
+
+#~ msgid "ios apps"
+#~ msgstr "iOS Apps"
 
 #~ msgid "ios install link"
 #~ msgstr "iOS install link"
