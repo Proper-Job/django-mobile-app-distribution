@@ -1,0 +1,12 @@
+{% extends "ota_manager/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "logged out successfully" %}{% endblock %}
+{% block content %}
+<h3>
+	{% url auth_login as login_url %}
+	{% blocktrans %}
+		You were logged out successfully. <a href="{{ login_url }}">Log in</a> again.
+	{% endblocktrans %}
+
+</h3>
+{% endblock %}

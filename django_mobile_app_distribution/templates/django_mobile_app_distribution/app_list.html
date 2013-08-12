@@ -1,0 +1,74 @@
+{% extends "ota_manager/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "app list view" %}{% endblock %}
+{% block content %}
+<div data-role="header">
+	<a data-icon="back" href="{% url auth_logout %}">{% trans 'logout' %}</a>
+  	<h2>
+        {% trans "app list view" %}
+    </h2>
+</div>
+<div>
+{% load set_var %}
+{% set active_app_name = -1 %}
+{% set active_os_name = -1 %}
+
+{% for app in apps %}
+	{% if app.name != active_app_name %}
+        {% if active_app_name != -1 %}
+            </ul>
+            </div>
+        {% endif %}
+        {% set active_os_name = -1 %}
+	 	{% set active_app_name = app.name %}
+        <div>
+    	 	<span>
+    	 		<h1>{{ app.name }}</h1> 
+    	 	</span>
+	{% endif %}
+	{% if app.operating_system != active_os_name %}
+    	{% if active_os_name != -1 %}
+    		</ul>
+    	{% endif %}
+        {% set active_os_name = app.operating_system %}
+    	<h2>{{ active_os_name }}</h2>
+	    <ul data-role="listview" data-inset="true">
+	{% endif %}
+        <li>
+            <h3>{% trans 'version' %}</h3>
+            <p>
+                {{ app.version }}
+            </p>
+        </li>
+        <li>
+            <h3>{% trans 'build date' %}</h3>
+            <p>
+                {{ app.build_date }}
+            </p>
+        </li>
+        <li>
+            <h3>{% trans 'comment' %}</h3>
+            <p>
+                {{ app.comment }}
+            </p>
+        </li>
+        <li>
+            <h3>{% trans 'download file' %}</h3>
+            <p>
+                {% if active_os_name == ios_identifier %}
+                   <a data-role="button" data-ajax="false" href="itms-services://?action=download-manifest&url={{ app.get_plist_url }}">
+                        <img src="{{ STATIC_URL }}images/download.png" width="25px" height="23px">
+                   </a>
+                {% else %}
+                    <a data-role="button" data-ajax="false" href="{% url ota_manager_send_apk app_id=app.id %}">
+                        <img src="{{ STATIC_URL }}images/download.png" width="25px" height="23px">
+                    </a>
+                {% endif %}
+            </p>
+        </li>      
+    
+{% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

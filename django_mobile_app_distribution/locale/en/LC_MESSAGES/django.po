@@ -1,0 +1,167 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ota Manager 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-12 11:40+0200\n"
+"PO-Revision-Date: 2013-04-12 11:40+0100\n"
+"Last-Translator: Moritz Pfeiffer <moritz.pfeiffer@alp-phone.ch>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+
+#: admin.py:28
+msgid "Don't change this file name!"
+msgstr "Don't change this file name!"
+
+#: admin.py:28
+msgid ""
+"Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc dialog."
+msgstr ""
+"Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc dialog."
+
+#: admin.py:28
+msgid "File name:"
+msgstr "File name:"
+
+#: admin.py:28
+msgid "Ad Hoc URL:"
+msgstr "Ad Hoc URL:"
+
+#: admin.py:39
+msgid "app info"
+msgstr "App info"
+
+#: admin.py:42
+msgid "binary info"
+msgstr "File info"
+
+#: models.py:12
+msgid "user"
+msgstr "User"
+
+#: models.py:13
+msgid "app name"
+msgstr "App name"
+
+#: models.py:14 templates/ota_manager/app_list.html:38
+msgid "comment"
+msgstr "Comment"
+
+#: models.py:15 templates/ota_manager/app_list.html:36
+msgid "version"
+msgstr "Version"
+
+#: models.py:16 templates/ota_manager/app_list.html:37
+msgid "build date"
+msgstr "Created on"
+
+#: models.py:25
+msgid "file name"
+msgstr "File name"
+
+#: models.py:26 models.py:61
+msgid "operating system"
+msgstr "Operating System"
+
+#: models.py:27
+msgid "ad hoc ipa file"
+msgstr "Ad Hoc ipa file"
+
+#: models.py:28
+msgid "ad hoc plist"
+msgstr "Ad Hoc plist"
+
+#: models.py:53
+msgid "ios app"
+msgstr "iOS app"
+
+#: models.py:54
+msgid "ios apps"
+msgstr "iOS Apps"
+
+#: models.py:62
+msgid "apk file"
+msgstr "Apk file"
+
+#: models.py:65
+msgid "android app"
+msgstr "Android app"
+
+#: models.py:66
+msgid "android apps"
+msgstr "Android apps"
+
+#: templates/admin/base_site.html:4
+msgid "Django site admin"
+msgstr "Ad Hoc management"
+
+#: templates/admin/base_site.html:7
+msgid "Django administration"
+msgstr "Over the air Ad Hoc management"
+
+#: templates/ota_manager/app_list.html:3
+msgid "app list view"
+msgstr "App overview"
+
+#: templates/ota_manager/app_list.html:7
+msgid "logout"
+msgstr "Logout"
+
+#: templates/ota_manager/app_list.html:39
+msgid "download file"
+msgstr "File"
+
+#: templates/ota_manager/base.html:7
+msgid "over the air ad hoc app management"
+msgstr "Over the air Ad Hoc App Management"
+
+#: templates/ota_manager/login.html:4
+msgid "customer login"
+msgstr "Customer center"
+
+#: templates/ota_manager/login.html:27
+msgid "invalid login credentials"
+msgstr "The combination of user name and password you entered is invalid."
+
+#: templates/ota_manager/login.html:33
+msgid "login"
+msgstr "Login"
+
+#: templates/ota_manager/logout.html:3
+msgid "logged out successfully"
+msgstr "Logged out successfully"
+
+#: templates/ota_manager/logout.html:7
+#, python-format
+msgid ""
+"\n"
+"\t\tYou were logged out successfully. <a href=\"%(login_url)s\">Log in</a> "
+"again.\n"
+"\t"
+msgstr ""
+"\n"
+"\t\tYou were logged out successfully. <a href=\"%(login_url)s\">Log in</a> "
+"again.\n"
+"\t"
+
+#~ msgid "ios install link"
+#~ msgstr "iOS install link"
+
+#~ msgid "install"
+#~ msgstr "Install"
+
+#~ msgid "not set"
+#~ msgstr "Not set"
+
+#~ msgid "plist url"
+#~ msgstr "Plist url"
+
+#~ msgid "app"
+#~ msgstr "App"

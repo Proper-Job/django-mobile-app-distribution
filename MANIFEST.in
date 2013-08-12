@@ -1,0 +1,5 @@
+include CHANGES.rst README.rst LICENSE
+
+recursive-include django_mobile_app_distribution/static *
+recursive-include django_mobile_app_distribution/templates *
+recursive-include django_mobile_app_distribution/locale *
