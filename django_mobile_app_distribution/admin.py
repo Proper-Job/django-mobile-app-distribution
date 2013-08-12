@@ -6,11 +6,22 @@ from django_mobile_app_distribution import settings as app_dist_settings
 from django.contrib import admin
 from django.contrib.sites.models import Site
 from django.forms import ModelForm
-from django.utils.translation import ugettext as _, string_concat
+from django.utils.translation import ugettext_lazy as _, string_concat
 from django_mobile_app_distribution.models import IosApp, AndroidApp
-
+from models import UserInfo
+from django.contrib.auth.models import User
 
 log = logging.getLogger(__name__)
+
+
+# Define an inline admin descriptor for UserInfo model
+# which acts a bit like a singleton
+class UserInfoInline(admin.StackedInline):
+    model = UserInfo
+    can_delete = False
+
+class UserAdmin(admin.ModelAdmin):
+    inlines = (UserInfoInline, )
 
 class IosAppAdminForm(ModelForm):
 
@@ -73,3 +84,5 @@ class AndroidAppAdmin(admin.ModelAdmin):
 
 admin.site.register(IosApp, IosAppAdmin)
 admin.site.register(AndroidApp, AndroidAppAdmin)
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)

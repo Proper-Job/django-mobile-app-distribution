@@ -7,10 +7,25 @@ from django.db import models
 from django.utils.translation import ugettext as _
 from exceptions import MobileAppDistributionConfigurationException
 
+from django.db.models.signals import post_save
+
 import django_mobile_app_distribution.settings as app_dist_settings
 
 
 log = logging.getLogger(__name__)
+
+class UserInfo(models.Model):
+	user = models.OneToOneField(User)
+	language = models.CharField(max_length=20, choices=app_dist_settings.LANGUAGES, default=app_dist_settings.ENGLISH)
+
+	def __unicode__(self):
+		return _('Extended user info')
+
+	class Meta:
+		verbose_name = _('Extended user info')
+		verbose_name_plural = _('Extended user info')
+
+
 
 class App(models.Model):
 	user = models.ForeignKey(User, related_name='apps', verbose_name=_('User'))
@@ -70,3 +85,11 @@ class AndroidApp(App):
 		verbose_name_plural = _('Android Apps')
 		ordering = ( 'name', 'operating_system', '-version', '-build_date',)
 
+
+def create_user_info(sender, instance, created, **kwargs):
+	try:
+		instance.userinfo
+	except UserInfo.DoesNotExist:
+		UserInfo.objects.create(user=instance)
+
+post_save.connect(create_user_info, sender=User)
