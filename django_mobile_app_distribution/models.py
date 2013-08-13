@@ -1,15 +1,14 @@
 import logging
 
+import django_mobile_app_distribution.settings as app_dist_settings
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.core.files.storage import FileSystemStorage
 from django.db import models
-from django.utils.translation import ugettext as _
-from exceptions import MobileAppDistributionConfigurationException
-
 from django.db.models.signals import post_save
+from django.utils.translation import ugettext as _
 
-import django_mobile_app_distribution.settings as app_dist_settings
+from exceptions import MobileAppDistributionConfigurationException
 
 
 log = logging.getLogger(__name__)
@@ -43,8 +42,8 @@ class IosApp(App):
 
 	file_name = models.CharField(max_length=200, verbose_name=_('File name'))
 	operating_system = models.CharField( max_length=50, choices=app_dist_settings.OS_CHOICES, default=app_dist_settings.IOS, verbose_name=_('Operating system'), editable=False)
-	app_binary = models.FileField(upload_to=app_dist_settings.MOBILE_APP_DISTRIBUTION_UPLOAD_TO_DIRECTORY_NAME, verbose_name=_('Ad Hoc ipa file'))
-	app_plist = models.FileField(upload_to=app_dist_settings.MOBILE_APP_DISTRIBUTION_UPLOAD_TO_DIRECTORY_NAME, verbose_name=_('Ad Hoc plist'))
+	app_binary = models.FileField(upload_to=app_dist_settings.MOBILE_APP_DISTRIBUTION_IOS_UPLOAD_TO_DIRECTORY_NAME, verbose_name=_('Ad Hoc ipa file'))
+	app_plist = models.FileField(upload_to=app_dist_settings.MOBILE_APP_DISTRIBUTION_IOS_UPLOAD_TO_DIRECTORY_NAME, verbose_name=_('Ad Hoc plist'))
 
 	def get_binary_url(self):
 		if not self.app_binary:
@@ -78,7 +77,7 @@ fs = FileSystemStorage(location=app_dist_settings.MOBILE_APP_DISTRIBUTION_ANDROI
 
 class AndroidApp(App):
 	operating_system = models.CharField( max_length=50, choices=app_dist_settings.OS_CHOICES, default=app_dist_settings.ANDROID, verbose_name=_('Operating system'), editable=False)
-	app_binary = models.FileField(upload_to='apk', verbose_name=_('APK file'), storage=fs)
+	app_binary = models.FileField(upload_to=app_dist_settings.MOBILE_APP_DISTRIBUTION_ANDROID_UPLOAD_TO_DIRECTORY_NAME, verbose_name=_('APK file'), storage=fs)
 
 	class Meta:
 		verbose_name = _('Android App')

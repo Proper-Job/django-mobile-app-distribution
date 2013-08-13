@@ -1,15 +1,17 @@
+# -*- coding: utf-8 -*-
 import logging
-import uuid
 
-from django.conf import settings
-from django_mobile_app_distribution import settings as app_dist_settings
-from django.contrib import admin
-from django.contrib.sites.models import Site
-from django.forms import ModelForm
-from django.utils.translation import ugettext_lazy as _, string_concat
-from django_mobile_app_distribution.models import IosApp, AndroidApp
-from models import UserInfo
+from django.contrib import admin, messages
 from django.contrib.auth.models import User
+from django.contrib.sites.models import get_current_site
+from django.core.mail import EmailMessage
+from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext_lazy as _
+from django_mobile_app_distribution.models import IosApp, AndroidApp
+
+from forms import IosAppAdminForm
+from models import UserInfo
+
 
 log = logging.getLogger(__name__)
 
@@ -23,40 +25,33 @@ class UserInfoInline(admin.StackedInline):
 class UserAdmin(admin.ModelAdmin):
     inlines = (UserInfoInline, )
 
-class IosAppAdminForm(ModelForm):
 
-	class Meta:
-		model = IosApp
+class NotifiableModelAdmin(admin.ModelAdmin):
+	actions = ['notify_client']
 
-	def __init__(self, *args, **kwargs):
-		super(IosAppAdminForm, self).__init__(*args, **kwargs)
-		filename = None
-		try:
-			app = kwargs['instance']
-			filename = app.file_name
-		except KeyError:
-			hex = uuid.uuid4().hex[:16]
-			filename = hex + '.ipa'
-			self.fields['file_name'].initial = filename
-		
-		self.fields['file_name'].help_text = string_concat(
-			'<span style=color:red;>',
-			_("Don't change this file name!"),
-			'</span><br />',
-			_('Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc dialog.'),
-			'<br />',
-			_('File name:'),
-			' ',
-			'<span style=color:red;>',
-			filename,
-			'</span><br />',
-			_('Ad Hoc URL:'),
-			' ',
-			'<span style=color:red;>',
-			'/'.join(s.strip('/') for s in (Site.objects.get_current().domain, settings.MEDIA_URL, app_dist_settings.MOBILE_APP_DISTRIBUTION_UPLOAD_TO_DIRECTORY_NAME, filename)),
-			'</span>')
+	def notify_client(self, request, queryset):
+		for app in queryset.all():
+			if app.user.email:
+				email = EmailMessage()
+				email.subject = _('Version %(app_version)s of %(app_name)s for %(os)s is available for download') % {
+				'app_name' : app.name, 
+				'app_version' : app.version, 
+				'os': app.operating_system
+				}
+				email.body = _('Version %(app_version)s of %(app_name)s for %(os)s is available for download.\nPlease visit %(download_url)s to install your app.') % {
+				'app_name' : app.name, 
+				'app_version' : app.version, 
+				'os': app.operating_system,
+				'download_url' : '/'.join(s.strip('/') for s in (get_current_site(request).domain, reverse('django_mobile_app_distribution_index')))
+				}
+				email.to = [app.user.email]
+				email.send(fail_silently=False)
+				messages.add_message(request, messages.INFO, _('The user %(user_name)s was notified of %(app_name)s %(app_version)s availability.') % {'user_name' :app.user.username, 'app_name' : app.name, 'app_version': app.version} , fail_silently=True)
+			else:
+				messages.add_message(request, messages.ERROR, _('The user %s does not have an email address. Please add an email address and try again.') % app.user.username, fail_silently=True)
+	notify_client.short_description = _('Notify clients of app availability')
 
-class IosAppAdmin(admin.ModelAdmin):
+class IosAppAdmin(NotifiableModelAdmin):
 
 	form = IosAppAdminForm
 	list_display = ('name', 'user', 'version', 'comment', 'build_date' )
@@ -70,7 +65,7 @@ class IosAppAdmin(admin.ModelAdmin):
 		}),
 	)
 
-class AndroidAppAdmin(admin.ModelAdmin):
+class AndroidAppAdmin(NotifiableModelAdmin):
 	list_display = ('name', 'user', 'version', 'comment', 'build_date' )
 
 	fieldsets = (
