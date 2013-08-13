@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django Mobile App Distribution 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-12 15:34+0200\n"
-"PO-Revision-Date: 2013-08-12 15:35+0100\n"
+"POT-Creation-Date: 2013-08-13 14:33+0200\n"
+"PO-Revision-Date: 2013-08-13 14:34+0100\n"
 "Last-Translator: Moritz Pfeiffer <moritz.pfeiffer@alp-phone.ch>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,85 +16,121 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.7\n"
 
-#: admin.py:32
+#: admin.py:36
+#, python-format
+msgid ""
+"Version %(app_version)s of %(app_name)s for %(os)s is available for download"
+msgstr ""
+
+#: admin.py:41
+#, python-format
+msgid ""
+"Version %(app_version)s of %(app_name)s for %(os)s is available for "
+"download.\n"
+"Please visit %(download_url)s to install your app."
+msgstr ""
+
+#: admin.py:49
+#, python-format
+msgid ""
+"The user %(user_name)s was notified of %(app_name)s %(app_version)s "
+"availability."
+msgstr ""
+
+#: admin.py:51
+#, python-format
+msgid ""
+"The user %s does not have an email address. Please add an email address and "
+"try again."
+msgstr ""
+
+#: admin.py:52
+msgid "Notify clients of app availability"
+msgstr ""
+
+#: admin.py:60 admin.py:72
+msgid "App info"
+msgstr "App info"
+
+#: admin.py:63 admin.py:75
+msgid "Binary info"
+msgstr "File info"
+
+#: forms.py:31
 msgid "Don't change this file name!"
 msgstr "Don't change this file name!"
 
-#: admin.py:34
+#: forms.py:33
 msgid ""
 "Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc dialog."
 msgstr ""
 "Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc dialog."
 
-#: admin.py:36
+#: forms.py:35
 msgid "File name:"
 msgstr "File name:"
 
-#: admin.py:41
+#: forms.py:40
 msgid "Ad Hoc URL:"
 msgstr "Ad Hoc URL:"
 
-#: admin.py:53 admin.py:65
-msgid "App info"
-msgstr "App info"
+#: models.py:21 models.py:24 models.py:25
+msgid "Extended user info"
+msgstr ""
 
-#: admin.py:56 admin.py:68
-msgid "Binary info"
-msgstr "File info"
-
-#: models.py:16
+#: models.py:30
 msgid "User"
 msgstr ""
 
-#: models.py:17
+#: models.py:31
 msgid "App name"
 msgstr "App name"
 
-#: models.py:18
+#: models.py:32
 msgid "Comment"
 msgstr "Comment"
 
-#: models.py:19
+#: models.py:33
 msgid "Version"
 msgstr "Version"
 
-#: models.py:20
+#: models.py:34
 msgid "Build date"
 msgstr "Created on"
 
-#: models.py:29
+#: models.py:43
 msgid "File name"
 msgstr "File name:"
 
-#: models.py:30 models.py:65
+#: models.py:44 models.py:79
 msgid "Operating system"
 msgstr "Operating System"
 
-#: models.py:31
+#: models.py:45
 msgid "Ad Hoc ipa file"
 msgstr "Ad Hoc ipa file"
 
-#: models.py:32
+#: models.py:46
 msgid "Ad Hoc plist"
 msgstr "Ad Hoc plist"
 
-#: models.py:57
+#: models.py:71
 msgid "iOS App"
 msgstr ""
 
-#: models.py:58
+#: models.py:72
 msgid "iOS Apps"
 msgstr ""
 
-#: models.py:66
+#: models.py:80
 msgid "APK file"
 msgstr "APK file"
 
-#: models.py:69
+#: models.py:83
 msgid "Android App"
 msgstr "Android app"
 
-#: models.py:70
+#: models.py:84
 msgid "Android Apps"
 msgstr "Android apps"
 
@@ -132,8 +168,8 @@ msgid "download file"
 msgstr "File"
 
 #: templates/django_mobile_app_distribution/base.html:7
-msgid "over the air ad hoc app management"
-msgstr "Over the air Ad Hoc App Management"
+msgid "Mobile App Distribution"
+msgstr ""
 
 #: templates/django_mobile_app_distribution/login.html:4
 msgid "customer login"
@@ -163,6 +199,9 @@ msgstr ""
 "\t\tYou were logged out successfully. <a href=\"%(login_url)s\">Log in</a> "
 "again.\n"
 "\t"
+
+#~ msgid "over the air ad hoc app management"
+#~ msgstr "Over the air Ad Hoc App Management"
 
 #~ msgid "user"
 #~ msgstr "User"
