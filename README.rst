@@ -21,12 +21,14 @@ Installation
 	*  If your webserver cannot create them for you, you have to create them by hand.  See Security considerations below for more information.
 7. Include ``urls.py`` into your project's urls.py file at the mount point of your choosing (see below).  This will be where your client downloads her apps.
 8. Include ``auth_urls.py`` into your project's urls.py (see below).
-9. Add ``BASE_PATH`` to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as ``MEDIA_ROOT`` this has to be set.
-10. Add the `SITE_ID`_ value in your project's settings.py to the primary key of the Site object that represents your site.
-11. Login to the Django Admin and add your server's URL to the Site object's domain name (create one if necessary). On the development server this would be ``http://127.0.0.1:8000/``
+9. Add `LOGIN_REDIRECT_URL`_ to your project's settings.py.  If you're using the suggestion below, set it to ``/distribute/``.
+10. Add ``BASE_PATH`` to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as ``MEDIA_ROOT`` this has to be set.
+11. Add the `SITE_ID`_ value in your project's settings.py to the primary key of the Site object that represents your site.
+12. Login to the Django Admin and add your server's URL to the Site object's domain name (create one if necessary). On the development server this would be ``http://127.0.0.1:8000/``
 
 .. _`SITE_ID`: https://docs.djangoproject.com/en/1.4/ref/settings/#site-id
 .. _`django-cleanup`: https://github.com/un1t/django-cleanup
+.. _`LOGIN_REDIRECT_URL: https://docs.djangoproject.com/en/1.4/ref/settings/#login-redirect-url
 
 .. code-block:: python
 	

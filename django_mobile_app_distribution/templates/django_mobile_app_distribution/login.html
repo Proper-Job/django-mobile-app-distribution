@@ -1,5 +1,6 @@
 {% extends "django_mobile_app_distribution/base.html" %}
 {% load i18n %}
+{% load url from future %}
 {% load staticfiles %}
 {% block title %}{% trans "customer login" %}{% endblock %}
 {% block content %}
@@ -10,7 +11,7 @@
 	</div>
 	<div class="login_content">
 			<div>
-				<form data-ajax="false" method="post" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
+				<form data-ajax="false" method="post" action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
 					{{ form.username.label_tag }} {{ form.username }}
 					{{ form.password.label_tag }} {{ form.password }}
 					{% if form.errors %}

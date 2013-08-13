@@ -1,9 +1,10 @@
 {% extends "django_mobile_app_distribution/base.html" %}
 {% load i18n %}
+{% load url from future %}
 {% block title %}{% trans "app list view" %}{% endblock %}
 {% block content %}
 <div data-role="header">
-	<a data-icon="delete" href="{% url auth_logout %}">{% trans 'logout' %}</a>
+	<a data-icon="delete" href="{% url 'auth_logout' %}">{% trans 'logout' %}</a>
   	<h2>
         {% trans "app list view" %}
     </h2>
@@ -60,7 +61,7 @@
                         <img src="{{ STATIC_URL }}django_mobile_app_distribution/images/download.png" width="25px" height="23px">
                    </a>
                 {% else %}
-                    <a data-role="button" data-ajax="false" href="{% url django_mobile_app_distribution_send_apk app_id=app.id %}">
+                    <a data-role="button" data-ajax="false" href="{% url 'django_mobile_app_distribution_send_apk' app_id=app.id %}">
                         <img src="{{ STATIC_URL }}django_mobile_app_distribution/images/download.png" width="25px" height="23px">
                     </a>
                 {% endif %}
