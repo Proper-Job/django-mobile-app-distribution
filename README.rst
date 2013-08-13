@@ -28,7 +28,7 @@ Installation
 
 .. _`SITE_ID`: https://docs.djangoproject.com/en/1.4/ref/settings/#site-id
 .. _`django-cleanup`: https://github.com/un1t/django-cleanup
-.. _`LOGIN_REDIRECT_URL: https://docs.djangoproject.com/en/1.4/ref/settings/#login-redirect-url
+.. _`LOGIN_REDIRECT_URL`: https://docs.djangoproject.com/en/1.4/ref/settings/#login-redirect-url
 
 .. code-block:: python
 	
