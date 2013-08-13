@@ -10,7 +10,7 @@ It is made up of 2 components:
 
 
 Notify clients of available app downloads
-=========================================
+-----------------------------------------
 
 Django Mobile App Distribution exposes an Admin Action that allows you to notify your clients once you've uploaded and app.
 An email message is generated that contains a link to the download page.
@@ -18,9 +18,9 @@ In order for email messaging to work you need to set the following fields in you
 
 * `EMAIL_HOST`_
 * `EMAIL_PORT`_
-* `EMAIL_HOST_USER `_
-* `EMAIL_HOST_PASSWORD `_
-* `EMAIL_USE_TLS `_
+* `EMAIL_HOST_USER`_
+* `EMAIL_HOST_PASSWORD`_
+* `EMAIL_USE_TLS`_
 * `DEFAULT_FROM_EMAIL`_
 
 .. _`EMAIL_HOST`: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_HOST
