@@ -14,7 +14,7 @@ setup(
     license='MIT License', 
     description='A Django app that adds iOS and Android app upload functionality to the Django admin interface.  Provides a mobile optimized HTML fronted for clients to download Ad Hoc mobile applications using their iOS or Android devices.',
     long_description=README,
-    url='http://www.example.com/',
+    url='https://github.com/Alp-Phone/django-mobile-app-distribution',
     author='Moritz Pfeiffer',
     author_email='moritz.pfeiffer@alp-phone.ch',
     zip_safe=False,

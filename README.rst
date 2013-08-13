@@ -1,3 +1,6 @@
+Django Mobile App Distribution
+==============================
+
 Django Mobile App Distribution is a Django app that allows you to distribute iPhone, iPad and Android over the air to your clients.
 
 It is made up of 2 components:
