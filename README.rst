@@ -27,5 +27,5 @@ In order for email messaging to work you need to set the following fields in you
 .. _`EMAIL_PORT`: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_PORT
 .. _`EMAIL_HOST_USER`: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_HOST_USER
 .. _`EMAIL_HOST_PASSWORD`: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_HOST_PASSWORD
-.. _`EMAIL_USE_TLS `: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_USE_TLS
+.. _`EMAIL_USE_TLS`: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_USE_TLS
 .. _`DEFAULT_FROM_EMAIL`: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-DEFAULT_FROM_EMAIL
