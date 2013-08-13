@@ -15,14 +15,15 @@ Installation
 1. ``pip install django-mobile-app-distribution``
 2. Add ``django_mobile_app_distribution`` to your ``INSTALLED_APPS`` list in your project's settings.py. Make sure it comes after ``django.contrib.admin`` so the admin login and logout templates are properly overridden.
 3. Run ``python manage.py syncdb``.
-4. If you like things tidy you can install `django-cleanup`_, which removes uploaded files when the associated models are deleted.
-5. Make sure the ``android/android_apps`` folder on the same level as your ``MEDIA_ROOT`` is readable and writable by your webserver.
+4. Run ``python manage.py collectstatic``
+5. If you like things tidy you can install `django-cleanup`_, which removes uploaded files when the associated models are deleted.
+6. Make sure the ``android/android_apps`` folder on the same level as your ``MEDIA_ROOT`` is readable and writable by your webserver.
 	*  If your webserver cannot create them for you, you have to create them by hand.  See Security considerations below for more information.
-6. Include ``urls.py`` into your project's urls.py file at the mount point of your choosing (see below).  This will be where your client downloads her apps.
-7. Include ``auth_urls.py`` into your project's urls.py (see below).
-8. Add ``BASE_PATH`` to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as ``MEDIA_ROOT`` this has to be set.
-9. Add the `SITE_ID`_ value in your project's settings.py to the primary key of the Site object that represents your site.
-10. Login to the Django Admin and add your server's URL to the Site object's domain name (create one if necessary). On the development server this would be ``http://127.0.0.1:8000/``
+7. Include ``urls.py`` into your project's urls.py file at the mount point of your choosing (see below).  This will be where your client downloads her apps.
+8. Include ``auth_urls.py`` into your project's urls.py (see below).
+9. Add ``BASE_PATH`` to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as ``MEDIA_ROOT`` this has to be set.
+10. Add the `SITE_ID`_ value in your project's settings.py to the primary key of the Site object that represents your site.
+11. Login to the Django Admin and add your server's URL to the Site object's domain name (create one if necessary). On the development server this would be ``http://127.0.0.1:8000/``
 
 .. _`SITE_ID`: https://docs.djangoproject.com/en/1.4/ref/settings/#site-id
 .. _`django-cleanup`: https://github.com/un1t/django-cleanup
@@ -39,22 +40,6 @@ Installation
 		url(r'^distribute/', include('django_mobile_app_distribution.urls')),
 		url(r'^accounts/', include('django_mobile_app_distribution.auth_urls')),
 	)
-
-.. code-block:: python
-
-	# Inside your project's settings.py file
-	import os.path
-	BASE_PATH = os.path.dirname(__file__)
-
-
-
-
-Required settings values
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Django Mobile App Distribution relies on the following values to be set in your project's settings.py
-
-* ``BASE_PATH`` - in order to create an Android upload folder on the same level as ``MEDIA_ROOT`` this has to be set
 
 .. code-block:: python
 
@@ -105,7 +90,8 @@ Usage
 ~~~~~
 
 1. Create a Django Admin User object that represents your client and fill in your client's email and language (very bottom).
-2. Create iOS or Android Apps to your liking.
+2. Make sure your clients can't login to the Django Admin Interface by unchecking the ``Staff status`` and ``Superuser status`` fields.
+3. Create iOS or Android Apps to your liking.
 
 Android specifics
 ~~~~~~~~~~~~~~~~~
@@ -113,8 +99,8 @@ Android specifics
 In case you get a permission denied error when uploading an Android APK, make sure that the ``android/android_apps`` folder on the same level as ``MEDIA_ROOT`` is writable by your webserver.
 
 
-iOS over the air distribution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Export your iOS app for *Over the Air* distribution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * In your browser log into the Django Admin and navigate to **Django_mobile_app_distribution > IOS Apps**
 * Create a new iOS app.
@@ -138,4 +124,10 @@ iOS over the air distribution
 * On the download page you should be able to download and install over the air with properly provisioned devices
 
 
+Overriding the login template logo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to place your own logo on the login screen replace the following file with an image of the size 400x200 pixel:
+
+**static/django_mobile_app_distribution/images/logo@2x.png**
 

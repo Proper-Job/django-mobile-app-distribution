@@ -7,12 +7,12 @@
         <title>{% block title %}{% trans "Mobile App Distribution" %}{% endblock %}</title>
         {% load staticfiles %}
         
-        <link rel="stylesheet" href="{% static 'css/jquery.mobile-1.3.1.min.css' %}" />
-        <script type="text/javascript" src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/jquery.mobile-1.3.1.min.js' %}"></script>
-        <link rel="stylesheet" href="{% static 'css/errors.css' %}" type="text/css" media="screen" />
-        <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen" />
-        <link rel="stylesheet" href="{% static 'css/forms.css' %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{% static 'django_mobile_app_distribution/css/jquery.mobile-1.3.1.min.css' %}" />
+        <script type="text/javascript" src="{% static 'django_mobile_app_distribution/js/jquery-1.9.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'django_mobile_app_distribution/js/jquery.mobile-1.3.1.min.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'django_mobile_app_distribution/css/errors.css' %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{% static 'django_mobile_app_distribution/css/base.css' %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{% static 'django_mobile_app_distribution/css/forms.css' %}" type="text/css" media="screen" />
     </head>
     <body>
         {% block content %}{% endblock %}
