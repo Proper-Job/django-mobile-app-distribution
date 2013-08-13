@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Django Mobile App Distribution 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-13 14:33+0200\n"
-"PO-Revision-Date: 2013-08-13 14:34+0100\n"
+"PO-Revision-Date: 2013-08-13 14:37+0100\n"
 "Last-Translator: Moritz Pfeiffer <moritz.pfeiffer@alp-phone.ch>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -140,7 +140,7 @@ msgstr "Ad Hoc management"
 
 #: templates/admin/base_site.html:7
 msgid "Django administration"
-msgstr "Over the air Ad Hoc management"
+msgstr "Mobile App Distribution"
 
 #: templates/django_mobile_app_distribution/app_list.html:3
 #: templates/django_mobile_app_distribution/app_list.html:8
