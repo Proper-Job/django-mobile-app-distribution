@@ -18,7 +18,7 @@ class UserInfo(models.Model):
 	language = models.CharField(max_length=20, choices=app_dist_settings.LANGUAGES, default=app_dist_settings.ENGLISH)
 
 	def __unicode__(self):
-		return _('Extended user info')
+		return self.user.username
 
 	class Meta:
 		verbose_name = _('Extended user info')

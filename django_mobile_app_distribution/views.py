@@ -9,9 +9,10 @@ from django.contrib.sites.models import get_current_site
 from django.core.servers.basehttp import FileWrapper
 from django.http import HttpResponse, HttpResponseForbidden
 from django.shortcuts import render
-from models import IosApp, AndroidApp
+from django.utils import translation
 
 import settings as app_dist_settings
+from models import IosApp, AndroidApp, UserInfo
 
 
 log = logging.getLogger(__name__)
@@ -19,6 +20,13 @@ log = logging.getLogger(__name__)
 
 @login_required
 def index(request):
+	try:
+		# Activate client's language preference
+		lang = request.user.userinfo.language
+		translation.activate(lang)
+	except UserInfo.DoesNotExist:
+		pass
+
 	ios_apps = IosApp.objects.filter(user_id__exact=request.user.id)
 	android_apps = AndroidApp.objects.filter(user_id__exact=request.user.id)
 	apps = list(chain(ios_apps, android_apps))
