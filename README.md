@@ -126,12 +126,13 @@ Export your iOS app for *Over the Air* distribution
 * In your browser upload the IPA file and the Plist into the respective fields
 * On the download page you should be able to download and install over the air with properly provisioned devices
 
+
+
 ![Screenshot][xcode]
+
 [xcode]: http://alp-phone.ch/wp-content/uploads/2013/08/MobileAppDistribution.jpg
 
-.. `Xcode configuration example`_
 
-.. .. _`Xcode configuration example`: http://alp-phone.ch/wp-content/uploads/2013/08/MobileAppDistribution.jpg
 
 Overriding the login template logo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
