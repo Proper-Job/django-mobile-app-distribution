@@ -16,21 +16,20 @@ Installation
 2. Add ``django_mobile_app_distribution`` to your ``INSTALLED_APPS`` list in your project's settings.py. Make sure it comes after ``django.contrib.admin`` so the admin login and logout templates are properly overridden.
 3. Run ``python manage.py syncdb``.
 4. Run ``python manage.py collectstatic``
-5. If you like things tidy you can install `django-cleanup`_, which removes uploaded files when the associated models are deleted.
+5. If you like things tidy you can install [django-cleanup][django_cleanup], which removes uploaded files when the associated models are deleted.
 6. Make sure the ``android/android_apps`` folder on the same level as your project's settings.py is readable and writable by your webserver.
 	*  If your webserver cannot create them for you, you have to create them by hand.  See Security considerations below for more information.
 7. Include ``urls.py`` into your project's urls.py file at the mount point of your choosing (see below).  This will be where your client downloads her apps.
 8. Include ``auth_urls.py`` into your project's urls.py (see below).
-9. Add `LOGIN_REDIRECT_URL`_ to your project's settings.py.  This is the URL you chose in step 7.  If you're using the example below, set it to ``/distribute/``.
+9. Add [LOGIN_REDIRECT_URL][login_redirect_url] to your project's settings.py.  This is the URL you chose in step 7.  If you're using the example below, set it to ``/distribute/``.
 10. Add ``BASE_PATH`` to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as your project's settings.py this has to be set.
-11. Add the `SITE_ID`_ value in your project's settings.py to the primary key of the Site object that represents your site.
+11. Add the [SITE_ID][site_id] value in your project's settings.py to the primary key of the Site object that represents your site.
 12. Login to the Django Admin and add your server's URL to the Site object's domain name (create one if necessary). On the development server this would be ``http://127.0.0.1:8000/``
 
-.. _`SITE_ID`: https://docs.djangoproject.com/en/1.4/ref/settings/#site-id
-.. _`django-cleanup`: https://github.com/un1t/django-cleanup
-.. _`LOGIN_REDIRECT_URL`: https://docs.djangoproject.com/en/1.4/ref/settings/#login-redirect-url
+[site_id]: https://docs.djangoproject.com/en/1.4/ref/settings/#site-id
+[django_cleanup]: https://github.com/un1t/django-cleanup
+[login_redirect_url]: https://docs.djangoproject.com/en/1.4/ref/settings/#login-redirect-url
 
-.. code-block:: python
 	
 	# inside your project's urls.py
 	from django.conf.urls import patterns, include, url
@@ -43,7 +42,6 @@ Installation
 		url(r'^accounts/', include('django_mobile_app_distribution.auth_urls')),
 	)
 
-.. code-block:: python
 
 	# Inside your project's settings.py file
 	import os.path
@@ -54,16 +52,16 @@ Installation
 Security considerations
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-|    By default iOS apps are uploaded to a folder called ``ios_apps`` within your ``MEDIA_ROOT``.
-|    This should generally be safe enough as Ad Hoc iOS apps are provisioned to run on a limited number of devices.
+By default iOS apps are uploaded to a folder called ``ios_apps`` within your ``MEDIA_ROOT``.
+This should generally be safe enough as Ad Hoc iOS apps are provisioned to run on a limited number of devices.
 
-|    On Android however a hijacked signed APK file could be redistributed against your client's wishes which is to be avoided at all cost.
-|    To this end Android apps are uploaded with a custom instance of ``FileSystemStorage``. By default, Android apps are uploaded to a folder called ``android`` on the same level as your project's settings.py.  The default upload path within the ``android`` folder is ``android_apps``.
-|    You can change the default upload and file storage paths with the following directives in your project's settings.py:
+On Android however a hijacked signed APK file could be redistributed against your client's wishes which is to be avoided at all cost.
+To this end Android apps are uploaded with a custom instance of ``FileSystemStorage``. By default, Android apps are uploaded to a folder called ``android`` on the same level as your project's settings.py.  The default upload path within the ``android`` folder is ``android_apps``.
+You can change the default upload and file storage paths with the following directives in your project's settings.py:
 
-* ``MOBILE_APP_DISTRIBUTION_IOS_UPLOAD_TO_DIRECTORY_NAME``
-* ``MOBILE_APP_DISTRIBUTION_ANDROID_UPLOAD_TO_DIRECTORY_NAME``
-* ``MOBILE_APP_DISTRIBUTION_ANDROID_FILE_STORAGE_PATH``
+* `MOBILE_APP_DISTRIBUTION_IOS_UPLOAD_TO_DIRECTORY_NAME`
+* `MOBILE_APP_DISTRIBUTION_ANDROID_UPLOAD_TO_DIRECTORY_NAME`
+* `MOBILE_APP_DISTRIBUTION_ANDROID_FILE_STORAGE_PATH`
 
 .. note:: Make sure the ``android/android_apps`` folder is readable and writable by your webserver, but not served by your webserver.
 
@@ -74,19 +72,19 @@ Django Mobile App Distribution exposes an Admin Action that allows you to notify
 An email message is generated that contains a link to the download page.
 In order for email messaging to work you need to set the following fields in your settings.py module:
 
-* `EMAIL_HOST`_
-* `EMAIL_PORT`_
-* `EMAIL_HOST_USER`_
-* `EMAIL_HOST_PASSWORD`_
-* `EMAIL_USE_TLS`_
-* `DEFAULT_FROM_EMAIL`_
+* [EMAIL_HOST][EMAIL_HOST]
+* [EMAIL_PORT][EMAIL_PORT]
+* [EMAIL_HOST_USER][EMAIL_HOST_USER]
+* [EMAIL_HOST_PASSWORD][EMAIL_HOST_PASSWORD]
+* [EMAIL_USE_TLS][EMAIL_USE_TLS]
+* [DEFAULT_FROM_EMAIL][DEFAULT_FROM_EMAIL]
 
-.. _`EMAIL_HOST`: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_HOST
-.. _`EMAIL_PORT`: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_PORT
-.. _`EMAIL_HOST_USER`: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_HOST_USER
-.. _`EMAIL_HOST_PASSWORD`: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_HOST_PASSWORD
-.. _`EMAIL_USE_TLS`: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_USE_TLS
-.. _`DEFAULT_FROM_EMAIL`: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-DEFAULT_FROM_EMAIL
+[EMAIL_HOST]: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_HOST
+[EMAIL_PORT]: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_PORT
+[EMAIL_HOST_USER]: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_HOST_USER
+[EMAIL_HOST_PASSWORD]: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_HOST_PASSWORD
+[EMAIL_USE_TLS]: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_USE_TLS
+[DEFAULT_FROM_EMAIL]: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-DEFAULT_FROM_EMAIL
 
 
 Usage
