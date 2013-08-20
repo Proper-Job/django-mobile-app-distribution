@@ -1,5 +1,4 @@
-Django Mobile App Distribution
-==============================
+#Django Mobile App Distribution
 
 Django Mobile App Distribution is a Django app that allows you to distribute iPhone, iPad and Android apps over the air to your clients.
 
@@ -9,8 +8,7 @@ It is made up of 2 components:
 * A mobile optimized, login protected download area where your clients can download apps that were associated with their login credentials.
 
 
-Installation
-------------
+#Installation
 
 1. ``pip install django-mobile-app-distribution``
 2. Add ``django_mobile_app_distribution`` to your ``INSTALLED_APPS`` list in your project's settings.py. Make sure it comes after ``django.contrib.admin`` so the admin login and logout templates are properly overridden.
@@ -49,8 +47,7 @@ Installation
 	LOGIN_REDIRECT_URL = '/distribute/'
 	SITE_ID = 1
 
-Security considerations
-~~~~~~~~~~~~~~~~~~~~~~~
+#Security considerations
 
 By default iOS apps are uploaded to a folder called ``ios_apps`` within your ``MEDIA_ROOT``.
 This should generally be safe enough as Ad Hoc iOS apps are provisioned to run on a limited number of devices.
@@ -65,8 +62,7 @@ You can change the default upload and file storage paths with the following dire
 
 .. note:: Make sure the ``android/android_apps`` folder is readable and writable by your webserver, but not served by your webserver.
 
-Notify clients of available app downloads by email
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#Notify clients of available app downloads by email
 
 Django Mobile App Distribution exposes an Admin Action that allows you to notify your clients once you've uploaded and app.
 An email message is generated that contains a link to the download page.
@@ -87,21 +83,18 @@ In order for email messaging to work you need to set the following fields in you
 [DEFAULT_FROM_EMAIL]: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-DEFAULT_FROM_EMAIL
 
 
-Usage
-~~~~~
+#Usage
 
 1. Create a Django Admin User object that represents your client and fill in your client's email and language (very bottom).
 2. Make sure your clients can't login to the Django Admin Interface by unchecking the ``Staff status`` and ``Superuser status`` fields.
 3. Create iOS or Android Apps to your liking.
 
-Android specifics
-~~~~~~~~~~~~~~~~~
+#Android specifics
 
 In case you get a permission denied error when uploading an Android APK, make sure that the ``android/android_apps`` folder on the same level as your project's settings.py is writable by your webserver.
 
 
-Export your iOS app for *Over the Air* distribution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#Export your iOS app for *Over the Air* distribution
 
 * In your browser log into the Django Admin and navigate to **Django_mobile_app_distribution > IOS Apps**
 * Create a new iOS app.
@@ -132,8 +125,7 @@ Export your iOS app for *Over the Air* distribution
 
 
 
-Overriding the login template logo
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#Overriding the login template logo
 
 In order to place your own logo on the login screen replace the following file with an image of the size 400x200 pixel:
 
