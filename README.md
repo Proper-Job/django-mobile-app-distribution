@@ -29,7 +29,8 @@ It is made up of 2 components:
 [login_redirect_url]: https://docs.djangoproject.com/en/1.4/ref/settings/#login-redirect-url
 
 	
-	# inside your project's urls.py
+inside your project's urls.py
+
 	from django.conf.urls import patterns, include, url
 	from django.contrib import admin
 	admin.autodiscover()
@@ -41,7 +42,8 @@ It is made up of 2 components:
 	)
 
 
-	# Inside your project's settings.py file
+Inside your project's settings.py file
+
 	import os.path
 	BASE_PATH = os.path.dirname(__file__)
 	LOGIN_REDIRECT_URL = '/distribute/'
