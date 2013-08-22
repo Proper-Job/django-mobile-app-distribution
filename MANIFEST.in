@@ -1,4 +1,4 @@
-include CHANGES.rst README.rst LICENSE
+include CHANGES.rst README.md LICENSE
 
 recursive-include django_mobile_app_distribution/static *
 recursive-include django_mobile_app_distribution/templates *
