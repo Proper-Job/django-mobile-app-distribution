@@ -1,6 +1,14 @@
 Changelog for Django Mobile App Distribution
 ============================================
 
+
+
+0.1.3 (2014-03-19)
+------------------
+
+- Using ugettext_lazy instead of ugettext in models.py, which is noticeable if you have a dynamic language switcher in the admin interface.
+
+
 0.1.2 (2013-08-15)
 ------------------
 

@@ -6,7 +6,7 @@ from django.contrib.sites.models import Site
 from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.db.models.signals import post_save
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from exceptions import MobileAppDistributionConfigurationException
 
