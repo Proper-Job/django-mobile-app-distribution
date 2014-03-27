@@ -27,12 +27,20 @@ def index(request):
 	except UserInfo.DoesNotExist:
 		pass
 
-	ios_apps = IosApp.objects.filter(user_id__exact=request.user.id)
-	android_apps = AndroidApp.objects.filter(user_id__exact=request.user.id)
-	apps = list(chain(ios_apps, android_apps))
+	ios_user_apps = IosApp.objects.filter(user_id__exact=request.user.id)
+	android_user_apps = AndroidApp.objects.filter(user_id__exact=request.user.id)
+	apps = list(chain(ios_user_apps, android_user_apps))
+
+	ios_group_apps = IosApp.objects.filter(groups__in=request.user.groups.all())
+	android_group_apps = AndroidApp.objects.filter(groups__in=request.user.groups.all())
+	group_apps = list(chain(ios_group_apps, android_group_apps))
+	for group_app in group_apps:
+		if group_app not in apps:
+			apps.append(group_app)
+	
 	apps.sort(key=attrgetter('build_date'), reverse=True)
 	apps.sort(key=attrgetter('version'), reverse=True)
-	apps.sort(key=attrgetter('operating_system'))
+	apps.sort(key=attrgetter('operating_system'), reverse=True) # let iOS come first
 	apps.sort(key=attrgetter('name'))	
 	
 	return render(request, 'django_mobile_app_distribution/app_list.html', {

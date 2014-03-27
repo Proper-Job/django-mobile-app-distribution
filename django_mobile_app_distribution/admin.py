@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from django_mobile_app_distribution.models import IosApp, AndroidApp
 
-from forms import IosAppAdminForm
+from forms import IosAppAdminForm, AppAdminForm
 from models import UserInfo
 from django.utils import translation
 
@@ -73,10 +73,11 @@ class IosAppAdmin(NotifiableModelAdmin):
 
 	form = IosAppAdminForm
 	list_display = ('name', 'user', 'version', 'comment', 'build_date' )
+	filter_horizontal = ['groups']
 
 	fieldsets = (
 		(_('App info'), {
-			'fields': ('user', 'name', 'version', 'comment')
+			'fields': ('user', 'groups', 'name', 'version', 'comment')
 		}),
 		(_('Binary info'), {
 			'fields': ('file_name', 'build_date', 'app_binary', 'app_plist')
@@ -84,11 +85,14 @@ class IosAppAdmin(NotifiableModelAdmin):
 	)
 
 class AndroidAppAdmin(NotifiableModelAdmin):
+
+	form = AppAdminForm
 	list_display = ('name', 'user', 'version', 'comment', 'build_date' )
+	filter_horizontal = ['groups']
 
 	fieldsets = (
 		(_('App info'), {
-			'fields': ('user', 'name', 'version', 'comment')
+			'fields': ('user', 'groups', 'name', 'version', 'comment')
 		}),
 		(_('Binary info'), {
 			'fields': ('build_date', 'app_binary')

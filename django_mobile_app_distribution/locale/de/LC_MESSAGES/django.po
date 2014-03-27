@@ -7,17 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django Mobile App Distribution 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-13 14:29+0200\n"
-"PO-Revision-Date: 2013-08-13 14:37+0100\n"
+"POT-Creation-Date: 2014-03-27 16:15+0100\n"
+"PO-Revision-Date: 2014-03-27 16:17+0100\n"
 "Last-Translator: Moritz Pfeiffer <moritz.pfeiffer@alp-phone.ch>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.4\n"
 
-#: admin.py:36
+#: admin.py:50
 #, python-format
 msgid ""
 "Version %(app_version)s of %(app_name)s for %(os)s is available for download"
@@ -25,7 +26,7 @@ msgstr ""
 "Version %(app_version)s der %(app_name)s App für %(os)s steht zum Download "
 "bereit"
 
-#: admin.py:41
+#: admin.py:55
 #, python-format
 msgid ""
 "Version %(app_version)s of %(app_name)s for %(os)s is available for "
@@ -36,7 +37,7 @@ msgstr ""
 "bereit.\n"
 "Bitte besuchen Sie %(download_url)s um die App zu installieren."
 
-#: admin.py:49
+#: admin.py:67
 #, python-format
 msgid ""
 "The user %(user_name)s was notified of %(app_name)s %(app_version)s "
@@ -45,7 +46,7 @@ msgstr ""
 "Der Benutzer %(user_name)s wurde über die Verfügbarkeit der %(app_name)s "
 "%(app_version)s App informiert."
 
-#: admin.py:51
+#: admin.py:69
 #, python-format
 msgid ""
 "The user %s does not have an email address. Please add an email address and "
@@ -54,94 +55,102 @@ msgstr ""
 "Der Benutzer %s hat keine E-Mail-Adresse. Bitte fügen Sie eine E-Mail-"
 "Adresse hinzu und probieren Sie es erneut."
 
-#: admin.py:52
+#: admin.py:70
 msgid "Notify clients of app availability"
 msgstr "Kunden über die Verfügbarkeit der Apps informieren."
 
-#: admin.py:60 admin.py:72
+#: admin.py:79 admin.py:92
 msgid "App info"
 msgstr "App Infos"
 
-#: admin.py:63 admin.py:75
+#: admin.py:82 admin.py:95
 msgid "Binary info"
 msgstr "Datei Infos"
 
-#: forms.py:31
+#: forms.py:24
+msgid "Please assign a user or group to the app."
+msgstr "Bitte weisen Sie der App einen Benutzer oder eine Gruppe zu."
+
+#: forms.py:46
 msgid "Don't change this file name!"
 msgstr "Diesen Dateinamen nicht ändern!"
 
-#: forms.py:33
+#: forms.py:48
 msgid ""
 "Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc dialog."
 msgstr ""
 "Kopiere den Dateinamen und die Ad Hoc URL in die entsprechenden Felder im "
 "Xcode Ad Hoc Dialog."
 
-#: forms.py:35
+#: forms.py:50
 msgid "File name:"
 msgstr "Datei Name:"
 
-#: forms.py:40
+#: forms.py:55
 msgid "Ad Hoc URL:"
 msgstr "Ad Hoc URL:"
 
-#: models.py:21 models.py:24 models.py:25
+#: models.py:25 models.py:26
 msgid "Extended user info"
 msgstr "Erweiterte Benutzereinstellungen"
 
-#: models.py:30
+#: models.py:31
 msgid "User"
 msgstr "Benutzer"
 
-#: models.py:31
+#: models.py:32
+msgid "Groups"
+msgstr "Gruppen"
+
+#: models.py:33
 msgid "App name"
 msgstr "App Name"
 
-#: models.py:32
+#: models.py:34
 msgid "Comment"
 msgstr "Bemerkung"
 
-#: models.py:33
+#: models.py:35
 msgid "Version"
 msgstr "Version"
 
-#: models.py:34
+#: models.py:36
 msgid "Build date"
 msgstr "Erstellt"
 
-#: models.py:43
+#: models.py:45
 msgid "File name"
 msgstr "Datei Name:"
 
-#: models.py:44 models.py:79
+#: models.py:46 models.py:81
 msgid "Operating system"
 msgstr "Betriebssystem"
 
-#: models.py:45
+#: models.py:47
 msgid "Ad Hoc ipa file"
 msgstr "Ad Hoc ipa Datei"
 
-#: models.py:46
+#: models.py:48
 msgid "Ad Hoc plist"
 msgstr "Ad Hoc Pliste"
 
-#: models.py:71
+#: models.py:73
 msgid "iOS App"
 msgstr ""
 
-#: models.py:72
+#: models.py:74
 msgid "iOS Apps"
 msgstr ""
 
-#: models.py:80
+#: models.py:82
 msgid "APK file"
 msgstr "APK Datei"
 
-#: models.py:83
+#: models.py:85
 msgid "Android App"
 msgstr "Android App"
 
-#: models.py:84
+#: models.py:86
 msgid "Android Apps"
 msgstr "Android Apps"
 
@@ -153,28 +162,28 @@ msgstr "Ad Hoc Verwaltung"
 msgid "Django administration"
 msgstr "Mobile App Distribution"
 
-#: templates/django_mobile_app_distribution/app_list.html:3
-#: templates/django_mobile_app_distribution/app_list.html:8
+#: templates/django_mobile_app_distribution/app_list.html:4
+#: templates/django_mobile_app_distribution/app_list.html:9
 msgid "app list view"
 msgstr "App Übersicht"
 
-#: templates/django_mobile_app_distribution/app_list.html:6
+#: templates/django_mobile_app_distribution/app_list.html:7
 msgid "logout"
 msgstr "Abmelden"
 
-#: templates/django_mobile_app_distribution/app_list.html:38
+#: templates/django_mobile_app_distribution/app_list.html:39
 msgid "version"
 msgstr "Version"
 
-#: templates/django_mobile_app_distribution/app_list.html:44
+#: templates/django_mobile_app_distribution/app_list.html:45
 msgid "build date"
 msgstr "Erstellt"
 
-#: templates/django_mobile_app_distribution/app_list.html:50
+#: templates/django_mobile_app_distribution/app_list.html:51
 msgid "comment"
 msgstr "Bemerkung"
 
-#: templates/django_mobile_app_distribution/app_list.html:56
+#: templates/django_mobile_app_distribution/app_list.html:57
 msgid "download file"
 msgstr "App"
 
@@ -182,23 +191,23 @@ msgstr "App"
 msgid "Mobile App Distribution"
 msgstr ""
 
-#: templates/django_mobile_app_distribution/login.html:4
+#: templates/django_mobile_app_distribution/login.html:5
 msgid "customer login"
 msgstr "Kundenbereich"
 
-#: templates/django_mobile_app_distribution/login.html:19
+#: templates/django_mobile_app_distribution/login.html:20
 msgid "invalid login credentials"
 msgstr "Ihr Benutzername oder Passwort sind falsch"
 
-#: templates/django_mobile_app_distribution/login.html:23
+#: templates/django_mobile_app_distribution/login.html:24
 msgid "login"
 msgstr "Anmelden"
 
-#: templates/django_mobile_app_distribution/logout.html:3
+#: templates/django_mobile_app_distribution/logout.html:4
 msgid "logged out successfully"
 msgstr "Sie wurden erfolgreich abgemeldet"
 
-#: templates/django_mobile_app_distribution/logout.html:7
+#: templates/django_mobile_app_distribution/logout.html:8
 #, python-format
 msgid ""
 "\n"

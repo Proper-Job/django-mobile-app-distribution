@@ -7,6 +7,7 @@ from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import Group
 
 from exceptions import MobileAppDistributionConfigurationException
 
@@ -27,8 +28,9 @@ class UserInfo(models.Model):
 
 
 class App(models.Model):
-	user = models.ForeignKey(User, related_name='apps', verbose_name=_('User'))
-	name = models.CharField(max_length=200, verbose_name=_('App name'))
+	user = models.ForeignKey(User, blank=True, null=True, default=None, related_name='apps', verbose_name=_('User'))
+	groups = models.ManyToManyField(Group, blank=True, null=True, related_name='apps', default=None, verbose_name=_('Groups'))
+	name = models.CharField(max_length=200, verbose_name=_('App name')) 
 	comment = models.CharField(max_length=200, verbose_name=_('Comment'), blank=True, null=True)
 	version = models.CharField(max_length=200, verbose_name=_('Version'))
 	build_date = models.DateTimeField(verbose_name=_('Build date'))
@@ -89,6 +91,10 @@ def create_user_info(sender, instance, created, **kwargs):
 	try:
 		instance.userinfo
 	except UserInfo.DoesNotExist:
-		UserInfo.objects.create(user=instance)
+		try:
+			UserInfo.objects.create(user=instance)
+		except Exception:
+			# happens when creating a superuser when syncdb is run before the tables are installed
+			pass
 
 post_save.connect(create_user_info, sender=User)
