@@ -90,9 +90,13 @@ In order for email messaging to work you need to set the following fields in you
 
 #Usage
 
-1. Create a Django Admin User object that represents your client and fill in your client's email and language (very bottom).
+1. Create a Django Admin User object that represents your client.
 2. Make sure your clients can't login to the Django Admin Interface by unchecking the ``Staff status`` and ``Superuser status`` fields.
-3. Create iOS or Android Apps to your liking.
+3. Assign a group membership to the user if you want to distribute your apps to a group of users.
+4. Enter your client's email address if you want to be able to notify him or her of the availability of new apps.
+5. After you save a user object the Django_mobile_app_distribution in the admin interface exposes an extended user info object that allows you to change the correspondence language for that user.
+6. Create iOS or Android Apps to your liking.
+7. Use the admin action in the change list to notify users of the availability of new apps.
 
 #Android specifics
 

@@ -2,6 +2,12 @@ Changelog for Django Mobile App Distribution
 ============================================
 
 
+0.2 (2014-03-27)
+------------------
+
+- Added South dependency to facilitate schmema migration. Checkout README for instructions to upgrade from version 0.1.x to version 0.2.
+- Added the ability to associate apps with user groups.  This makes it possible to make a single app available to a group of users.
+
 
 0.1.3 (2014-03-19)
 ------------------
