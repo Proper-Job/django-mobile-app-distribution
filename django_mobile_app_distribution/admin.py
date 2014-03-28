@@ -39,6 +39,7 @@ class UserInfoAdmin(admin.ModelAdmin):
 
 class NotifiableModelAdmin(admin.ModelAdmin):
 	actions = ['notify_client']
+	search_fields = ['name', 'user__username', 'groups__name', 'comment']
 
 	def notify_client(self, request, queryset):
 		for app in queryset.all():
@@ -100,10 +101,24 @@ class NotifiableModelAdmin(admin.ModelAdmin):
 				messages.add_message(request, messages.ERROR, _('Nobody was notified by email because nobody\'s email address is set.'), fail_silently=True)
 	notify_client.short_description = _('Notify clients of app availability')
 
+	def user_display_name(self, instance):
+		if instance.user:
+			return instance.user.username
+		else:
+			return ''
+	user_display_name.short_description = _('User')
+	user_display_name.admin_order_field = 'user'
+
+	def groups_display_name(self, instance):
+		if instance.groups.count() > 0:
+			return ", ".join(str(group) for group in instance.groups.all())
+		else:
+			return ''
+
 class IosAppAdmin(NotifiableModelAdmin):
 
 	form = IosAppAdminForm
-	list_display = ('name', 'user', 'version', 'comment', 'build_date' )
+	list_display = ('name', 'user_display_name', 'groups_display_name', 'version', 'comment', 'build_date' )
 	filter_horizontal = ['groups']
 
 	fieldsets = (
@@ -118,7 +133,7 @@ class IosAppAdmin(NotifiableModelAdmin):
 class AndroidAppAdmin(NotifiableModelAdmin):
 
 	form = AppAdminForm
-	list_display = ('name', 'user', 'version', 'comment', 'build_date' )
+	list_display = ('name', 'user_display_name', 'groups_display_name', 'version', 'comment', 'build_date' )
 	filter_horizontal = ['groups']
 
 	fieldsets = (
