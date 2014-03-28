@@ -114,6 +114,7 @@ class NotifiableModelAdmin(admin.ModelAdmin):
 			return ", ".join(str(group) for group in instance.groups.all())
 		else:
 			return ''
+	groups_display_name.short_description = _('Groups')
 
 class IosAppAdmin(NotifiableModelAdmin):
 
