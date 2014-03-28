@@ -1,13 +1,12 @@
 import logging
 
 import django_mobile_app_distribution.settings as app_dist_settings
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.sites.models import Site
 from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.models import Group
 
 from exceptions import MobileAppDistributionConfigurationException
 

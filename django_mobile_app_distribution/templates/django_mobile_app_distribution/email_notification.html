@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ app_name }}</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<style type="text/css">
+		a {
+			color: {{ email_link_color_hex }};
+		}
+	</style>
+</head>
+<body>
+	{% load i18n l10n %}
+	{% blocktrans %}Version {{ app_version }} of {{ app_name }} for {{ os }} is available for download. <br/>
+	Please visit {{ download_url }} to install the app.{% endblocktrans %}
+</body>
+</html>

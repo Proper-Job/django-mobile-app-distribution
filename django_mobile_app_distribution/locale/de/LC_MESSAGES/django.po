@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django Mobile App Distribution 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-27 16:15+0100\n"
-"PO-Revision-Date: 2014-03-27 16:17+0100\n"
+"POT-Creation-Date: 2014-03-28 14:04+0100\n"
+"PO-Revision-Date: 2014-03-28 14:06+0100\n"
 "Last-Translator: Moritz Pfeiffer <moritz.pfeiffer@alp-phone.ch>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.4\n"
 
-#: admin.py:50
+#: admin.py:80
 #, python-format
 msgid ""
 "Version %(app_version)s of %(app_name)s for %(os)s is available for download"
@@ -26,44 +26,47 @@ msgstr ""
 "Version %(app_version)s der %(app_name)s App für %(os)s steht zum Download "
 "bereit"
 
-#: admin.py:55
+#: admin.py:81
 #, python-format
 msgid ""
 "Version %(app_version)s of %(app_name)s for %(os)s is available for "
 "download.\n"
-"Please visit %(download_url)s to install your app."
+"Please visit %(download_url)s to install the app."
 msgstr ""
 "Version %(app_version)s der %(app_name)s App für %(os)s steht zum Download "
 "bereit.\n"
 "Bitte besuchen Sie %(download_url)s um die App zu installieren."
 
-#: admin.py:67
+#: admin.py:91
 #, python-format
 msgid ""
-"The user %(user_name)s was notified of %(app_name)s %(app_version)s "
+"%(recipient_count)s user was notified of %(app_name)s %(app_version)s "
 "availability."
-msgstr ""
-"Der Benutzer %(user_name)s wurde über die Verfügbarkeit der %(app_name)s "
+msgid_plural ""
+"%(recipient_count)s users were notified of %(app_name)s %(app_version)s "
+"availability."
+msgstr[0] ""
+"%(recipient_count)s Benutzer wurde über die Verfügbarkeit der %(app_name)s "
+"%(app_version)s App informiert."
+msgstr[1] ""
+"%(recipient_count)s Benutzer wurden über die Verfügbarkeit der %(app_name)s "
 "%(app_version)s App informiert."
 
-#: admin.py:69
-#, python-format
-msgid ""
-"The user %s does not have an email address. Please add an email address and "
-"try again."
+#: admin.py:100
+msgid "Nobody was notified by email because nobody's email address is set."
 msgstr ""
-"Der Benutzer %s hat keine E-Mail-Adresse. Bitte fügen Sie eine E-Mail-"
-"Adresse hinzu und probieren Sie es erneut."
+"Niemand wurde per E-Mail benachrichtigt, weil bei niemandem die E-Mail-"
+"Adresse gesetzt ist."
 
-#: admin.py:70
+#: admin.py:101
 msgid "Notify clients of app availability"
 msgstr "Kunden über die Verfügbarkeit der Apps informieren."
 
-#: admin.py:79 admin.py:92
+#: admin.py:110 admin.py:125
 msgid "App info"
 msgstr "App Infos"
 
-#: admin.py:82 admin.py:95
+#: admin.py:113 admin.py:128
 msgid "Binary info"
 msgstr "Datei Infos"
 
@@ -191,6 +194,17 @@ msgstr "App"
 msgid "Mobile App Distribution"
 msgstr ""
 
+#: templates/django_mobile_app_distribution/email_notification.html:14
+#, python-format
+msgid ""
+"Version %(app_version)s of %(app_name)s for %(os)s is available for "
+"download. <br/>\n"
+"\tPlease visit %(download_url)s to install the app."
+msgstr ""
+"Version %(app_version)s der %(app_name)s App für %(os)s steht zum Download "
+"bereit.<br/>\n"
+"Bitte besuchen Sie %(download_url)s um die App zu installieren."
+
 #: templates/django_mobile_app_distribution/login.html:5
 msgid "customer login"
 msgstr "Kundenbereich"
@@ -219,6 +233,13 @@ msgstr ""
 "\t\tSie wurden erfolgreich abgemeldet. Erneut <a href=\"%(login_url)s"
 "\">anmelden</a>.\n"
 "\t"
+
+#~ msgid ""
+#~ "The user %s does not have an email address. Please add an email address "
+#~ "and try again."
+#~ msgstr ""
+#~ "Der Benutzer %s hat keine E-Mail-Adresse. Bitte fügen Sie eine E-Mail-"
+#~ "Adresse hinzu und probieren Sie es erneut."
 
 #~ msgid "over the air ad hoc app management"
 #~ msgstr "Over the air Ad Hoc Verwaltung"

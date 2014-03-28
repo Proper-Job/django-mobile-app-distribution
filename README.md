@@ -14,22 +14,24 @@ It is made up of 2 components:
 2. Add ``django_mobile_app_distribution`` to your ``INSTALLED_APPS`` list in your project's settings.py. Make sure it comes after ``django.contrib.admin`` so the admin login and logout templates are properly overridden.
 3. Add ``django.contrib.sites`` to the list of ``INSTALLED_APPS`` in your project's settings.py.
 4. Add ``south`` to the list of ``INSTALLED_APPS`` in your project's settings.py.
-5. Run ``python manage.py syncdb``.
-6. Run ``python manage.py migrate django_mobile_app_distribution``.
-7. Run ``python manage.py collectstatic``
-8. If you like things tidy you can install [django-cleanup][django_cleanup], which removes uploaded files when the associated models are deleted.
-9. Make sure the ``android/android_apps`` folder on the same level as your project's settings.py is readable and writable by your webserver.
+5. Enable the [messages framework][message_framework]
+6. Run ``python manage.py syncdb``.
+7. Run ``python manage.py migrate django_mobile_app_distribution``.
+8. Run ``python manage.py collectstatic``
+9. If you like things tidy you can install [django-cleanup][django_cleanup], which removes uploaded files when the associated models are deleted.
+10. Make sure the ``android/android_apps`` folder on the same level as your project's settings.py is readable and writable by your webserver.
 	*  If your webserver cannot create them for you, you have to create them by hand.  See Security considerations below for more information.
-10. Include ``urls.py`` into your project's urls.py file at the mount point of your choosing (see below).  This will be where your client downloads her apps.
-11. Include ``auth_urls.py`` into your project's urls.py (see below).
-12. Add [LOGIN_REDIRECT_URL][login_redirect_url] to your project's settings.py.  This is the URL you chose in step 7.  If you're using the example below, set it to ``/distribute/``.
-13. Add ``BASE_PATH`` to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as your project's settings.py this has to be set.
-14. Add the [SITE_ID][site_id] value in your project's settings.py to the primary key of the Site object that represents your site.
-15. Login to the Django Admin and add your server's URL to the Site object's domain name (create one if necessary). On the development server this would be ``http://127.0.0.1:8000/``
+11. Include ``urls.py`` into your project's urls.py file at the mount point of your choosing (see below).  This will be where your client downloads her apps.
+12. Include ``auth_urls.py`` into your project's urls.py (see below).
+13. Add [LOGIN_REDIRECT_URL][login_redirect_url] to your project's settings.py.  This is the URL you chose in step 7.  If you're using the example below, set it to ``/distribute/``.
+14. Add ``BASE_PATH`` to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as your project's settings.py this has to be set.
+15. Add the [SITE_ID][site_id] value in your project's settings.py to the primary key of the Site object that represents your site.
+16. Login to the Django Admin and add your server's URL to the Site object's domain name (create one if necessary). On the development server this would be ``http://127.0.0.1:8000/``
 
 [site_id]: https://docs.djangoproject.com/en/1.4/ref/settings/#site-id
 [django_cleanup]: https://github.com/un1t/django-cleanup
 [login_redirect_url]: https://docs.djangoproject.com/en/1.4/ref/settings/#login-redirect-url
+[message_framework]: https://docs.djangoproject.com/en/1.5/ref/contrib/messages/
 
 	
 Inside your project's `urls.py`

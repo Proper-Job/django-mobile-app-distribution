@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import logging 
 import uuid
 
 from django.conf import settings
@@ -8,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _, string_concat
 
 import settings as app_dist_settings
 from models import IosApp
-import logging 
+
 
 log = logging.getLogger(__name__)
 
