@@ -14,9 +14,9 @@ OS_CHOICES = (
 )
 
 MOBILE_APP_DISTRIBUTION_CONTENT_TYPES = {
-    IOS : 'application/octet-stream ipa',
-    IOS_PLIST : 'text/xml plist',
-    ANDROID : 'application/vnd.android.package-archive'
+    IOS: 'application/octet-stream ipa',
+    IOS_PLIST: 'text/xml plist',
+    ANDROID: 'application/vnd.android.package-archive'
 }
 
 MOBILE_APP_DISTRIBUTION_IOS_UPLOAD_TO_DIRECTORY_NAME = get('MOBILE_APP_DISTRIBUTION_IOS_UPLOAD_TO_DIRECTORY_NAME', 'ios_apps')

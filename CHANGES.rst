@@ -1,6 +1,13 @@
 Changelog for Django Mobile App Distribution
 ============================================
 
+0.3 (2014-11-18)
+----------------
+
+- Fixed deployment to iOS 8 clients. See https://buildozer.io/ios8 for more details.
+- Plist file is now automatically generated for iOS apps since Xcode 6 no longer provides it.
+
+
 
 0.2 (2014-03-27)
 ------------------

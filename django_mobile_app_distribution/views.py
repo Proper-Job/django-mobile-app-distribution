@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import logging
 import os.path
 from itertools import chain
@@ -6,8 +7,9 @@ from os.path import basename
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.models import get_current_site
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.core.servers.basehttp import FileWrapper
-from django.http import HttpResponse, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseForbidden, Http404
 from django.shortcuts import render
 from django.utils import translation
 
@@ -75,3 +77,21 @@ def send_apk(request, app_id):
     response['Content-Disposition'] = 'inline; filename=%s' % basename(filename)
     return response
 
+
+@login_required
+def ios_app_plist(request, app_id):
+
+    ios_app = None
+    try:
+        ios_app = IosApp.objects.get(pk=app_id)
+    except (ObjectDoesNotExist, MultipleObjectsReturned):
+        raise Http404
+
+    from . import settings as mad_settings
+    plist_string = mad_settings.IOS_PLIST_BLUEPRINT
+    plist_string = plist_string.replace(mad_settings.PLIST_APP_URL, ios_app.get_binary_url())
+    plist_string = plist_string.replace(mad_settings.PLIST_BUNDLE_IDENTIFIER, ios_app.bundle_identifier)
+    plist_string = plist_string.replace(mad_settings.PLIST_BUNDLE_VERSION, ios_app.version)
+    plist_string = plist_string.replace(mad_settings.PLIST_APP_TITLE, ios_app.name)
+
+    return HttpResponse(plist_string, content_type=mad_settings.IOS_PLIST)

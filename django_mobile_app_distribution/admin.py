@@ -127,7 +127,7 @@ class IosAppAdmin(NotifiableModelAdmin):
             'fields': ('user', 'groups', 'name', 'version', 'comment')
         }),
         (_('Binary info'), {
-            'fields': ('file_name', 'build_date', 'app_binary', 'app_plist')
+            'fields': ('file_name', 'build_date', 'app_binary')
         }),
     )
 
