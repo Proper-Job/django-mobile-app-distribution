@@ -25,7 +25,6 @@ class UserInfo(models.Model):
         verbose_name_plural = _('Extended user info')
 
 
-
 class App(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, default=None, related_name='apps', verbose_name=_('User'))
     groups = models.ManyToManyField(Group, blank=True, null=True, related_name='apps', default=None, verbose_name=_('Groups'))
@@ -38,6 +37,7 @@ class App(models.Model):
 
     def __unicode__(self):
         return self.name
+
 
 class IosApp(App):
 
@@ -75,6 +75,7 @@ class IosApp(App):
 
 
 fs = FileSystemStorage(location=app_dist_settings.MOBILE_APP_DISTRIBUTION_ANDROID_FILE_STORAGE_PATH)
+
 
 class AndroidApp(App):
     operating_system = models.CharField( max_length=50, choices=app_dist_settings.OS_CHOICES, default=app_dist_settings.ANDROID, verbose_name=_('Operating system'), editable=False)
