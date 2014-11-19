@@ -40,7 +40,7 @@ def index(request):
         if group_app not in apps:
             apps.append(group_app)
 
-    apps.sort(key=attrgetter('build_date'), reverse=True)
+    apps.sort(key=attrgetter('updatedAt'), reverse=True)
     apps.sort(key=attrgetter('version'), reverse=True)
     apps.sort(key=attrgetter('operating_system'), reverse=True) # let iOS come first
     apps.sort(key=attrgetter('name'))
@@ -94,4 +94,4 @@ def ios_app_plist(request, app_id):
     plist_string = plist_string.replace(mad_settings.PLIST_BUNDLE_VERSION, ios_app.version)
     plist_string = plist_string.replace(mad_settings.PLIST_APP_TITLE, ios_app.name)
 
-    return HttpResponse(plist_string, content_type=mad_settings.IOS_PLIST)
+    return HttpResponse(plist_string, content_type=mad_settings.MOBILE_APP_DISTRIBUTION_CONTENT_TYPES[mad_settings.IOS_PLIST])

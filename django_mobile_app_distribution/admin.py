@@ -119,30 +119,24 @@ class NotifiableModelAdmin(admin.ModelAdmin):
 class IosAppAdmin(NotifiableModelAdmin):
 
     form = IosAppAdminForm
-    list_display = ('name', 'user_display_name', 'groups_display_name', 'version', 'comment', 'build_date' )
+    list_display = ('name', 'user_display_name', 'groups_display_name', 'version', 'comment', 'updatedAt')
     filter_horizontal = ['groups']
 
     fieldsets = (
         (_('App info'), {
-            'fields': ('user', 'groups', 'name', 'version', 'comment')
-        }),
-        (_('Binary info'), {
-            'fields': ('file_name', 'build_date', 'app_binary')
+            'fields': ('user', 'groups', 'name', 'version', 'bundle_identifier', 'app_binary', 'comment')
         }),
     )
 
 class AndroidAppAdmin(NotifiableModelAdmin):
 
     form = AppAdminForm
-    list_display = ('name', 'user_display_name', 'groups_display_name', 'version', 'comment', 'build_date' )
+    list_display = ('name', 'user_display_name', 'groups_display_name', 'version', 'comment', 'updatedAt')
     filter_horizontal = ['groups']
 
     fieldsets = (
         (_('App info'), {
-            'fields': ('user', 'groups', 'name', 'version', 'comment')
-        }),
-        (_('Binary info'), {
-            'fields': ('build_date', 'app_binary')
+            'fields': ('user', 'groups', 'name', 'version', 'app_binary', 'comment')
         }),
     )
 

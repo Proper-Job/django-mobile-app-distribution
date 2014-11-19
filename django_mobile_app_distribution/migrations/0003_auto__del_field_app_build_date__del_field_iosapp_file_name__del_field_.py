@@ -8,6 +8,15 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
+        # Deleting field 'App.build_date'
+        db.delete_column(u'django_mobile_app_distribution_app', 'build_date')
+
+        # Deleting field 'IosApp.file_name'
+        db.delete_column(u'django_mobile_app_distribution_iosapp', 'file_name')
+
+        # Deleting field 'IosApp.app_plist'
+        db.delete_column(u'django_mobile_app_distribution_iosapp', 'app_plist')
+
         # Adding field 'IosApp.bundle_identifier'
         db.add_column(u'django_mobile_app_distribution_iosapp', 'bundle_identifier',
                       self.gf('django.db.models.fields.CharField')(default='', max_length=200),
@@ -15,6 +24,21 @@ class Migration(SchemaMigration):
 
 
     def backwards(self, orm):
+        # Adding field 'App.build_date'
+        db.add_column(u'django_mobile_app_distribution_app', 'build_date',
+                      self.gf('django.db.models.fields.DateTimeField')(default=''),
+                      keep_default=False)
+
+        # Adding field 'IosApp.file_name'
+        db.add_column(u'django_mobile_app_distribution_iosapp', 'file_name',
+                      self.gf('django.db.models.fields.CharField')(default='', max_length=200),
+                      keep_default=False)
+
+        # Adding field 'IosApp.app_plist'
+        db.add_column(u'django_mobile_app_distribution_iosapp', 'app_plist',
+                      self.gf('django.db.models.fields.files.FileField')(default='', max_length=100),
+                      keep_default=False)
+
         # Deleting field 'IosApp.bundle_identifier'
         db.delete_column(u'django_mobile_app_distribution_iosapp', 'bundle_identifier')
 
@@ -57,14 +81,13 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
         u'django_mobile_app_distribution.androidapp': {
-            'Meta': {'ordering': "('name', 'operating_system', '-version', '-build_date')", 'object_name': 'AndroidApp', '_ormbases': [u'django_mobile_app_distribution.App']},
+            'Meta': {'ordering': "('name', 'operating_system', '-version', '-updatedAt')", 'object_name': 'AndroidApp', '_ormbases': [u'django_mobile_app_distribution.App']},
             'app_binary': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
             u'app_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['django_mobile_app_distribution.App']", 'unique': 'True', 'primary_key': 'True'}),
             'operating_system': ('django.db.models.fields.CharField', [], {'default': "'Android'", 'max_length': '50'})
         },
         u'django_mobile_app_distribution.app': {
             'Meta': {'object_name': 'App'},
-            'build_date': ('django.db.models.fields.DateTimeField', [], {}),
             'comment': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
             'createdAt': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'groups': ('django.db.models.fields.related.ManyToManyField', [], {'related_name': "'apps'", 'default': 'None', 'to': u"orm['auth.Group']", 'blank': 'True', 'symmetrical': 'False', 'null': 'True'}),
@@ -75,12 +98,10 @@ class Migration(SchemaMigration):
             'version': ('django.db.models.fields.CharField', [], {'max_length': '200'})
         },
         u'django_mobile_app_distribution.iosapp': {
-            'Meta': {'ordering': "('name', 'operating_system', '-version', '-build_date')", 'object_name': 'IosApp', '_ormbases': [u'django_mobile_app_distribution.App']},
+            'Meta': {'ordering': "('name', 'operating_system', '-version', '-updatedAt')", 'object_name': 'IosApp', '_ormbases': [u'django_mobile_app_distribution.App']},
             'app_binary': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'app_plist': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
             u'app_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['django_mobile_app_distribution.App']", 'unique': 'True', 'primary_key': 'True'}),
             'bundle_identifier': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '200'}),
-            'file_name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'operating_system': ('django.db.models.fields.CharField', [], {'default': "'iOS'", 'max_length': '50'})
         },
         u'django_mobile_app_distribution.userinfo': {
