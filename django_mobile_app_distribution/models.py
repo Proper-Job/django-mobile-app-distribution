@@ -106,7 +106,7 @@ class AndroidApp(App):
 def create_user_info(sender, instance, created, **kwargs):
     try:
         instance.userinfo
-    except UserInfo.DoesNotExist:
+    except Exception:
         try:
             UserInfo.objects.create(user=instance)
         except Exception:
