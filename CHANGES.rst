@@ -4,8 +4,10 @@ Changelog for Django Mobile App Distribution
 0.3 (2014-11-18)
 ----------------
 
+- Version 0.3 is not backwards compatible since Xcode 6 has changed the ad hoc process considerably.  You'll have to delete and re-add all iOS apps.
 - Fixed deployment to iOS 8 clients. See https://buildozer.io/ios8 for more details.
 - Plist file is now automatically generated for iOS apps since Xcode 6 no longer provides it.
+- Fixed group distribution for Android apps
 
 
 

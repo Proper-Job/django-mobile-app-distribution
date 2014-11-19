@@ -114,30 +114,19 @@ In case you get a permission denied error when uploading an Android APK, make su
 
 * In your browser log into the Django Admin and navigate to **Django_mobile_app_distribution > IOS Apps**
 * Create a new iOS app.
-* Choose the user (your client)
-* Add App Name and Version, Comment and Created On information
-* **DO NOT CHANGE THE FILENAME**
+* Choose a user or group
+* Add app name, bundle version, bundle identifier and comment
 * Open Xcode
 * In Xcode export your app as an archive: **Product > Archive**
 	* Make sure you have got your provisioning right and your signing with a distribution certificate
 * Go to **Organizer > Archives**
-* Select your archive and hit **Distribute**
+* Select your archive and hit **Export**
 * Choose **Save for Enterprise or Ad-Hoc deployment**
 * Choose your codesign identity
-* In the save dialog check the checkbox at the bottom **Save for Enterprise Distribution**
-* From your browser copy the file name (something like 10c6bfe096724504.ipa) into the file name field of the Xcode save dialog
-* From your browser copy the **Ad Hoc URL** (in red) into the **Application URL** field of the Xcode save dialog
-* Add the App's Name into the **Title** field of the Xcode save dialog
+* In Xcode hit **Export**
 * Choose a folder to save to and remember it
-* In Xcode hit **Save**
-* In your browser upload the IPA file and the Plist into the respective fields
+* In your browser upload the IPA file into the respective field
 * On the download page you should be able to download and install over the air with properly provisioned devices
-
-
-
-![Screenshot][xcode]
-
-[xcode]: http://alp-phone.ch/wp-content/uploads/2013/08/MobileAppDistribution.jpg
 
 
 
@@ -146,6 +135,19 @@ In case you get a permission denied error when uploading an Android APK, make su
 In order to place your own logo on the login screen replace the following file with an image of the size 400x200 pixel:
 
 **static/django_mobile_app_distribution/images/logo@2x.png**
+
+Remember to run ``python manage.py collectstatic`` on your server.
+
+
+#Migrate from 0.2 to 0.3 using South
+
+Version 0.3 introduces backwards incompatible changes because Xcode 6 no longer provides the plist necessary for distribution.
+You will need to delete all of you iOS apps before you upgrade to version 0.3.
+To migrate from version 0.2 to 0.3 follow these instructions.  A clean install of version >= 0.3 doesn't need to do this.
+
+	1. ``pip install django-mobile-app-distribution==0.3``
+	2. python manage.py migrate django_mobile_app_distribution
+
 
 
 #Migrate from 0.1.x to 0.2 using South
