@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django Mobile App Distribution 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-28 14:04+0100\n"
-"PO-Revision-Date: 2014-03-28 14:06+0100\n"
+"POT-Creation-Date: 2014-11-19 15:56+0100\n"
+"PO-Revision-Date: 2014-11-19 15:59+0100\n"
 "Last-Translator: Moritz Pfeiffer <moritz.pfeiffer@alp-phone.ch>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Alp Phone GmbH <moritz.pfeiffer@alp-phone.ch>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.6.10\n"
 
-#: admin.py:80
+#: admin.py:81
 #, python-format
 msgid ""
 "Version %(app_version)s of %(app_name)s for %(os)s is available for download"
@@ -26,7 +26,7 @@ msgstr ""
 "Version %(app_version)s der %(app_name)s App für %(os)s steht zum Download "
 "bereit"
 
-#: admin.py:81
+#: admin.py:82
 #, python-format
 msgid ""
 "Version %(app_version)s of %(app_name)s for %(os)s is available for "
@@ -37,7 +37,7 @@ msgstr ""
 "bereit.\n"
 "Bitte besuchen Sie %(download_url)s um die App zu installieren."
 
-#: admin.py:91
+#: admin.py:92
 #, python-format
 msgid ""
 "%(recipient_count)s user was notified of %(app_name)s %(app_version)s "
@@ -52,108 +52,81 @@ msgstr[1] ""
 "%(recipient_count)s Benutzer wurden über die Verfügbarkeit der %(app_name)s "
 "%(app_version)s App informiert."
 
-#: admin.py:100
+#: admin.py:101
 msgid "Nobody was notified by email because nobody's email address is set."
 msgstr ""
 "Niemand wurde per E-Mail benachrichtigt, weil bei niemandem die E-Mail-"
 "Adresse gesetzt ist."
 
-#: admin.py:101
+#: admin.py:102
 msgid "Notify clients of app availability"
 msgstr "Kunden über die Verfügbarkeit der Apps informieren."
 
-#: admin.py:110 admin.py:125
-msgid "App info"
-msgstr "App Infos"
-
-#: admin.py:113 admin.py:128
-msgid "Binary info"
-msgstr "Datei Infos"
-
-#: forms.py:24
-msgid "Please assign a user or group to the app."
-msgstr "Bitte weisen Sie der App einen Benutzer oder eine Gruppe zu."
-
-#: forms.py:46
-msgid "Don't change this file name!"
-msgstr "Diesen Dateinamen nicht ändern!"
-
-#: forms.py:48
-msgid ""
-"Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc dialog."
-msgstr ""
-"Kopiere den Dateinamen und die Ad Hoc URL in die entsprechenden Felder im "
-"Xcode Ad Hoc Dialog."
-
-#: forms.py:50
-msgid "File name:"
-msgstr "Datei Name:"
-
-#: forms.py:55
-msgid "Ad Hoc URL:"
-msgstr "Ad Hoc URL:"
-
-#: models.py:25 models.py:26
-msgid "Extended user info"
-msgstr "Erweiterte Benutzereinstellungen"
-
-#: models.py:31
+#: admin.py:109 models.py:47
 msgid "User"
 msgstr "Benutzer"
 
-#: models.py:32
+#: admin.py:117 models.py:48
 msgid "Groups"
 msgstr "Gruppen"
 
-#: models.py:33
+#: admin.py:126 admin.py:138
+msgid "App info"
+msgstr "App Infos"
+
+#: forms.py:26
+msgid "Please assign a user or group to the app."
+msgstr "Bitte weisen Sie der App einen Benutzer oder eine Gruppe zu."
+
+#: models.py:42 models.py:43
+msgid "Extended user info"
+msgstr "Erweiterte Benutzereinstellungen"
+
+#: models.py:49
 msgid "App name"
 msgstr "App Name"
 
-#: models.py:34
+#: models.py:50
 msgid "Comment"
 msgstr "Bemerkung"
 
-#: models.py:35
-msgid "Version"
-msgstr "Version"
+#: models.py:51
+msgid "Bundle version"
+msgstr "Bundle Version"
 
-#: models.py:36
-msgid "Build date"
-msgstr "Erstellt"
-
-#: models.py:45
-msgid "File name"
-msgstr "Datei Name:"
-
-#: models.py:46 models.py:81
+#: models.py:61 models.py:97
 msgid "Operating system"
 msgstr "Betriebssystem"
 
-#: models.py:47
-msgid "Ad Hoc ipa file"
-msgstr "Ad Hoc ipa Datei"
+#: models.py:62
+msgid "IPA file"
+msgstr "IPA Datei"
 
-#: models.py:48
-msgid "Ad Hoc plist"
-msgstr "Ad Hoc Pliste"
+#: models.py:63
+msgid "Bundle identifier"
+msgstr "Bundle identifier"
 
-#: models.py:73
+#: models.py:63
+msgid "e.g. org.example.app"
+msgstr "z.B. org.example.app"
+
+#: models.py:88
 msgid "iOS App"
-msgstr ""
+msgstr "iOS App"
 
-#: models.py:74
+#: models.py:89
 msgid "iOS Apps"
-msgstr ""
+msgstr "iOS Apps"
 
-#: models.py:82
+#: models.py:98
 msgid "APK file"
 msgstr "APK Datei"
 
-#: models.py:85
+#: models.py:101
 msgid "Android App"
 msgstr "Android App"
 
-#: models.py:86
+#: models.py:102
 msgid "Android Apps"
 msgstr "Android Apps"
 
@@ -192,7 +165,7 @@ msgstr "App"
 
 #: templates/django_mobile_app_distribution/base.html:7
 msgid "Mobile App Distribution"
-msgstr ""
+msgstr "Mobile App Distribution"
 
 #: templates/django_mobile_app_distribution/email_notification.html:14
 #, python-format
@@ -233,6 +206,40 @@ msgstr ""
 "\t\tSie wurden erfolgreich abgemeldet. Erneut <a href=\"%(login_url)s"
 "\">anmelden</a>.\n"
 "\t"
+
+#~ msgid "Binary info"
+#~ msgstr "Datei Infos"
+
+#~ msgid "Don't change this file name!"
+#~ msgstr "Diesen Dateinamen nicht ändern!"
+
+#~ msgid ""
+#~ "Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc "
+#~ "dialog."
+#~ msgstr ""
+#~ "Kopiere den Dateinamen und die Ad Hoc URL in die entsprechenden Felder im "
+#~ "Xcode Ad Hoc Dialog."
+
+#~ msgid "File name:"
+#~ msgstr "Datei Name:"
+
+#~ msgid "Ad Hoc URL:"
+#~ msgstr "Ad Hoc URL:"
+
+#~ msgid "Version"
+#~ msgstr "Version"
+
+#~ msgid "Build date"
+#~ msgstr "Erstellt"
+
+#~ msgid "File name"
+#~ msgstr "Datei Name:"
+
+#~ msgid "Ad Hoc ipa file"
+#~ msgstr "Ad Hoc ipa Datei"
+
+#~ msgid "Ad Hoc plist"
+#~ msgstr "Ad Hoc Pliste"
 
 #~ msgid ""
 #~ "The user %s does not have an email address. Please add an email address "

@@ -7,130 +7,115 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django Mobile App Distribution 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-13 14:33+0200\n"
-"PO-Revision-Date: 2013-08-13 14:37+0100\n"
+"POT-Creation-Date: 2014-11-19 15:59+0100\n"
+"PO-Revision-Date: 2014-11-19 16:00+0100\n"
 "Last-Translator: Moritz Pfeiffer <moritz.pfeiffer@alp-phone.ch>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Alp Phone GmbH <moritz.pfeiffer@alp-phone.ch>\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.10\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin.py:36
+#: admin.py:81
 #, python-format
 msgid ""
 "Version %(app_version)s of %(app_name)s for %(os)s is available for download"
 msgstr ""
 
-#: admin.py:41
+#: admin.py:82
 #, python-format
 msgid ""
 "Version %(app_version)s of %(app_name)s for %(os)s is available for "
 "download.\n"
-"Please visit %(download_url)s to install your app."
+"Please visit %(download_url)s to install the app."
 msgstr ""
 
-#: admin.py:49
+#: admin.py:92
 #, python-format
 msgid ""
-"The user %(user_name)s was notified of %(app_name)s %(app_version)s "
+"%(recipient_count)s user was notified of %(app_name)s %(app_version)s "
 "availability."
+msgid_plural ""
+"%(recipient_count)s users were notified of %(app_name)s %(app_version)s "
+"availability."
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin.py:101
+msgid "Nobody was notified by email because nobody's email address is set."
 msgstr ""
 
-#: admin.py:51
-#, python-format
-msgid ""
-"The user %s does not have an email address. Please add an email address and "
-"try again."
-msgstr ""
-
-#: admin.py:52
+#: admin.py:102
 msgid "Notify clients of app availability"
 msgstr ""
 
-#: admin.py:60 admin.py:72
-msgid "App info"
-msgstr "App info"
-
-#: admin.py:63 admin.py:75
-msgid "Binary info"
-msgstr "File info"
-
-#: forms.py:31
-msgid "Don't change this file name!"
-msgstr "Don't change this file name!"
-
-#: forms.py:33
-msgid ""
-"Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc dialog."
-msgstr ""
-"Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc dialog."
-
-#: forms.py:35
-msgid "File name:"
-msgstr "File name:"
-
-#: forms.py:40
-msgid "Ad Hoc URL:"
-msgstr "Ad Hoc URL:"
-
-#: models.py:21 models.py:24 models.py:25
-msgid "Extended user info"
-msgstr ""
-
-#: models.py:30
+#: admin.py:109 models.py:47
 msgid "User"
 msgstr ""
 
-#: models.py:31
+#: admin.py:117 models.py:48
+msgid "Groups"
+msgstr ""
+
+#: admin.py:126 admin.py:138
+msgid "App info"
+msgstr "App info"
+
+#: forms.py:26
+msgid "Please assign a user or group to the app."
+msgstr ""
+
+#: models.py:42 models.py:43
+msgid "Extended user info"
+msgstr ""
+
+#: models.py:49
 msgid "App name"
 msgstr "App name"
 
-#: models.py:32
+#: models.py:50
 msgid "Comment"
 msgstr "Comment"
 
-#: models.py:33
-msgid "Version"
-msgstr "Version"
+#: models.py:51
+msgid "Bundle version"
+msgstr "Bundle version"
 
-#: models.py:34
-msgid "Build date"
-msgstr "Created on"
-
-#: models.py:43
-msgid "File name"
-msgstr "File name:"
-
-#: models.py:44 models.py:79
+#: models.py:61 models.py:97
 msgid "Operating system"
 msgstr "Operating System"
 
-#: models.py:45
-msgid "Ad Hoc ipa file"
-msgstr "Ad Hoc ipa file"
+#: models.py:62
+msgid "IPA file"
+msgstr "IPA file"
 
-#: models.py:46
-msgid "Ad Hoc plist"
-msgstr "Ad Hoc plist"
+#: models.py:63
+msgid "Bundle identifier"
+msgstr ""
 
-#: models.py:71
+#: models.py:63
+msgid "e.g. org.example.app"
+msgstr ""
+
+#: models.py:88
 msgid "iOS App"
 msgstr ""
 
-#: models.py:72
+#: models.py:89
 msgid "iOS Apps"
 msgstr ""
 
-#: models.py:80
+#: models.py:98
 msgid "APK file"
 msgstr "APK file"
 
-#: models.py:83
+#: models.py:101
 msgid "Android App"
 msgstr "Android app"
 
-#: models.py:84
+#: models.py:102
 msgid "Android Apps"
 msgstr "Android apps"
 
@@ -142,28 +127,28 @@ msgstr "Ad Hoc management"
 msgid "Django administration"
 msgstr "Mobile App Distribution"
 
-#: templates/django_mobile_app_distribution/app_list.html:3
-#: templates/django_mobile_app_distribution/app_list.html:8
+#: templates/django_mobile_app_distribution/app_list.html:4
+#: templates/django_mobile_app_distribution/app_list.html:9
 msgid "app list view"
 msgstr "App overview"
 
-#: templates/django_mobile_app_distribution/app_list.html:6
+#: templates/django_mobile_app_distribution/app_list.html:7
 msgid "logout"
 msgstr "Logout"
 
-#: templates/django_mobile_app_distribution/app_list.html:38
+#: templates/django_mobile_app_distribution/app_list.html:39
 msgid "version"
 msgstr "Version"
 
-#: templates/django_mobile_app_distribution/app_list.html:44
+#: templates/django_mobile_app_distribution/app_list.html:45
 msgid "build date"
 msgstr "Created on"
 
-#: templates/django_mobile_app_distribution/app_list.html:50
+#: templates/django_mobile_app_distribution/app_list.html:51
 msgid "comment"
 msgstr "Comment"
 
-#: templates/django_mobile_app_distribution/app_list.html:56
+#: templates/django_mobile_app_distribution/app_list.html:57
 msgid "download file"
 msgstr "File"
 
@@ -171,23 +156,31 @@ msgstr "File"
 msgid "Mobile App Distribution"
 msgstr ""
 
-#: templates/django_mobile_app_distribution/login.html:4
+#: templates/django_mobile_app_distribution/email_notification.html:14
+#, python-format
+msgid ""
+"Version %(app_version)s of %(app_name)s for %(os)s is available for "
+"download. <br/>\n"
+"\tPlease visit %(download_url)s to install the app."
+msgstr ""
+
+#: templates/django_mobile_app_distribution/login.html:5
 msgid "customer login"
 msgstr "Customer center"
 
-#: templates/django_mobile_app_distribution/login.html:19
+#: templates/django_mobile_app_distribution/login.html:20
 msgid "invalid login credentials"
 msgstr "The combination of user name and password you entered is invalid."
 
-#: templates/django_mobile_app_distribution/login.html:23
+#: templates/django_mobile_app_distribution/login.html:24
 msgid "login"
 msgstr "Login"
 
-#: templates/django_mobile_app_distribution/logout.html:3
+#: templates/django_mobile_app_distribution/logout.html:4
 msgid "logged out successfully"
 msgstr "Logged out successfully"
 
-#: templates/django_mobile_app_distribution/logout.html:7
+#: templates/django_mobile_app_distribution/logout.html:8
 #, python-format
 msgid ""
 "\n"
@@ -199,6 +192,40 @@ msgstr ""
 "\t\tYou were logged out successfully. <a href=\"%(login_url)s\">Log in</a> "
 "again.\n"
 "\t"
+
+#~ msgid "Binary info"
+#~ msgstr "File info"
+
+#~ msgid "Don't change this file name!"
+#~ msgstr "Don't change this file name!"
+
+#~ msgid ""
+#~ "Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc "
+#~ "dialog."
+#~ msgstr ""
+#~ "Paste the file name and Ad Hoc URL into the Xcode Enterprise Ad Hoc "
+#~ "dialog."
+
+#~ msgid "File name:"
+#~ msgstr "File name:"
+
+#~ msgid "Ad Hoc URL:"
+#~ msgstr "Ad Hoc URL:"
+
+#~ msgid "Version"
+#~ msgstr "Version"
+
+#~ msgid "Build date"
+#~ msgstr "Created on"
+
+#~ msgid "File name"
+#~ msgstr "File name:"
+
+#~ msgid "Ad Hoc ipa file"
+#~ msgstr "Ad Hoc ipa file"
+
+#~ msgid "Ad Hoc plist"
+#~ msgstr "Ad Hoc plist"
 
 #~ msgid "over the air ad hoc app management"
 #~ msgstr "Over the air Ad Hoc App Management"
