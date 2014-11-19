@@ -62,10 +62,24 @@ def send_apk(request, app_id):
     android_app = None
     try:
         android_app = AndroidApp.objects.get(pk=app_id)
-    except AndroidApp.DoesNotExist:
+    except (AndroidApp.DoesNotExist, MultipleObjectsReturned):
         return HttpResponse('App does not exist', status=404)
 
-    if android_app.user.id != request.user.id:
+    authenticated = False
+    if android_app.user:
+        if android_app.user.id == request.user.id:
+            authenticated = True
+
+    if not authenticated:
+        app_group_ids = android_app.groups.all().values_list('pk', flat=True)
+        app_group_ids = list(map(long, app_group_ids))
+        for user_group in request.user.groups.all():
+            user_group_id = long(user_group.id)
+            if user_group_id in app_group_ids:
+                authenticated = True
+                break
+
+    if not authenticated:
         return HttpResponseForbidden('This is not your app')
 
     filename = os.path.join(app_dist_settings.MOBILE_APP_DISTRIBUTION_ANDROID_FILE_STORAGE_PATH, android_app.app_binary.name)
@@ -84,7 +98,7 @@ def ios_app_plist(request, app_id):
     ios_app = None
     try:
         ios_app = IosApp.objects.get(pk=app_id)
-    except (ObjectDoesNotExist, MultipleObjectsReturned):
+    except (IosApp.DoesNotExist, MultipleObjectsReturned):
         raise Http404
 
     from . import settings as mad_settings
