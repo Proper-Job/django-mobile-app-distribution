@@ -92,7 +92,6 @@ def send_apk(request, app_id):
     return response
 
 
-@login_required
 def ios_app_plist(request, app_id):
 
     ios_app = None
