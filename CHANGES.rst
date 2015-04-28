@@ -1,6 +1,12 @@
 Changelog for Django Mobile App Distribution
 ============================================
 
+0.3.2 (2015-04-28)
+----------------
+
+- Added Zurb Foundation CSS framework and modernized login, logout and app_list templates.
+
+
 0.3.1 (2015-04-28)
 ----------------
 

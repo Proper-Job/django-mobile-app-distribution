@@ -161,10 +161,12 @@ In case you get a permission denied error when uploading an Android APK, make su
 
 #Overriding the login template logo
 
-In order to place your own logo on the login screen replace the following file with an image of the size 400x200 pixel:
+In order to place your own logo on the login screen create the following folder in one of your apps:
 
-**static/django_mobile_app_distribution/images/logo@2x.png**
+**static/django_mobile_app_distribution/images/**
 
+Make sure your app comes before ``django_mobile_app_distribution`` in the list of ``INSTALLED_APPS``.
+Place an image named **logo@2x.png** in the folder you just created.  The image needs to be 400x200 pixel:
 Remember to run ``python manage.py collectstatic`` on your server.
 
 
