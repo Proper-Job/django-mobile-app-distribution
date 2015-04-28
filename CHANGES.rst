@@ -1,6 +1,12 @@
 Changelog for Django Mobile App Distribution
 ============================================
 
+0.3.1 (2015-04-28)
+----------------
+
+- Added support for Django >= 1.7 style migrations.
+
+
 0.3 (2014-11-18)
 ----------------
 

@@ -30,5 +30,5 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
-    install_requires=['South >= 0.8.4']
+    install_requires=['South == 1.0']
 )

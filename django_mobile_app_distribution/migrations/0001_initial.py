@@ -1,135 +1,86 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+import django_mobile_app_distribution.models
+from django.conf import settings
+import django.core.files.storage
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'UserInfo'
-        db.create_table(u'django_mobile_app_distribution_userinfo', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
-            ('language', self.gf('django.db.models.fields.CharField')(default='en', max_length=20)),
-        ))
-        db.send_create_signal(u'django_mobile_app_distribution', ['UserInfo'])
+    dependencies = [
+        ('auth', '0001_initial'),
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
 
-        # Adding model 'App'
-        db.create_table(u'django_mobile_app_distribution_app', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(related_name='apps', to=orm['auth.User'])),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('comment', self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True)),
-            ('version', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('build_date', self.gf('django.db.models.fields.DateTimeField')()),
-            ('updatedAt', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, auto_now_add=True, blank=True)),
-            ('createdAt', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-        ))
-        db.send_create_signal(u'django_mobile_app_distribution', ['App'])
-
-        # Adding model 'IosApp'
-        db.create_table(u'django_mobile_app_distribution_iosapp', (
-            (u'app_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['django_mobile_app_distribution.App'], unique=True, primary_key=True)),
-            ('file_name', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('operating_system', self.gf('django.db.models.fields.CharField')(default='iOS', max_length=50)),
-            ('app_binary', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('app_plist', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-        ))
-        db.send_create_signal(u'django_mobile_app_distribution', ['IosApp'])
-
-        # Adding model 'AndroidApp'
-        db.create_table(u'django_mobile_app_distribution_androidapp', (
-            (u'app_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['django_mobile_app_distribution.App'], unique=True, primary_key=True)),
-            ('operating_system', self.gf('django.db.models.fields.CharField')(default='Android', max_length=50)),
-            ('app_binary', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-        ))
-        db.send_create_signal(u'django_mobile_app_distribution', ['AndroidApp'])
-
-
-    def backwards(self, orm):
-        # Deleting model 'UserInfo'
-        db.delete_table(u'django_mobile_app_distribution_userinfo')
-
-        # Deleting model 'App'
-        db.delete_table(u'django_mobile_app_distribution_app')
-
-        # Deleting model 'IosApp'
-        db.delete_table(u'django_mobile_app_distribution_iosapp')
-
-        # Deleting model 'AndroidApp'
-        db.delete_table(u'django_mobile_app_distribution_androidapp')
-
-
-    models = {
-        u'auth.group': {
-            'Meta': {'object_name': 'Group'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '80'}),
-            'permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'})
-        },
-        u'auth.permission': {
-            'Meta': {'ordering': "(u'content_type__app_label', u'content_type__model', u'codename')", 'unique_together': "((u'content_type', u'codename'),)", 'object_name': 'Permission'},
-            'codename': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['contenttypes.ContentType']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
-        },
-        u'auth.user': {
-            'Meta': {'object_name': 'User'},
-            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'groups': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Group']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
-            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Permission']"}),
-            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
-        },
-        u'contenttypes.contenttype': {
-            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
-            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
-        },
-        u'django_mobile_app_distribution.androidapp': {
-            'Meta': {'ordering': "('name', 'operating_system', '-version', '-build_date')", 'object_name': 'AndroidApp', '_ormbases': [u'django_mobile_app_distribution.App']},
-            'app_binary': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            u'app_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['django_mobile_app_distribution.App']", 'unique': 'True', 'primary_key': 'True'}),
-            'operating_system': ('django.db.models.fields.CharField', [], {'default': "'Android'", 'max_length': '50'})
-        },
-        u'django_mobile_app_distribution.app': {
-            'Meta': {'object_name': 'App'},
-            'build_date': ('django.db.models.fields.DateTimeField', [], {}),
-            'comment': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
-            'createdAt': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'updatedAt': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'auto_now_add': 'True', 'blank': 'True'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'apps'", 'to': u"orm['auth.User']"}),
-            'version': ('django.db.models.fields.CharField', [], {'max_length': '200'})
-        },
-        u'django_mobile_app_distribution.iosapp': {
-            'Meta': {'ordering': "('name', 'operating_system', '-version', '-build_date')", 'object_name': 'IosApp', '_ormbases': [u'django_mobile_app_distribution.App']},
-            'app_binary': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'app_plist': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            u'app_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['django_mobile_app_distribution.App']", 'unique': 'True', 'primary_key': 'True'}),
-            'file_name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'operating_system': ('django.db.models.fields.CharField', [], {'default': "'iOS'", 'max_length': '50'})
-        },
-        u'django_mobile_app_distribution.userinfo': {
-            'Meta': {'object_name': 'UserInfo'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'language': ('django.db.models.fields.CharField', [], {'default': "'en'", 'max_length': '20'}),
-            'user': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True'})
-        }
-    }
-
-    complete_apps = ['django_mobile_app_distribution']
+    operations = [
+        migrations.CreateModel(
+            name='App',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=200, verbose_name='App name')),
+                ('comment', models.CharField(max_length=200, null=True, verbose_name='Comment', blank=True)),
+                ('version', models.CharField(max_length=200, verbose_name='Bundle version')),
+                ('updatedAt', models.DateTimeField(auto_now=True, auto_now_add=True)),
+                ('createdAt', models.DateTimeField(auto_now_add=True)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='AndroidApp',
+            fields=[
+                ('app_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='django_mobile_app_distribution.App')),
+                ('operating_system', models.CharField(default=b'Android', verbose_name='Operating System', max_length=50, editable=False, choices=[(b'iOS', b'iOS'), (b'Android', b'Android')])),
+                ('app_binary', models.FileField(upload_to=django_mobile_app_distribution.models.normalize_android_filename, storage=django.core.files.storage.FileSystemStorage(location=b'/Users/moritz/Alp-Phone/Projects/mobile_app_distribution/migrations_generator/migrations_generator/android'), verbose_name='APK file')),
+            ],
+            options={
+                'ordering': ('name', 'operating_system', '-version', '-updatedAt'),
+                'verbose_name': 'Android app',
+                'verbose_name_plural': 'Android apps',
+            },
+            bases=('django_mobile_app_distribution.app',),
+        ),
+        migrations.CreateModel(
+            name='IosApp',
+            fields=[
+                ('app_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='django_mobile_app_distribution.App')),
+                ('operating_system', models.CharField(default=b'iOS', verbose_name='Operating System', max_length=50, editable=False, choices=[(b'iOS', b'iOS'), (b'Android', b'Android')])),
+                ('app_binary', models.FileField(upload_to=django_mobile_app_distribution.models.normalize_ios_filename, verbose_name='IPA file')),
+                ('bundle_identifier', models.CharField(default=b'', help_text='e.g. org.example.app', max_length=200, verbose_name='Bundle identifier')),
+            ],
+            options={
+                'ordering': ('name', 'operating_system', '-version', '-updatedAt'),
+                'verbose_name': 'iOS App',
+                'verbose_name_plural': 'iOS Apps',
+            },
+            bases=('django_mobile_app_distribution.app',),
+        ),
+        migrations.CreateModel(
+            name='UserInfo',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('language', models.CharField(default=b'en', max_length=20, choices=[(b'en', b'English'), (b'de', b'Deutsch')])),
+                ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL)),
+            ],
+            options={
+                'verbose_name': 'Extended user info',
+                'verbose_name_plural': 'Extended user info',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='app',
+            name='groups',
+            field=models.ManyToManyField(related_name='apps', default=None, to='auth.Group', blank=True, null=True, verbose_name='Groups'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='app',
+            name='user',
+            field=models.ForeignKey(related_name='apps', default=None, blank=True, to=settings.AUTH_USER_MODEL, null=True, verbose_name='User'),
+            preserve_default=True,
+        ),
+    ]

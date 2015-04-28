@@ -8,35 +8,64 @@ It is made up of 2 components:
 * A mobile optimized, login protected download area where your clients can download apps that were associated with their login credentials.
 
 
-#Installation
+#Installation Django == 1.7
+
+- ``pip install django-mobile-app-distribution``
+- Add ``django_mobile_app_distribution`` to your ``INSTALLED_APPS`` list in your project's settings.py. Make sure it comes after ``django.contrib.admin`` so the admin login and logout templates are properly overridden.
+- Add ``django.contrib.sites`` to the list of ``INSTALLED_APPS`` in your project's settings.py.
+- Enable the [messages framework][message_framework_17]
+- Make sure you have set [MEDIA_ROOT][media_root_17], [MEDIA_URL][media_url_17], [STATIC_URL][static_url_17] and [STATIC_ROOT][static_root_17].
+- Run ``python manage.py migrate``
+- Run ``python manage.py collectstatic``
+- If you like things tidy you can install [django-cleanup][django_cleanup_17], which removes uploaded files when the associated models are deleted.
+- Make sure the ``android/android_apps`` folder on the same level as your project's settings.py is readable and writable by your webserver.
+	*  If your webserver cannot create them for you, you have to create them by hand.  See Security considerations below for more information.
+- Include ``urls.py`` into your project's urls.py file at the mount point of your choosing (see below).  This will be where your client downloads her apps.
+- Include ``auth_urls.py`` into your project's urls.py (see below).
+- Add [LOGIN_REDIRECT_URL][login_redirect_url_17] to your project's settings.py.  This is the URL you chose in step 7.  If you're using the example below, set it to ``/distribute/``.
+- Add ``BASE_PATH`` to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as your project's settings.py this has to be set.
+- Add the [SITE_ID][site_id_17] value in your project's settings.py to the primary key of the Site object that represents your site.
+- Login to the Django Admin and add your server's URL to the Site object's domain name (create one if necessary). On the development server this would be ``http://127.0.0.1:8000/``
+
+[site_id_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#site-id
+[django_cleanup_17]: https://github.com/un1t/django-cleanup
+[login_redirect_url_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#login-redirect-url
+[message_framework_17]: https://docs.djangoproject.com/en/1.7/ref/contrib/messages/
+[media_root_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#media-root
+[media_url_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#media-url
+[static_root_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#static-root
+[static_url_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#static-url
+
+
+#Installation Django <= 1.6
 
 - ``pip install django-mobile-app-distribution``
 - Add ``django_mobile_app_distribution`` to your ``INSTALLED_APPS`` list in your project's settings.py. Make sure it comes after ``django.contrib.admin`` so the admin login and logout templates are properly overridden.
 - Add ``django.contrib.sites`` to the list of ``INSTALLED_APPS`` in your project's settings.py.
 - Add ``south`` to the list of ``INSTALLED_APPS`` in your project's settings.py.
-- Enable the [messages framework][message_framework]
-- Make sure you have set [MEDIA_ROOT][media_root], [MEDIA_URL][media_url], [STATIC_URL][static_url] and [STATIC_ROOT][static_root].
+- Enable the [messages framework][message_framework_16]
+- Make sure you have set [MEDIA_ROOT][media_root_16], [MEDIA_URL][media_url_16], [STATIC_URL][static_url_16] and [STATIC_ROOT][static_root_16].
 - Run ``python manage.py syncdb``.
 - Run ``python manage.py migrate django_mobile_app_distribution``.
 - Run ``python manage.py collectstatic``
-- If you like things tidy you can install [django-cleanup][django_cleanup], which removes uploaded files when the associated models are deleted.
+- If you like things tidy you can install [django-cleanup][django_cleanup_16], which removes uploaded files when the associated models are deleted.
 - Make sure the ``android/android_apps`` folder on the same level as your project's settings.py is readable and writable by your webserver.
 	*  If your webserver cannot create them for you, you have to create them by hand.  See Security considerations below for more information.
 - Include ``urls.py`` into your project's urls.py file at the mount point of your choosing (see below).  This will be where your client downloads her apps.
 - Include ``auth_urls.py`` into your project's urls.py (see below).
-- Add [LOGIN_REDIRECT_URL][login_redirect_url] to your project's settings.py.  This is the URL you chose in step 7.  If you're using the example below, set it to ``/distribute/``.
+- Add [LOGIN_REDIRECT_URL][login_redirect_url_16] to your project's settings.py.  This is the URL you chose in step 7.  If you're using the example below, set it to ``/distribute/``.
 - Add ``BASE_PATH`` to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as your project's settings.py this has to be set.
-- Add the [SITE_ID][site_id] value in your project's settings.py to the primary key of the Site object that represents your site.
+- Add the [SITE_ID][site_id_16] value in your project's settings.py to the primary key of the Site object that represents your site.
 - Login to the Django Admin and add your server's URL to the Site object's domain name (create one if necessary). On the development server this would be ``http://127.0.0.1:8000/``
 
-[site_id]: https://docs.djangoproject.com/en/1.4/ref/settings/#site-id
-[django_cleanup]: https://github.com/un1t/django-cleanup
-[login_redirect_url]: https://docs.djangoproject.com/en/1.4/ref/settings/#login-redirect-url
-[message_framework]: https://docs.djangoproject.com/en/1.5/ref/contrib/messages/
-[media_root]: https://docs.djangoproject.com/en/1.6/ref/settings/#media-root
-[media_url]: https://docs.djangoproject.com/en/1.6/ref/settings/#media-url
-[static_root]: https://docs.djangoproject.com/en/1.6/ref/settings/#static-root
-[static_url]: https://docs.djangoproject.com/en/1.6/ref/settings/#static-url
+[site_id_16]: https://docs.djangoproject.com/en/1.6/ref/settings/#site-id
+[django_cleanup_16]: https://github.com/un1t/django-cleanup
+[login_redirect_url_16]: https://docs.djangoproject.com/en/1.6/ref/settings/#login-redirect-url
+[message_framework_16]: https://docs.djangoproject.com/en/1.6/ref/contrib/messages/
+[media_root_16]: https://docs.djangoproject.com/en/1.6/ref/settings/#media-root
+[media_url_16]: https://docs.djangoproject.com/en/1.6/ref/settings/#media-url
+[static_root_16]: https://docs.djangoproject.com/en/1.6/ref/settings/#static-root
+[static_url_16]: https://docs.djangoproject.com/en/1.6/ref/settings/#static-url
 
 	
 Inside your project's `urls.py`
