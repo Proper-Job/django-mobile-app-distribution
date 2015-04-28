@@ -1,75 +1,74 @@
 {% extends "django_mobile_app_distribution/base.html" %}
-{% load i18n %}
+{% load i18n staticfiles set_var %}
 {% load url from future %}
-{% block title %}{% trans "app list view" %}{% endblock %}
-{% block content %}
-<div data-role="header">
-	<a data-icon="delete" href="{% url 'auth_logout' %}">{% trans 'logout' %}</a>
-  	<h2>
-        {% trans "app list view" %}
-    </h2>
-</div>
-<div>
-{% load set_var %}
-{% set active_app_name = -1 %}
-{% set active_os_name = -1 %}
 
-{% for app in apps %}
-	{% if app.name != active_app_name %}
-        {% if active_app_name != -1 %}
-            </ul>
-            </div>
-        {% endif %}
-        {% set active_os_name = -1 %}
-	 	{% set active_app_name = app.name %}
-        <div>
-    	 	<span>
-    	 		<h1>{{ app.name }}</h1> 
-    	 	</span>
-	{% endif %}
-	{% if app.operating_system != active_os_name %}
-    	{% if active_os_name != -1 %}
-    		</ul>
-    	{% endif %}
-        {% set active_os_name = app.operating_system %}
-    	<h2>{{ active_os_name }}</h2>
-	    <ul data-role="listview" data-inset="true">
-	{% endif %}
-        <li>
-            <h3>{% trans 'version' %}</h3>
-            <p>
-                {{ app.version }}
-            </p>
-        </li>
-        <li>
-            <h3>{% trans 'build date' %}</h3>
-            <p>
-                {{ app.updatedAt }}
-            </p>
-        </li>
-        <li>
-            <h3>{% trans 'comment' %}</h3>
-            <p>
-                {{ app.comment }}
-            </p>
-        </li>
-        <li>
-            <h3>{% trans 'download file' %}</h3>
-            <p>
-                {% if active_os_name == ios_identifier %}
-                   <a data-role="button" data-ajax="false" href="itms-services://?action=download-manifest&url={{ app.get_plist_url }}">
-                        <img src="{{ STATIC_URL }}django_mobile_app_distribution/images/download.png" width="25px" height="23px">
-                   </a>
-                {% else %}
-                    <a data-role="button" data-ajax="false" href="{% url 'django_mobile_app_distribution_send_apk' app_id=app.id %}">
-                        <img src="{{ STATIC_URL }}django_mobile_app_distribution/images/download.png" width="25px" height="23px">
-                    </a>
-                {% endif %}
-            </p>
-        </li>      
-    
-{% endfor %}
-        </ul>
+{% block title %}{% trans "app list view" %}{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'django_mobile_app_distribution/css/app_list.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div id="header">
+        {% trans "app list view" %}
     </div>
-</div>
+    <div class="row">
+        <div class="small-12 text-right columns">
+            <a href="{% url 'auth_logout' %}">{% trans 'logout' %}</a>
+        </div>
+    </div>
+
+    {% for app in apps %}
+        <div class="app">
+            <div class="row">
+                <div class="small-12 columns">
+                    <h2>{{ app.name }}</h2>
+                </div>
+            </div>
+
+            <div class="row panel">
+                <div class="row">
+
+                    <div class="small-12 medium-3 columns app_info">
+                        <strong>{% trans 'operating system' %}:</strong>
+                        <br />
+                        {{ app.operating_system }}
+                    </div>
+
+                    <div class="small-12 medium-2 columns app_info">
+                        <strong>{% trans 'version' %}:</strong>
+                        <br />
+                        {{ app.version }}
+                    </div>
+
+                    <div class="small-12 medium-4 columns app_info">
+                        <strong>{% trans 'build date' %}:</strong>
+                        <br />
+                        {{ app.updatedAt|date:"d M Y H:i" }}
+                    </div>
+
+                    <div class="small-12 medium-3 columns app_info">
+                        <strong>{% trans 'comment' %}:</strong>
+                        <br />
+                        {{ app.comment }}
+                    </div>
+                </div>
+                <div class="row collapse">
+                    <div class="small-12 columns">
+                        {% if app.operating_system == ios_identifier %}
+                            <a class="button expand" href="itms-services://?action=download-manifest&url={{ app.get_plist_url }}">
+                                {% trans 'Install App' %}
+                            </a>
+                        {% else %}
+                            <a class="button expand" href="{% url 'django_mobile_app_distribution_send_apk' app_id=app.id %}">
+                                {% trans 'Install App' %}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}

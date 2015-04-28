@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGA,OAAO;EACL,KAAK,EAAE,IAAI;EACX,MAAM,EALQ,IAAI;EAMlB,gBAAgB,EALH,OAAO;EAMpB,UAAU,EAAE,MAAM;EAClB,KAAK,EAAE,OAAO;EACd,SAAS,EAAE,IAAI;;AAEjB,IAAI;EACF,aAAa,EAAE,IAAI;;AAErB,SAAS;EACP,aAAa,EAAE,IAAI",
+"sources": ["app_list.sass"],
+"names": [],
+"file": "app_list.css"
+}

@@ -46,9 +46,9 @@ def index(request):
     apps.sort(key=attrgetter('name'))
 
     return render(request, 'django_mobile_app_distribution/app_list.html', {
-        'apps' : apps,
-        'ios_identifier' : app_dist_settings.IOS,
-        'site_url' : get_current_site(request).domain
+        'apps': apps,
+        'ios_identifier': app_dist_settings.IOS,
+        'site_url': get_current_site(request).domain
         })
 
 

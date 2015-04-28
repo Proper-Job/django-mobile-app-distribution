@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django Mobile App Distribution 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-19 15:56+0100\n"
-"PO-Revision-Date: 2014-11-19 15:59+0100\n"
+"POT-Creation-Date: 2015-04-28 16:53+0200\n"
+"PO-Revision-Date: 2015-04-28 16:54+0100\n"
 "Last-Translator: Moritz Pfeiffer <moritz.pfeiffer@alp-phone.ch>\n"
 "Language-Team: Alp Phone GmbH <moritz.pfeiffer@alp-phone.ch>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.6\n"
 
 #: admin.py:81
 #, python-format
@@ -138,32 +138,37 @@ msgstr "Ad Hoc Verwaltung"
 msgid "Django administration"
 msgstr "Mobile App Distribution"
 
-#: templates/django_mobile_app_distribution/app_list.html:4
-#: templates/django_mobile_app_distribution/app_list.html:9
+#: templates/django_mobile_app_distribution/app_list.html:5
+#: templates/django_mobile_app_distribution/app_list.html:14
 msgid "app list view"
 msgstr "App Übersicht"
 
-#: templates/django_mobile_app_distribution/app_list.html:7
+#: templates/django_mobile_app_distribution/app_list.html:18
 msgid "logout"
 msgstr "Abmelden"
 
-#: templates/django_mobile_app_distribution/app_list.html:39
+#: templates/django_mobile_app_distribution/app_list.html:34
+msgid "operating system"
+msgstr "Betriebssystem"
+
+#: templates/django_mobile_app_distribution/app_list.html:40
 msgid "version"
 msgstr "Version"
 
-#: templates/django_mobile_app_distribution/app_list.html:45
+#: templates/django_mobile_app_distribution/app_list.html:46
 msgid "build date"
 msgstr "Erstellt"
 
-#: templates/django_mobile_app_distribution/app_list.html:51
+#: templates/django_mobile_app_distribution/app_list.html:52
 msgid "comment"
 msgstr "Bemerkung"
 
-#: templates/django_mobile_app_distribution/app_list.html:57
-msgid "download file"
-msgstr "App"
+#: templates/django_mobile_app_distribution/app_list.html:61
+#: templates/django_mobile_app_distribution/app_list.html:65
+msgid "Install App"
+msgstr "App Installieren"
 
-#: templates/django_mobile_app_distribution/base.html:7
+#: templates/django_mobile_app_distribution/base.html:5
 msgid "Mobile App Distribution"
 msgstr "Mobile App Distribution"
 
@@ -171,22 +176,20 @@ msgstr "Mobile App Distribution"
 #, python-format
 msgid ""
 "Version %(app_version)s of %(app_name)s for %(os)s is available for "
-"download. <br/>\n"
-"\tPlease visit %(download_url)s to install the app."
+"download. <br/>Please visit %(download_url)s to install the app."
 msgstr ""
 "Version %(app_version)s der %(app_name)s App für %(os)s steht zum Download "
-"bereit.<br/>\n"
-"Bitte besuchen Sie %(download_url)s um die App zu installieren."
+"bereit.<br/>Bitte besuchen Sie %(download_url)s um die App zu installieren."
 
-#: templates/django_mobile_app_distribution/login.html:5
+#: templates/django_mobile_app_distribution/login.html:4
 msgid "customer login"
 msgstr "Kundenbereich"
 
-#: templates/django_mobile_app_distribution/login.html:20
+#: templates/django_mobile_app_distribution/login.html:37
 msgid "invalid login credentials"
 msgstr "Ihr Benutzername oder Passwort sind falsch"
 
-#: templates/django_mobile_app_distribution/login.html:24
+#: templates/django_mobile_app_distribution/login.html:44
 msgid "login"
 msgstr "Anmelden"
 
@@ -194,18 +197,23 @@ msgstr "Anmelden"
 msgid "logged out successfully"
 msgstr "Sie wurden erfolgreich abgemeldet"
 
-#: templates/django_mobile_app_distribution/logout.html:8
-#, python-format
-msgid ""
-"\n"
-"\t\tYou were logged out successfully. <a href=\"%(login_url)s\">Log in</a> "
-"again.\n"
-"\t"
-msgstr ""
-"\n"
-"\t\tSie wurden erfolgreich abgemeldet. Erneut <a href=\"%(login_url)s"
-"\">anmelden</a>.\n"
-"\t"
+#: templates/django_mobile_app_distribution/logout.html:15
+msgid "You were logged out successfully."
+msgstr "Sie wurden erfolgreich abgemeldet."
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\tYou were logged out successfully. <a href=\"%(login_url)s\">Log in</"
+#~ "a> again.\n"
+#~ "\t"
+#~ msgstr ""
+#~ "\n"
+#~ "\t\tSie wurden erfolgreich abgemeldet. Erneut <a href=\"%(login_url)s"
+#~ "\">anmelden</a>.\n"
+#~ "\t"
+
+#~ msgid "download file"
+#~ msgstr "App"
 
 #~ msgid "Binary info"
 #~ msgstr "Datei Infos"
@@ -262,9 +270,6 @@ msgstr ""
 
 #~ msgid "ios apps"
 #~ msgstr "iOS Apps"
-
-#~ msgid "install"
-#~ msgstr "Installieren"
 
 #~ msgid "download"
 #~ msgstr "Datei"
