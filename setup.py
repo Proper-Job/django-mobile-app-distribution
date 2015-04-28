@@ -8,7 +8,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-mobile-app-distribution',
-    version='0.3.2',
+    version='0.3.3',
     packages=find_packages(),
     include_package_data=True,
     license='MIT License', 
@@ -30,5 +30,5 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
-    install_requires=['South == 1.0']
+    install_requires=['South == 1.0.2']
 )
