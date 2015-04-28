@@ -1,30 +1,60 @@
 {% extends "django_mobile_app_distribution/base.html" %}
-{% load i18n %}
+{% load i18n staticfiles %}
 {% load url from future %}
-{% load staticfiles %}
 {% block title %}{% trans "customer login" %}{% endblock %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'django_mobile_app_distribution/css/login.css' %}"
+          xmlns="http://www.w3.org/1999/html">
+{% endblock %}
 {% block content %}
 
-<div class="login_container">
-	<div>
-		<img class="login_logo" src="{% static 'django_mobile_app_distribution/images/logo@2x.png' %}" width="180px" height="90px">	
-	</div>
-	<div class="login_content">
-			<div>
-				<form data-ajax="false" method="post" action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
-					{{ form.username.label_tag }} {{ form.username }}
-					{{ form.password.label_tag }} {{ form.password }}
-					{% if form.errors %}
-					<ul class="loginerror">
-						<li>
-							 {% trans "invalid login credentials" %}
-						</li>
-					</ul>
-					{% endif %}
-					<input type="submit" value="{% trans 'login' %}" />
-					<input type="hidden" name="next" value="{{ next }}" />
-				</form>
-			</div>
-	</div>
-</div>
+
+    <div class="row">
+        <div class="small-12 text-center columns">
+            <img class="login_logo" src="{% static 'django_mobile_app_distribution/images/logo@2x.png' %}" width="180px" height="90px">
+        </div>
+    </div>
+
+    <form data-ajax="false" method="post" action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
+        <fieldset>
+        <div class="small-12 columns">
+            {{ form.username.label_tag }} {{ form.username }}
+        </div>
+        <div class="small-12 columns">
+            {{ form.password.label_tag }} {{ form.password }}
+        </div>
+        {% if form.errors %}
+            <ul>
+                <li class="error">{% trans "invalid login credentials" %}</li>
+            </ul>
+        {% endif %}
+        <input type="submit" value="{% trans 'login' %}" />
+        <input type="hidden" name="next" value="{{ next }}" />
+        </fieldset>
+    </form>
+
+
+
+    {#<div class="login_container">#}
+    {#    <div>#}
+    {#        <img class="login_logo" src="{% static 'django_mobile_app_distribution/images/logo@2x.png' %}" width="180px" height="90px">#}
+    {#    </div>#}
+    {#    <div class="login_content">#}
+    {#            <div>#}
+    {#                <form data-ajax="false" method="post" action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}#}
+    {#                    {{ form.username.label_tag }} {{ form.username }}#}
+    {#                    {{ form.password.label_tag }} {{ form.password }}#}
+    {#                    {% if form.errors %}#}
+    {#                    <ul class="loginerror">#}
+    {#                        <li>#}
+    {#                             {% trans "invalid login credentials" %}#}
+    {#                        </li>#}
+    {#                    </ul>#}
+    {#                    {% endif %}#}
+    {#                    <input type="submit" value="{% trans 'login' %}" />#}
+    {#                    <input type="hidden" name="next" value="{{ next }}" />#}
+    {#                </form>#}
+    {#            </div>#}
+    {#    </div>#}
+    {#</div>#}
 {% endblock %}
