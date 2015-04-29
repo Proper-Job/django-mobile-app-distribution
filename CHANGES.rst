@@ -1,6 +1,12 @@
 Changelog for Django Mobile App Distribution
 ============================================
 
+0.3.4 (2015-04-29)
+----------------
+
+- Added way to customize default color scheme.
+
+
 0.3.3 (2015-04-28)
 ----------------
 
