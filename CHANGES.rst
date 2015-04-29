@@ -1,6 +1,12 @@
 Changelog for Django Mobile App Distribution
 ============================================
 
+0.3.5 (2015-04-29)
+----------------
+
+- Removed logo from login and logout templates.  Removed header from app_list template.
+
+
 0.3.4 (2015-04-29)
 ----------------
 

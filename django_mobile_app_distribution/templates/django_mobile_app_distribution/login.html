@@ -4,12 +4,6 @@
 {% block title %}{% trans "customer login" %}{% endblock %}
 {% block content %}
 
-    <div class="row">
-        <div class="small-12  columns">
-            <img class="login_logo" src="{% static 'django_mobile_app_distribution/images/logo@2x.png' %}" width="180px" height="90px">
-        </div>
-    </div>
-
     <form method="post" action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
         <fieldset>
 
