@@ -1,18 +1,12 @@
 # -*- coding: utf-8 -*-
-import logging 
-import uuid
+from __future__ import unicode_literals
+import logging
 
-from django.conf import settings
-from django.contrib.sites.models import Site
 from django.forms import ModelForm, ValidationError
-from django.utils.translation import ugettext_lazy as _, string_concat
+from django.utils.translation import ugettext_lazy as _
 
-import settings as app_dist_settings
-from models import IosApp
-import posixpath
+logger = logging.getLogger(__name__)
 
-
-log = logging.getLogger(__name__)
 
 class AppAdminForm(ModelForm):
 
@@ -23,14 +17,6 @@ class AppAdminForm(ModelForm):
         groups = cleaned_data.get('groups')
 
         if not user and not groups:
-             raise ValidationError(_('Please assign a user or group to the app.'))
+            raise ValidationError(_('Please assign a user or group to the app.'))
 
         return cleaned_data
-
-class IosAppAdminForm(AppAdminForm):
-
-    class Meta:
-        model = IosApp
-
-    def __init__(self, *args, **kwargs):
-        super(IosAppAdminForm, self).__init__(*args, **kwargs)

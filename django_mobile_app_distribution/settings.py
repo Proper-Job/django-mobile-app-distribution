@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from os.path import join
 from django.conf import settings
 
+
 def get(key, default):
-  return getattr(settings, key, default)
+    return getattr(settings, key, default)
 
 IOS = 'iOS'
 IOS_PLIST = 'iOS Plist'
@@ -19,9 +21,18 @@ MOBILE_APP_DISTRIBUTION_CONTENT_TYPES = {
     ANDROID: 'application/vnd.android.package-archive'
 }
 
-MOBILE_APP_DISTRIBUTION_IOS_UPLOAD_TO_DIRECTORY_NAME = get('MOBILE_APP_DISTRIBUTION_IOS_UPLOAD_TO_DIRECTORY_NAME', 'ios_apps')
-MOBILE_APP_DISTRIBUTION_ANDROID_UPLOAD_TO_DIRECTORY_NAME = get('MOBILE_APP_DISTRIBUTION_ANDROID_UPLOAD_TO_DIRECTORY_NAME', 'android_apps')
-MOBILE_APP_DISTRIBUTION_ANDROID_FILE_STORAGE_PATH = join(settings.BASE_PATH, get('MOBILE_APP_DISTRIBUTION_ANDROID_FILE_STORAGE_PATH', 'android'))
+MOBILE_APP_DISTRIBUTION_IOS_UPLOAD_TO_DIRECTORY_NAME = get(
+    'MOBILE_APP_DISTRIBUTION_IOS_UPLOAD_TO_DIRECTORY_NAME',
+    'ios_apps'
+)
+MOBILE_APP_DISTRIBUTION_ANDROID_UPLOAD_TO_DIRECTORY_NAME = get(
+    'MOBILE_APP_DISTRIBUTION_ANDROID_UPLOAD_TO_DIRECTORY_NAME',
+    'android_apps'
+)
+MOBILE_APP_DISTRIBUTION_ANDROID_FILE_STORAGE_PATH = join(
+    settings.BASE_PATH,
+    get('MOBILE_APP_DISTRIBUTION_ANDROID_FILE_STORAGE_PATH', 'android')
+)
 
 EMAIL_LINK_COLOR_HEX = '#267d87'
 
@@ -68,5 +79,10 @@ IOS_PLIST_BLUEPRINT = """<?xml version="1.0" encoding="UTF-8"?>
     </array>
 </dict>
 </plist>
-""".format(url=PLIST_APP_URL, bundle_id=PLIST_BUNDLE_IDENTIFIER, bundle_version=PLIST_BUNDLE_VERSION, app_title=PLIST_APP_TITLE)
+""".format(
+    url=PLIST_APP_URL,
+    bundle_id=PLIST_BUNDLE_IDENTIFIER,
+    bundle_version=PLIST_BUNDLE_VERSION,
+    app_title=PLIST_APP_TITLE
+)
 

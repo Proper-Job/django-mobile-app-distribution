@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from django.conf.urls import patterns, url
 from django.contrib.auth import views as auth_views
 
@@ -11,4 +13,4 @@ urlpatterns = patterns('',
                            auth_views.logout,
                            {'template_name': 'django_mobile_app_distribution/logout.html'},
                            name='auth_logout'),
-)
+                       )

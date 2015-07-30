@@ -1,21 +1,22 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 import logging
 import os.path
 from itertools import chain
 from operator import attrgetter
 from os.path import basename
 
+from future.builtins import (int, map, open)
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.models import get_current_site
-from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
+from django.core.exceptions import MultipleObjectsReturned
 from django.core.servers.basehttp import FileWrapper
 from django.http import HttpResponse, HttpResponseForbidden, Http404
 from django.shortcuts import render
 from django.utils import translation
 
-import settings as app_dist_settings
-from models import IosApp, AndroidApp, UserInfo
-
+import django_mobile_app_distribution.settings as app_dist_settings
+from django_mobile_app_distribution.models import IosApp, AndroidApp, UserInfo
 
 log = logging.getLogger(__name__)
 
@@ -49,7 +50,7 @@ def index(request):
         'apps': apps,
         'ios_identifier': app_dist_settings.IOS,
         'site_url': get_current_site(request).domain
-        })
+    })
 
 
 @login_required
@@ -72,9 +73,9 @@ def send_apk(request, app_id):
 
     if not authenticated:
         app_group_ids = android_app.groups.all().values_list('pk', flat=True)
-        app_group_ids = list(map(long, app_group_ids))
+        app_group_ids = list(map(int, app_group_ids))
         for user_group in request.user.groups.all():
-            user_group_id = long(user_group.id)
+            user_group_id = int(user_group.id)
             if user_group_id in app_group_ids:
                 authenticated = True
                 break
@@ -82,10 +83,11 @@ def send_apk(request, app_id):
     if not authenticated:
         return HttpResponseForbidden('This is not your app')
 
-    filename = os.path.join(app_dist_settings.MOBILE_APP_DISTRIBUTION_ANDROID_FILE_STORAGE_PATH, android_app.app_binary.name)
-
-    wrapper = FileWrapper(file(filename))
-    response = HttpResponse(wrapper)
+    filename = os.path.join(
+        app_dist_settings.MOBILE_APP_DISTRIBUTION_ANDROID_FILE_STORAGE_PATH,
+        android_app.app_binary.name
+    )
+    response = HttpResponse(FileWrapper(open(filename, 'rb')))
     response['Content-Length'] = os.path.getsize(filename)
     response['Content-Type'] = app_dist_settings.MOBILE_APP_DISTRIBUTION_CONTENT_TYPES[android_app.operating_system]
     response['Content-Disposition'] = 'inline; filename=%s' % basename(filename)
@@ -107,4 +109,7 @@ def ios_app_plist(request, app_id):
     plist_string = plist_string.replace(mad_settings.PLIST_BUNDLE_VERSION, ios_app.version)
     plist_string = plist_string.replace(mad_settings.PLIST_APP_TITLE, ios_app.name)
 
-    return HttpResponse(plist_string, content_type=mad_settings.MOBILE_APP_DISTRIBUTION_CONTENT_TYPES[mad_settings.IOS_PLIST])
+    return HttpResponse(
+        plist_string,
+        content_type=mad_settings.MOBILE_APP_DISTRIBUTION_CONTENT_TYPES[mad_settings.IOS_PLIST]
+    )
