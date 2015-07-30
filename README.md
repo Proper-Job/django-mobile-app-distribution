@@ -6,9 +6,9 @@ It is made up of 2 components:
 
 * A Django Admin interface that allows you to upload and assign apps to users.
 * A mobile optimized, login protected download area where your clients can download apps that were associated with their login credentials.
+* Supports Python 2.7, 3 (tested on 3.4.3) and Django 1.6, 1.7, 1.8.  Might even work down to Django 1.4, but hasn't been tested.
 
-
-#Installation Django == 1.7
+#Installation Django >= 1.7
 
 - ``pip install django-mobile-app-distribution``
 - Add ``django_mobile_app_distribution`` to your ``INSTALLED_APPS`` list in your project's settings.py. Make sure it comes after ``django.contrib.admin`` so the admin login and logout templates are properly overridden.

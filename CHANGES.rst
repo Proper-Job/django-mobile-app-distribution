@@ -1,6 +1,12 @@
 Changelog for Django Mobile App Distribution
 ============================================
 
+0.3.6 (2015-07-30)
+----------------
+
+- Added Python 3 and Django 1.8 support.
+
+
 0.3.5 (2015-04-29)
 ----------------
 
