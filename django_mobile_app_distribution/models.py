@@ -59,7 +59,6 @@ class App(models.Model):
     groups = models.ManyToManyField(
         Group,
         blank=True,
-        null=True,
         related_name='apps',
         default=None,
         verbose_name=_('Groups')
