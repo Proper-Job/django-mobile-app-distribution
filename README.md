@@ -6,7 +6,7 @@ It is made up of 2 components:
 
 * A Django Admin interface that allows you to upload and assign apps to users.
 * A mobile optimized, login protected download area where your clients can download apps that were associated with their login credentials.
-* Supports Python 2.7, 3 (tested on 3.4.3) and Django 1.6, 1.7, 1.8.  Might even work down to Django 1.4, but hasn't been tested.
+* Supports Python 2.7, 3 (tested on 3.4.3) and Django >= 1.7.
 
 #Installation Django >= 1.7
 
@@ -36,38 +36,6 @@ It is made up of 2 components:
 [static_root_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#static-root
 [static_url_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#static-url
 
-
-#Installation Django <= 1.6
-
-- ``pip install django-mobile-app-distribution``
-- Add ``django_mobile_app_distribution`` to your ``INSTALLED_APPS`` list in your project's settings.py. Make sure it comes after ``django.contrib.admin`` so the admin login and logout templates are properly overridden.
-- Add ``django.contrib.sites`` to the list of ``INSTALLED_APPS`` in your project's settings.py.
-- Add ``south`` to the list of ``INSTALLED_APPS`` in your project's settings.py.
-- Enable the [messages framework][message_framework_16]
-- Make sure you have set [MEDIA_ROOT][media_root_16], [MEDIA_URL][media_url_16], [STATIC_URL][static_url_16] and [STATIC_ROOT][static_root_16].
-- Run ``python manage.py syncdb``.
-- Run ``python manage.py migrate django_mobile_app_distribution``.
-- Run ``python manage.py collectstatic``
-- If you like things tidy you can install [django-cleanup][django_cleanup_16], which removes uploaded files when the associated models are deleted.
-- Make sure the ``android/android_apps`` folder on the same level as your project's settings.py is readable and writable by your webserver.
-	*  If your webserver cannot create them for you, you have to create them by hand.  See Security considerations below for more information.
-- Include ``urls.py`` into your project's urls.py file at the mount point of your choosing (see below).  This will be where your client downloads her apps.
-- Include ``auth_urls.py`` into your project's urls.py (see below).
-- Add [LOGIN_REDIRECT_URL][login_redirect_url_16] to your project's settings.py.  This is the URL you chose in step 7.  If you're using the example below, set it to ``/distribute/``.
-- Add ``BASE_PATH`` to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as your project's settings.py this has to be set.
-- Add the [SITE_ID][site_id_16] value in your project's settings.py to the primary key of the Site object that represents your site.
-- Login to the Django Admin and add your server's URL to the Site object's domain name (create one if necessary). On the development server this would be ``http://127.0.0.1:8000/``
-
-[site_id_16]: https://docs.djangoproject.com/en/1.6/ref/settings/#site-id
-[django_cleanup_16]: https://github.com/un1t/django-cleanup
-[login_redirect_url_16]: https://docs.djangoproject.com/en/1.6/ref/settings/#login-redirect-url
-[message_framework_16]: https://docs.djangoproject.com/en/1.6/ref/contrib/messages/
-[media_root_16]: https://docs.djangoproject.com/en/1.6/ref/settings/#media-root
-[media_url_16]: https://docs.djangoproject.com/en/1.6/ref/settings/#media-url
-[static_root_16]: https://docs.djangoproject.com/en/1.6/ref/settings/#static-root
-[static_url_16]: https://docs.djangoproject.com/en/1.6/ref/settings/#static-url
-
-	
 #URL setup
 
 Inside your project's `urls.py`
@@ -184,27 +152,3 @@ Inside that folder create a file called ``app.css``. There you can do custom sty
 	}
 
 
-#Migrate from 0.2 to 0.3 using South
-
-Version 0.3 introduces backwards incompatible changes because Xcode 6 no longer provides the plist necessary for distribution.
-You will need to delete all of you iOS apps before you upgrade to version 0.3.
-To migrate from version 0.2 to 0.3 follow these instructions.  A clean install of version >= 0.3 doesn't need to do this.
-
-	1. ``pip install django-mobile-app-distribution==0.3``
-	2. python manage.py migrate django_mobile_app_distribution
-
-
-
-#Migrate from 0.1.x to 0.2 using South
-
-Version 0.2 introduced [South][south_link] as a dependency, because the database structure changed.
-If you need to migrate from version 0.1.x to 0.2 follow these instructions.  A clean install of version >= 0.2 doesn't need to do this.
-
-	1. ``pip install django-mobile-app-distribution==0.2``
-	2. Add south to the list of INSTALLED_APPS
-	3. python manage.py syncdb
-	4. python manage.py migrate django_mobile_app_distribution 0001 --fake
-	5. python manage.py migrate django_mobile_app_distribution
-
-
-[south_link]: http://south.readthedocs.org/en/latest/index.html

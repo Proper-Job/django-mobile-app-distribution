@@ -20,3 +20,19 @@ class AppAdminForm(ModelForm):
             raise ValidationError(_('Please assign a user or group to the app.'))
 
         return cleaned_data
+
+
+class iOSAppAdminForm(AppAdminForm):
+
+    def clean(self):
+        cleaned_data = super(AppAdminForm, self).clean()
+
+        display_image = cleaned_data.get('display_image')
+        full_size_image = cleaned_data.get('full_size_image')
+
+        if (display_image or full_size_image) and not (display_image and full_size_image):
+            error = ValidationError(_('Please provide a display and a full size image.'))
+            self.add_error('display_image', error)
+            self.add_error('full_size_image', error)
+
+        return cleaned_data

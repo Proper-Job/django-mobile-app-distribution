@@ -103,13 +103,20 @@ def ios_app_plist(request, app_id):
         raise Http404
 
     from . import settings as mad_settings
-    plist_string = mad_settings.IOS_PLIST_BLUEPRINT
-    plist_string = plist_string.replace(mad_settings.PLIST_APP_URL, ios_app.get_binary_url())
-    plist_string = plist_string.replace(mad_settings.PLIST_BUNDLE_IDENTIFIER, ios_app.bundle_identifier)
-    plist_string = plist_string.replace(mad_settings.PLIST_BUNDLE_VERSION, ios_app.version)
-    plist_string = plist_string.replace(mad_settings.PLIST_APP_TITLE, ios_app.name)
+    plist = ''
+    if ios_app.display_image and ios_app.full_size_image:
+        plist = mad_settings.IOS_PLIST_BLUEPRINT_IOS9
+        plist = plist.replace(mad_settings.PLIST_DISPLAY_IMAGE, ios_app.get_display_image_url())
+        plist = plist.replace(mad_settings.PLIST_FULL_SIZE_IMAGE, ios_app.get_full_size_image_url())
+    else:
+        plist = mad_settings.IOS_PLIST_BLUEPRINT
+
+    plist = plist.replace(mad_settings.PLIST_APP_URL, ios_app.get_binary_url())
+    plist = plist.replace(mad_settings.PLIST_BUNDLE_IDENTIFIER, ios_app.bundle_identifier)
+    plist = plist.replace(mad_settings.PLIST_BUNDLE_VERSION, ios_app.version)
+    plist = plist.replace(mad_settings.PLIST_APP_TITLE, ios_app.name)
 
     return HttpResponse(
-        plist_string,
+        plist,
         content_type=mad_settings.MOBILE_APP_DISTRIBUTION_CONTENT_TYPES[mad_settings.IOS_PLIST]
     )

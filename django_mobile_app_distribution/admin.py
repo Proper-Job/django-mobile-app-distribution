@@ -13,7 +13,7 @@ from django.utils.translation import ugettext_lazy as _, ungettext_lazy
 
 from django_mobile_app_distribution import settings as _settings
 from django_mobile_app_distribution.models import IosApp, AndroidApp
-from django_mobile_app_distribution.forms import AppAdminForm
+from django_mobile_app_distribution.forms import AppAdminForm, iOSAppAdminForm
 from django_mobile_app_distribution.models import UserInfo
 
 
@@ -120,13 +120,16 @@ class NotifiableModelAdmin(admin.ModelAdmin):
 
 class IosAppAdmin(NotifiableModelAdmin):
 
-    form = AppAdminForm
+    form = iOSAppAdminForm
     list_display = ('name', 'user_display_name', 'groups_display_name', 'version', 'comment', 'updatedAt')
     filter_horizontal = ['groups']
 
     fieldsets = (
         (_('App info'), {
             'fields': ('user', 'groups', 'name', 'version', 'bundle_identifier', 'app_binary', 'comment')
+        }),
+        (_('Provide these deploy on iOS 9'), {
+            'fields': ('display_image', 'full_size_image')
         }),
     )
 

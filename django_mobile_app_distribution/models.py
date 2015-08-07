@@ -26,6 +26,10 @@ else:
 log = logging.getLogger(__name__)
 
 
+_MISSING_SITE_MESSAGE = "The site framework's domain name is used to generate the plist and binary links.  " \
+                        "Please configure your current site properly. Also make sure that the SITE_ID in your " \
+                        "settings file matches the primary key of your current site."
+
 def normalize_filename(dirname, filename):
     dirname = force_text(dirname)
     filename = force_text(normalize('NFKD', filename).encode('ascii', 'ignore'))
@@ -38,6 +42,9 @@ def normalize_ios_filename(instance, filename):
 
 def normalize_android_filename(instance, filename):
     return normalize_filename(app_dist_settings.MOBILE_APP_DISTRIBUTION_ANDROID_UPLOAD_TO_DIRECTORY_NAME, filename)
+
+def normalize_image_filename(instance, filename):
+    return normalize_filename(app_dist_settings.MOBILE_APP_DISTRIBUTION_APP_ICON_DIRECTORY_NAME, filename)
 
 
 @python_2_unicode_compatible
@@ -89,6 +96,18 @@ class IosApp(App):
         default='',
         help_text=_('e.g. org.example.app')
     )
+    display_image = models.ImageField(
+        upload_to=normalize_image_filename,
+        default='',
+        help_text='57x57 PNG',
+        blank=True
+    )
+    full_size_image = models.ImageField(
+        upload_to=normalize_image_filename,
+        default='',
+        help_text='512x512 PNG',
+        blank=True
+    )
 
     def get_binary_url(self):
         if not self.app_binary:
@@ -97,14 +116,9 @@ class IosApp(App):
         try:
             Site.objects.get_current()
         except Exception:
-            raise MobileAppDistributionConfigurationException(
-                "The site framework's domain name is used to generate the plist and binary links.  "
-                "Please configure your current site properly. Also make sure that the SITE_ID in your settings file"
-                " matches the primary key of your current site."
-            )
+            raise MobileAppDistributionConfigurationException(_MISSING_SITE_MESSAGE)
 
         return urljoin(Site.objects.get_current().domain, self.app_binary.url)
-
 
     def get_plist_url(self):
         Site.objects.clear_cache()
@@ -112,14 +126,31 @@ class IosApp(App):
         try:
             current_site = Site.objects.get_current()
         except Exception:
-            raise MobileAppDistributionConfigurationException(
-                "The site framework's domain name is used to generate the plist and binary links. "
-                "Please configure your current site properly. Also make sure that the SITE_ID in your settings file "
-                "matches the primary key of your current site."
-            )
+            raise MobileAppDistributionConfigurationException(_MISSING_SITE_MESSAGE)
         return urljoin(
-            current_site.domain, reverse('django_mobile_app_distribution_ios_app_plist', kwargs={'app_id': self.pk})
+            current_site.domain,
+            reverse('django_mobile_app_distribution_ios_app_plist', kwargs={'app_id': self.pk})
         )
+
+    def get_display_image_url(self):
+        Site.objects.clear_cache()
+        current_site = None
+        try:
+            current_site = Site.objects.get_current()
+        except Exception:
+            raise MobileAppDistributionConfigurationException(_MISSING_SITE_MESSAGE)
+
+        return urljoin(Site.objects.get_current().domain, self.display_image.url)
+
+    def get_full_size_image_url(self):
+        Site.objects.clear_cache()
+        current_site = None
+        try:
+            current_site = Site.objects.get_current()
+        except Exception:
+            raise MobileAppDistributionConfigurationException(_MISSING_SITE_MESSAGE)
+
+        return urljoin(Site.objects.get_current().domain, self.full_size_image.url)
 
     class Meta:
         verbose_name = _('iOS App')

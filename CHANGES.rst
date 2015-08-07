@@ -1,6 +1,13 @@
 Changelog for Django Mobile App Distribution
 ============================================
 
+0.3.7 (2015-08-07)
+----------------
+
+- Added support for iOS 9 style manifest.plist configuration.
+- Dropped support for Django < 1.7, use 0.3.6 for that.
+
+
 0.3.6 (2015-07-30)
 ----------------
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django Mobile App Distribution 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-28 16:53+0200\n"
-"PO-Revision-Date: 2015-04-28 16:54+0100\n"
+"POT-Creation-Date: 2015-08-07 13:37+0200\n"
+"PO-Revision-Date: 2015-08-07 13:39+0200\n"
 "Last-Translator: Moritz Pfeiffer <moritz.pfeiffer@alp-phone.ch>\n"
 "Language-Team: Alp Phone GmbH <moritz.pfeiffer@alp-phone.ch>\n"
 "Language: de\n"
@@ -16,9 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.8.2\n"
 
-#: admin.py:81
+#: admin.py:73
 #, python-format
 msgid ""
 "Version %(app_version)s of %(app_name)s for %(os)s is available for download"
@@ -26,7 +26,7 @@ msgstr ""
 "Version %(app_version)s der %(app_name)s App für %(os)s steht zum Download "
 "bereit"
 
-#: admin.py:82
+#: admin.py:75
 #, python-format
 msgid ""
 "Version %(app_version)s of %(app_name)s for %(os)s is available for "
@@ -37,7 +37,7 @@ msgstr ""
 "bereit.\n"
 "Bitte besuchen Sie %(download_url)s um die App zu installieren."
 
-#: admin.py:92
+#: admin.py:90
 #, python-format
 msgid ""
 "%(recipient_count)s user was notified of %(app_name)s %(app_version)s "
@@ -52,81 +52,89 @@ msgstr[1] ""
 "%(recipient_count)s Benutzer wurden über die Verfügbarkeit der %(app_name)s "
 "%(app_version)s App informiert."
 
-#: admin.py:101
+#: admin.py:100
 msgid "Nobody was notified by email because nobody's email address is set."
 msgstr ""
 "Niemand wurde per E-Mail benachrichtigt, weil bei niemandem die E-Mail-"
 "Adresse gesetzt ist."
 
-#: admin.py:102
+#: admin.py:103
 msgid "Notify clients of app availability"
 msgstr "Kunden über die Verfügbarkeit der Apps informieren."
 
-#: admin.py:109 models.py:47
+#: admin.py:110 models.py:65
 msgid "User"
 msgstr "Benutzer"
 
-#: admin.py:117 models.py:48
+#: admin.py:118 models.py:71
 msgid "Groups"
 msgstr "Gruppen"
 
-#: admin.py:126 admin.py:138
+#: admin.py:128 admin.py:144
 msgid "App info"
 msgstr "App Infos"
 
-#: forms.py:26
+#: admin.py:131
+msgid "Provide these deploy on iOS 9"
+msgstr "Angeben um auf iOS 9 bereitzustellen"
+
+#: forms.py:20
 msgid "Please assign a user or group to the app."
 msgstr "Bitte weisen Sie der App einen Benutzer oder eine Gruppe zu."
 
-#: models.py:42 models.py:43
+#: forms.py:34
+msgid "Please provide a display and a full size image."
+msgstr "Bitte laden Sie ein “display\" und “full size” Bild hoch."
+
+#: models.py:59 models.py:60
 msgid "Extended user info"
 msgstr "Erweiterte Benutzereinstellungen"
 
-#: models.py:49
+#: models.py:73
 msgid "App name"
 msgstr "App Name"
 
-#: models.py:50
+#: models.py:74
 msgid "Comment"
 msgstr "Bemerkung"
 
-#: models.py:51
+#: models.py:75
 msgid "Bundle version"
 msgstr "Bundle Version"
 
-#: models.py:61 models.py:97
+#: models.py:89 models.py:159
 msgid "Operating system"
 msgstr "Betriebssystem"
 
-#: models.py:62
+#: models.py:92
 msgid "IPA file"
 msgstr "IPA Datei"
 
-#: models.py:63
+#: models.py:95
 msgid "Bundle identifier"
 msgstr "Bundle identifier"
 
-#: models.py:63
+#: models.py:97
 msgid "e.g. org.example.app"
 msgstr "z.B. org.example.app"
 
-#: models.py:88
+#: models.py:146
 msgid "iOS App"
 msgstr "iOS App"
 
-#: models.py:89
+#: models.py:147
 msgid "iOS Apps"
 msgstr "iOS Apps"
 
-#: models.py:98
+#: models.py:162
 msgid "APK file"
 msgstr "APK Datei"
 
-#: models.py:101
+#: models.py:165
 msgid "Android App"
 msgstr "Android App"
 
-#: models.py:102
+#: models.py:166
 msgid "Android Apps"
 msgstr "Android Apps"
 
@@ -139,32 +147,31 @@ msgid "Django administration"
 msgstr "Mobile App Distribution"
 
 #: templates/django_mobile_app_distribution/app_list.html:5
-#: templates/django_mobile_app_distribution/app_list.html:14
 msgid "app list view"
 msgstr "App Übersicht"
 
-#: templates/django_mobile_app_distribution/app_list.html:18
+#: templates/django_mobile_app_distribution/app_list.html:15
 msgid "logout"
 msgstr "Abmelden"
 
-#: templates/django_mobile_app_distribution/app_list.html:34
+#: templates/django_mobile_app_distribution/app_list.html:31
 msgid "operating system"
 msgstr "Betriebssystem"
 
-#: templates/django_mobile_app_distribution/app_list.html:40
+#: templates/django_mobile_app_distribution/app_list.html:37
 msgid "version"
 msgstr "Version"
 
-#: templates/django_mobile_app_distribution/app_list.html:46
+#: templates/django_mobile_app_distribution/app_list.html:43
 msgid "build date"
 msgstr "Erstellt"
 
-#: templates/django_mobile_app_distribution/app_list.html:52
+#: templates/django_mobile_app_distribution/app_list.html:49
 msgid "comment"
 msgstr "Bemerkung"
 
-#: templates/django_mobile_app_distribution/app_list.html:61
-#: templates/django_mobile_app_distribution/app_list.html:65
+#: templates/django_mobile_app_distribution/app_list.html:58
+#: templates/django_mobile_app_distribution/app_list.html:62
 msgid "Install App"
 msgstr "App Installieren"
 
@@ -185,11 +192,12 @@ msgstr ""
 msgid "customer login"
 msgstr "Kundenbereich"
 
-#: templates/django_mobile_app_distribution/login.html:37
+#: templates/django_mobile_app_distribution/login.html:31
 msgid "invalid login credentials"
 msgstr "Ihr Benutzername oder Passwort sind falsch"
 
-#: templates/django_mobile_app_distribution/login.html:44
+#: templates/django_mobile_app_distribution/login.html:38
+#: templates/django_mobile_app_distribution/logout.html:14
 msgid "login"
 msgstr "Anmelden"
 
@@ -197,7 +205,7 @@ msgstr "Anmelden"
 msgid "logged out successfully"
 msgstr "Sie wurden erfolgreich abgemeldet"
 
-#: templates/django_mobile_app_distribution/logout.html:15
+#: templates/django_mobile_app_distribution/logout.html:9
 msgid "You were logged out successfully."
 msgstr "Sie wurden erfolgreich abgemeldet."
 
