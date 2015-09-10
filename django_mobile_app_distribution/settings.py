@@ -93,6 +93,7 @@ IOS_PLIST_BLUEPRINT = """<?xml version="1.0" encoding="UTF-8"?>
     app_title=PLIST_APP_TITLE
 )
 
+# Docs: http://help.apple.com/deployment/ios/#/apda0e3426d7
 IOS_PLIST_BLUEPRINT_IOS9 = """<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -108,19 +109,19 @@ IOS_PLIST_BLUEPRINT_IOS9 = """<?xml version="1.0" encoding="UTF-8"?>
                     <key>url</key>
                     <string>{url}</string>
                 </dict>
+                <dict>
+                    <key>kind</key>
+                    <string>display-image</string>
+                    <key>url</key>
+                    <string>{display_image}</string>
+                </dict>
+                <dict>
+                    <key>kind</key>
+                    <string>full-size-image</string>
+                    <key>url</key>
+                    <string>{full_size_image}</string>
+                </dict>
             </array>
-            <dict>
-                <key>kind</key>
-                <string>display-image</string>
-                <key>url</key>
-                <string>{display_image}</string>
-            </dict>
-            <dict>
-                <key>kind</key>
-                <string>full-size-image</string>
-                <key>url</key>
-                <string>{full_size_image}</string>
-            </dict>
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>

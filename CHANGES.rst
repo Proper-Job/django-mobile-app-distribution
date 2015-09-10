@@ -1,6 +1,12 @@
 Changelog for Django Mobile App Distribution
 ============================================
 
+0.3.8 (2015-09-10)
+----------------
+
+- Fix plist syntax error in iOS 9 style manifest.plist.
+
+
 0.3.7 (2015-08-07)
 ----------------
 
