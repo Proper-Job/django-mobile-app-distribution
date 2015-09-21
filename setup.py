@@ -8,7 +8,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-mobile-app-distribution',
-    version='0.3.9',
+    version='0.3.10',
     packages=find_packages(),
     include_package_data=True,
     license='MIT License', 
@@ -19,6 +19,7 @@ setup(
     author_email='moritz.pfeiffer@alp-phone.ch',
     zip_safe=False,
     classifiers=[
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
