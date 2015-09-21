@@ -4,12 +4,12 @@ import logging
 
 from django.forms import ModelForm, ValidationError
 from django.utils.translation import ugettext_lazy as _
+from django_mobile_app_distribution.models import IosApp, AndroidApp
 
 logger = logging.getLogger(__name__)
 
 
 class AppAdminForm(ModelForm):
-
     def clean(self):
         cleaned_data = super(AppAdminForm, self).clean()
 
@@ -23,6 +23,9 @@ class AppAdminForm(ModelForm):
 
 
 class iOSAppAdminForm(AppAdminForm):
+    class Meta:
+        model = IosApp
+        fields = '__all__'
 
     def clean(self):
         cleaned_data = super(AppAdminForm, self).clean()
@@ -36,3 +39,9 @@ class iOSAppAdminForm(AppAdminForm):
             self.add_error('full_size_image', error)
 
         return cleaned_data
+
+
+class AndroidAppAdminForm(AppAdminForm):
+    class Meta:
+        model = AndroidApp
+        fields = '__all__'

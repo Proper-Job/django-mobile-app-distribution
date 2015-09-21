@@ -13,7 +13,7 @@ from django.utils.translation import ugettext_lazy as _, ungettext_lazy
 
 from django_mobile_app_distribution import settings as _settings
 from django_mobile_app_distribution.models import IosApp, AndroidApp
-from django_mobile_app_distribution.forms import AppAdminForm, iOSAppAdminForm
+from django_mobile_app_distribution.forms import iOSAppAdminForm, AndroidAppAdminForm
 from django_mobile_app_distribution.models import UserInfo
 
 
@@ -119,7 +119,6 @@ class NotifiableModelAdmin(admin.ModelAdmin):
 
 
 class IosAppAdmin(NotifiableModelAdmin):
-
     form = iOSAppAdminForm
     list_display = ('name', 'user_display_name', 'groups_display_name', 'version', 'comment', 'updatedAt')
     filter_horizontal = ['groups']
@@ -135,8 +134,7 @@ class IosAppAdmin(NotifiableModelAdmin):
 
 
 class AndroidAppAdmin(NotifiableModelAdmin):
-
-    form = AppAdminForm
+    form = AndroidAppAdminForm
     list_display = ('name', 'user_display_name', 'groups_display_name', 'version', 'comment', 'updatedAt')
     filter_horizontal = ['groups']
 

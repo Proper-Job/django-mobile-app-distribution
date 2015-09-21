@@ -8,13 +8,13 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-mobile-app-distribution',
-    version='0.3.8',
+    version='0.3.9',
     packages=find_packages(),
     include_package_data=True,
     license='MIT License', 
     description='A Django app that adds iOS and Android app upload functionality to the Django admin interface.  Provides a mobile optimized HTML fronted for clients to download Ad Hoc mobile applications using their iOS or Android devices.',
     long_description=README,
-    url='https://github.com/Alp-Phone/django-mobile-app-distribution',
+    url='https://github.com/Proper-Job/django-mobile-app-distribution',
     author='Moritz Pfeiffer',
     author_email='moritz.pfeiffer@alp-phone.ch',
     zip_safe=False,

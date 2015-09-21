@@ -1,6 +1,12 @@
 Changelog for Django Mobile App Distribution
 ============================================
 
+0.3.9 (2015-09-21)
+----------------
+
+- Fixed admin model forms ImproperlyConfigured exception.
+
+
 0.3.8 (2015-09-10)
 ----------------
 
