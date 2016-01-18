@@ -1,6 +1,12 @@
 Changelog for Django Mobile App Distribution
 ============================================
 
+0.3.11 (2016-01-18)
+----------------
+
+- Fixed migrations being created when app is deployed.
+
+s
 0.3.10 (2015-09-21)
 ----------------
 

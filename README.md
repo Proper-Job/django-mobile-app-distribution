@@ -15,6 +15,7 @@ It is made up of 2 components:
 - Add ``django.contrib.sites`` to the list of ``INSTALLED_APPS`` in your project's settings.py.
 - Enable the [messages framework][message_framework_17]
 - Make sure you have set [MEDIA_ROOT][media_root_17], [MEDIA_URL][media_url_17], [STATIC_URL][static_url_17] and [STATIC_ROOT][static_root_17].
+- Add ``BASE_PATH`` to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as your project's settings.py this has to be set.
 - Run ``python manage.py migrate``
 - Run ``python manage.py collectstatic``
 - If you like things tidy you can install [django-cleanup][django_cleanup_17], which removes uploaded files when the associated models are deleted.
@@ -23,7 +24,6 @@ It is made up of 2 components:
 - Include ``urls.py`` into your project's urls.py file at the mount point of your choosing (see below).  This will be where your client downloads her apps.
 - Include ``auth_urls.py`` into your project's urls.py (see below).
 - Add [LOGIN_REDIRECT_URL][login_redirect_url_17] to your project's settings.py.  This is the URL you chose in step 7.  If you're using the example below, set it to ``/distribute/``.
-- Add ``BASE_PATH`` to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as your project's settings.py this has to be set.
 - Add the [SITE_ID][site_id_17] value in your project's settings.py to the primary key of the Site object that represents your site.
 - Login to the Django Admin and add your server's URL to the Site object's domain name (create one if necessary). On the development server this would be ``http://127.0.0.1:8000/``
 

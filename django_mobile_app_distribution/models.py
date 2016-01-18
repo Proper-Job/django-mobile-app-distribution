@@ -7,7 +7,6 @@ from unicodedata import normalize
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User, Group
 from django.contrib.sites.models import Site
-from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.db.models.signals import post_save
 from django.utils import six
@@ -16,6 +15,7 @@ from django.utils.translation import ugettext_lazy as _
 
 import django_mobile_app_distribution.settings as app_dist_settings
 from django_mobile_app_distribution.exceptions import MobileAppDistributionConfigurationException
+from django_mobile_app_distribution.storage import CustomFileSystemStorage
 
 if six.PY2:
     from urlparse import urljoin
@@ -158,7 +158,7 @@ class IosApp(App):
         ordering = ('name', 'operating_system', '-version', '-updatedAt',)
 
 
-fs = FileSystemStorage(location=app_dist_settings.MOBILE_APP_DISTRIBUTION_ANDROID_FILE_STORAGE_PATH)
+fs = CustomFileSystemStorage()
 
 
 class AndroidApp(App):
