@@ -5,6 +5,7 @@ import os.path
 from itertools import chain
 from operator import attrgetter
 from os.path import basename
+from wsgiref.util import FileWrapper
 
 from future.builtins import (int, map, open)
 from django.contrib.auth.decorators import login_required
@@ -13,7 +14,6 @@ try:
 except ImportError:
     from django.contrib.sites.shortcuts import get_current_site
 from django.core.exceptions import MultipleObjectsReturned
-from django.core.servers.basehttp import FileWrapper
 from django.http import HttpResponse, HttpResponseForbidden, Http404
 from django.shortcuts import render
 from django.utils import translation
