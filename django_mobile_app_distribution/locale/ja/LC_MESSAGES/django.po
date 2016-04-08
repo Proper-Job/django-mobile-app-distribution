@@ -1,0 +1,231 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-08 22:08+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: admin.py:73
+#, python-format
+msgid ""
+"Version %(app_version)s of %(app_name)s for %(os)s is available for download"
+msgstr ""
+"%(os)s 版 %(app_name)s のバージョン %(app_version)s がダウンロードできます"
+
+#: admin.py:75
+#, python-format
+msgid ""
+"Version %(app_version)s of %(app_name)s for %(os)s is available for "
+"download.\n"
+"Please visit %(download_url)s to install the app."
+msgstr ""
+"%(os)s 版 %(app_name)s のバージョン %(app_version)s がダウンロードできま"
+"す。%(download_url)s からインストールしてください。"
+
+#: admin.py:90
+#, python-format
+msgid ""
+"%(recipient_count)s user was notified of %(app_name)s %(app_version)s "
+"availability."
+msgid_plural ""
+"%(recipient_count)s users were notified of %(app_name)s %(app_version)s "
+"availability."
+msgstr[0] ""
+"%(recipient_count)s 人のユーザーに %(app_name)s %(app_version)s が利用可能に"
+"なったことを通知しました。"
+msgstr[1] ""
+"%(recipient_count)s 人のユーザーに %(app_name)s %(app_version)s が利用可能に"
+"なったことを通知しました。"
+
+#: admin.py:100
+msgid "Nobody was notified by email because nobody's email address is set."
+msgstr ""
+"送信先メールアドレスが設定されていないため、メール通知はされませんでした。"
+
+#: admin.py:103
+msgid "Notify clients of app availability"
+msgstr "アプリが利用可能になったことをクライアントに通知する"
+
+#: admin.py:110 models.py:65
+msgid "User"
+msgstr "ユーザー"
+
+#: admin.py:118 models.py:71
+msgid "Groups"
+msgstr "グループ"
+
+#: admin.py:127 admin.py:142
+msgid "App info"
+msgstr "アプリ情報"
+
+#: admin.py:130
+msgid "Provide these deploy on iOS 9"
+msgstr "iOS 9 向け"
+
+#: forms.py:20
+msgid "Please assign a user or group to the app."
+msgstr "アプリのユーザーまたはグループを入力してください。"
+
+#: forms.py:37
+msgid "Please provide a display and a full size image."
+msgstr "フルサイズ画像とディスプレイ画像を提供してください。"
+
+#: models.py:52
+msgid "user"
+msgstr "ユーザー"
+
+#: models.py:53
+msgid "language"
+msgstr "言語"
+
+#: models.py:59 models.py:60
+msgid "Extended user info"
+msgstr "拡張ユーザー情報"
+
+#: models.py:73
+msgid "App name"
+msgstr "アプリ名"
+
+#: models.py:74
+msgid "Comment"
+msgstr "コメント"
+
+#: models.py:75
+msgid "Bundle version"
+msgstr "バンドルバージョン"
+
+#: models.py:76
+msgid "updated date"
+msgstr "更新日時"
+
+#: models.py:77
+msgid "created date"
+msgstr "作成日時"
+
+#: models.py:89 models.py:171
+msgid "Operating system"
+msgstr "オペレーティングシステム"
+
+#: models.py:92
+msgid "IPA file"
+msgstr "IPA ファイル"
+
+#: models.py:95
+msgid "Bundle identifier"
+msgstr "バンドル ID"
+
+#: models.py:97
+msgid "e.g. org.example.app"
+msgstr "例: org.example.app"
+
+#: models.py:101
+msgid "display image"
+msgstr "ディスプレイ画像"
+
+#: models.py:108
+msgid "full size image"
+msgstr "フルサイズ画像"
+
+#: models.py:158
+msgid "iOS App"
+msgstr "iOS アプリ"
+
+#: models.py:159
+msgid "iOS Apps"
+msgstr "iOS アプリ"
+
+#: models.py:174
+msgid "APK file"
+msgstr "APK ファイル"
+
+#: models.py:177
+msgid "Android App"
+msgstr "Android アプリ"
+
+#: models.py:178
+msgid "Android Apps"
+msgstr "Android アプリ"
+
+#: templates/admin/base_site.html:4
+msgid "Django site admin"
+msgstr "Django サイト管理"
+
+#: templates/admin/base_site.html:7
+msgid "Django administration"
+msgstr "Django 管理"
+
+#: templates/django_mobile_app_distribution/app_list.html:5
+msgid "app list view"
+msgstr "アプリ一覧ビュー"
+
+#: templates/django_mobile_app_distribution/app_list.html:15
+msgid "logout"
+msgstr "ログアウト"
+
+#: templates/django_mobile_app_distribution/app_list.html:31
+msgid "operating system"
+msgstr "オペレーティングシステム"
+
+#: templates/django_mobile_app_distribution/app_list.html:37
+msgid "version"
+msgstr "バージョン"
+
+#: templates/django_mobile_app_distribution/app_list.html:43
+msgid "build date"
+msgstr "ビルド日時"
+
+#: templates/django_mobile_app_distribution/app_list.html:49
+msgid "comment"
+msgstr "コメント"
+
+#: templates/django_mobile_app_distribution/app_list.html:58
+#: templates/django_mobile_app_distribution/app_list.html:62
+msgid "Install App"
+msgstr "アプリをインストール"
+
+#: templates/django_mobile_app_distribution/base.html:5
+msgid "Mobile App Distribution"
+msgstr "モバイルアプリ配布"
+
+#: templates/django_mobile_app_distribution/email_notification.html:14
+#, python-format
+msgid ""
+"Version %(app_version)s of %(app_name)s for %(os)s is available for "
+"download. <br/>Please visit %(download_url)s to install the app."
+msgstr ""
+"%(os)s 版 %(app_name)s のバージョン %(app_version)s がダウンロードできます。"
+"<br/>%(download_url)s からインストールしてください。"
+
+#: templates/django_mobile_app_distribution/login.html:4
+msgid "customer login"
+msgstr "顧客ログイン"
+
+#: templates/django_mobile_app_distribution/login.html:31
+msgid "invalid login credentials"
+msgstr "不正なログイン認証"
+
+#: templates/django_mobile_app_distribution/login.html:38
+#: templates/django_mobile_app_distribution/logout.html:14
+msgid "login"
+msgstr "ログイン"
+
+#: templates/django_mobile_app_distribution/logout.html:4
+msgid "logged out successfully"
+msgstr "ログアウトしました"
+
+#: templates/django_mobile_app_distribution/logout.html:9
+msgid "You were logged out successfully."
+msgstr "ログインしました。"

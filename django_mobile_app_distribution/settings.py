@@ -42,10 +42,12 @@ EMAIL_LINK_COLOR_HEX = '#267d87'
 
 ENGLISH = 'en'
 GERMAN = 'de'
+JAPANESE = 'ja'
 
 LANGUAGES = (
     (ENGLISH, 'English'),
     (GERMAN, 'Deutsch'),
+    (JAPANESE, '日本語'),
 )
 
 PLIST_APP_URL = '__app_url__'
