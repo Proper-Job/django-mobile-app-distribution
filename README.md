@@ -15,7 +15,7 @@ It is made up of 2 components:
 - Add ``django.contrib.sites`` to the list of ``INSTALLED_APPS`` in your project's settings.py.
 - Enable the [messages framework][message_framework_17]
 - Make sure you have set [MEDIA_ROOT][media_root_17], [MEDIA_URL][media_url_17], [STATIC_URL][static_url_17] and [STATIC_ROOT][static_root_17].
-- Add ``BASE_PATH`` to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as your project's settings.py this has to be set.
+- Add ``BASE_PATH`` (or ``BASE_DIR``) to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as your project's settings.py this has to be set.
 - Run ``python manage.py migrate``
 - Run ``python manage.py collectstatic``
 - If you like things tidy you can install [django-cleanup][django_cleanup_17], which removes uploaded files when the associated models are deleted.
@@ -54,7 +54,7 @@ Inside your project's `urls.py`
 Inside your project's `settings.py` file
 
 	import os.path
-	BASE_PATH = os.path.dirname(__file__)
+	BASE_PATH = os.path.dirname(__file__)  # `BASE_DIR` is also available.
 	LOGIN_REDIRECT_URL = '/distribute/'
 	SITE_ID = 1
 
