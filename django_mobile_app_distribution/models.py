@@ -49,8 +49,8 @@ def normalize_image_filename(instance, filename):
 
 @python_2_unicode_compatible
 class UserInfo(models.Model):
-    user = models.OneToOneField(User)
-    language = models.CharField(max_length=20, choices=app_dist_settings.LANGUAGES, default=app_dist_settings.ENGLISH)
+    user = models.OneToOneField(User, verbose_name=_('user'))
+    language = models.CharField(max_length=20, choices=app_dist_settings.LANGUAGES, default=app_dist_settings.ENGLISH, verbose_name=_('language'))
 
     def __str__(self):
         return self.user.username
@@ -73,8 +73,8 @@ class App(models.Model):
     name = models.CharField(max_length=200, verbose_name=_('App name'))
     comment = models.CharField(max_length=200, verbose_name=_('Comment'), blank=True, null=True)
     version = models.CharField(max_length=200, verbose_name=_('Bundle version'))
-    updatedAt = models.DateTimeField(auto_now=True, editable=False)
-    createdAt = models.DateTimeField(auto_now_add=True, editable=False)
+    updatedAt = models.DateTimeField(auto_now=True, editable=False, verbose_name=_('updated date'))
+    createdAt = models.DateTimeField(auto_now_add=True, editable=False, verbose_name=_('created date'))
 
     def __str__(self):
         return self.name
@@ -98,12 +98,14 @@ class IosApp(App):
     )
     display_image = models.ImageField(
         upload_to=normalize_image_filename,
+        verbose_name=_('display image'),
         default='',
         help_text='57x57 PNG',
         blank=True
     )
     full_size_image = models.ImageField(
         upload_to=normalize_image_filename,
+        verbose_name=_('full size image'),
         default='',
         help_text='512x512 PNG',
         blank=True
