@@ -8,7 +8,10 @@ from os.path import basename
 
 from future.builtins import (int, map, open)
 from django.contrib.auth.decorators import login_required
-from django.contrib.sites.models import get_current_site
+try:
+    from django.contrib.sites.models import get_current_site
+except ImportError:
+    from django.contrib.sites.shortcuts import get_current_site
 from django.core.exceptions import MultipleObjectsReturned
 from django.core.servers.basehttp import FileWrapper
 from django.http import HttpResponse, HttpResponseForbidden, Http404
@@ -56,9 +59,9 @@ def index(request):
 @login_required
 def send_apk(request, app_id):
     """
-    Send a file through Django without loading the whole file into              
-    memory at once. The FileWrapper will turn the file object into an           
-    iterator for chunks of 8KB.                                                 
+    Send a file through Django without loading the whole file into
+    memory at once. The FileWrapper will turn the file object into an
+    iterator for chunks of 8KB.
     """
     android_app = None
     try:
