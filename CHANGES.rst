@@ -1,51 +1,59 @@
 Changelog for Django Mobile App Distribution
 ============================================
 
+0.3.12 (2016-04-08)
+-------------------
+
+- Django 1.9 compatibility (Ryosuke Ito)
+- Japanese translations (Ryosuke Ito)
+- Fallback to Django >= 1.8 django.conf.settings.BASE_DIR directive if BASE_PATH is not defined (Ryosuke Ito)
+
+
 0.3.11 (2016-01-18)
-----------------
+-------------------
 
 - Fixed migrations being created when app is deployed.
 
 s
 0.3.10 (2015-09-21)
-----------------
+-------------------
 
 - Fixed packaging
 
 
 0.3.9 (2015-09-21)
-----------------
+------------------
 
 - Fixed admin model forms ImproperlyConfigured exception.
 
 
 0.3.8 (2015-09-10)
-----------------
+------------------
 
 - Fix plist syntax error in iOS 9 style manifest.plist.
 
 
 0.3.7 (2015-08-07)
-----------------
+------------------
 
 - Added support for iOS 9 style manifest.plist configuration.
 - Dropped support for Django < 1.7, use 0.3.6 for that.
 
 
 0.3.6 (2015-07-30)
-----------------
+------------------
 
 - Added Python 3 and Django 1.8 support.
 
 
 0.3.5 (2015-04-29)
-----------------
+------------------
 
 - Removed logo from login and logout templates.  Removed header from app_list template.
 
 
 0.3.4 (2015-04-29)
-----------------
+------------------
 
 - Added way to customize default color scheme.
 
