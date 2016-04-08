@@ -7,24 +7,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django Mobile App Distribution 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-28 16:54+0200\n"
-"PO-Revision-Date: 2015-04-28 16:54+0100\n"
-"Last-Translator: Moritz Pfeiffer <moritz.pfeiffer@alp-phone.ch>\n"
+"POT-Creation-Date: 2016-04-08 18:49+0200\n"
+"PO-Revision-Date: 2016-04-08 18:50+0200\n"
+"Last-Translator: Moritz Pfeiffer <moritz@moritzpfeiffer.de>\n"
 "Language-Team: Alp Phone GmbH <moritz.pfeiffer@alp-phone.ch>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.8.7\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin.py:81
+#: admin.py:76
 #, python-format
 msgid ""
 "Version %(app_version)s of %(app_name)s for %(os)s is available for download"
 msgstr ""
 
-#: admin.py:82
+#: admin.py:78
 #, python-format
 msgid ""
 "Version %(app_version)s of %(app_name)s for %(os)s is available for "
@@ -32,7 +32,7 @@ msgid ""
 "Please visit %(download_url)s to install the app."
 msgstr ""
 
-#: admin.py:92
+#: admin.py:93
 #, python-format
 msgid ""
 "%(recipient_count)s user was notified of %(app_name)s %(app_version)s "
@@ -43,79 +43,111 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin.py:101
+#: admin.py:103
 msgid "Nobody was notified by email because nobody's email address is set."
 msgstr ""
 
-#: admin.py:102
+#: admin.py:106
 msgid "Notify clients of app availability"
 msgstr ""
 
-#: admin.py:109 models.py:47
+#: admin.py:113 models.py:65
 msgid "User"
 msgstr ""
 
-#: admin.py:117 models.py:48
+#: admin.py:121 models.py:71
 msgid "Groups"
 msgstr ""
 
-#: admin.py:126 admin.py:138
+#: admin.py:130 admin.py:145
 msgid "App info"
 msgstr "App info"
 
-#: forms.py:26
+#: admin.py:133
+msgid "Provide these deploy on iOS 9"
+msgstr ""
+
+#: forms.py:20
 msgid "Please assign a user or group to the app."
 msgstr ""
 
-#: models.py:42 models.py:43
+#: forms.py:37
+msgid "Please provide a display and a full size image."
+msgstr ""
+
+#: models.py:52
+msgid "user"
+msgstr "User"
+
+#: models.py:53
+msgid "language"
+msgstr ""
+
+#: models.py:59 models.py:60
 msgid "Extended user info"
 msgstr ""
 
-#: models.py:49
+#: models.py:73
 msgid "App name"
 msgstr "App name"
 
-#: models.py:50
+#: models.py:74
 msgid "Comment"
 msgstr "Comment"
 
-#: models.py:51
+#: models.py:75
 msgid "Bundle version"
 msgstr "Bundle version"
 
-#: models.py:61 models.py:97
+#: models.py:76
+msgid "updated date"
+msgstr "Updated at"
+
+#: models.py:77
+msgid "created date"
+msgstr "Created at"
+
+#: models.py:89 models.py:171
 msgid "Operating system"
 msgstr "Operating System"
 
-#: models.py:62
+#: models.py:92
 msgid "IPA file"
 msgstr "IPA file"
 
-#: models.py:63
+#: models.py:95
 msgid "Bundle identifier"
 msgstr ""
 
-#: models.py:63
+#: models.py:97
 msgid "e.g. org.example.app"
 msgstr ""
 
-#: models.py:88
+#: models.py:101
+msgid "display image"
+msgstr ""
+
+#: models.py:108
+msgid "full size image"
+msgstr ""
+
+#: models.py:158
 msgid "iOS App"
 msgstr ""
 
-#: models.py:89
+#: models.py:159
 msgid "iOS Apps"
 msgstr ""
 
-#: models.py:98
+#: models.py:174
 msgid "APK file"
 msgstr "APK file"
 
-#: models.py:101
+#: models.py:177
 msgid "Android App"
 msgstr "Android app"
 
-#: models.py:102
+#: models.py:178
 msgid "Android Apps"
 msgstr "Android apps"
 
@@ -127,33 +159,32 @@ msgstr "Ad Hoc management"
 msgid "Django administration"
 msgstr "Mobile App Distribution"
 
-#: templates/django_mobile_app_distribution/app_list.html:5
-#: templates/django_mobile_app_distribution/app_list.html:14
+#: templates/django_mobile_app_distribution/app_list.html:4
 msgid "app list view"
 msgstr "App overview"
 
-#: templates/django_mobile_app_distribution/app_list.html:18
+#: templates/django_mobile_app_distribution/app_list.html:14
 msgid "logout"
 msgstr "Logout"
 
-#: templates/django_mobile_app_distribution/app_list.html:34
+#: templates/django_mobile_app_distribution/app_list.html:30
 msgid "operating system"
 msgstr "Operating System"
 
-#: templates/django_mobile_app_distribution/app_list.html:40
+#: templates/django_mobile_app_distribution/app_list.html:36
 msgid "version"
 msgstr "Version"
 
-#: templates/django_mobile_app_distribution/app_list.html:46
+#: templates/django_mobile_app_distribution/app_list.html:42
 msgid "build date"
 msgstr "Created on"
 
-#: templates/django_mobile_app_distribution/app_list.html:52
+#: templates/django_mobile_app_distribution/app_list.html:48
 msgid "comment"
 msgstr "Comment"
 
+#: templates/django_mobile_app_distribution/app_list.html:57
 #: templates/django_mobile_app_distribution/app_list.html:61
-#: templates/django_mobile_app_distribution/app_list.html:65
 msgid "Install App"
 msgstr "Install App"
 
@@ -168,23 +199,24 @@ msgid ""
 "download. <br/>Please visit %(download_url)s to install the app."
 msgstr ""
 
-#: templates/django_mobile_app_distribution/login.html:4
+#: templates/django_mobile_app_distribution/login.html:3
 msgid "customer login"
 msgstr "Customer center"
 
-#: templates/django_mobile_app_distribution/login.html:37
+#: templates/django_mobile_app_distribution/login.html:30
 msgid "invalid login credentials"
 msgstr "The combination of user name and password you entered is invalid."
 
-#: templates/django_mobile_app_distribution/login.html:44
+#: templates/django_mobile_app_distribution/login.html:37
+#: templates/django_mobile_app_distribution/logout.html:13
 msgid "login"
 msgstr "Login"
 
-#: templates/django_mobile_app_distribution/logout.html:4
+#: templates/django_mobile_app_distribution/logout.html:3
 msgid "logged out successfully"
 msgstr "Logged out successfully"
 
-#: templates/django_mobile_app_distribution/logout.html:15
+#: templates/django_mobile_app_distribution/logout.html:8
 msgid "You were logged out successfully."
 msgstr "Logged out successfully."
 
@@ -238,9 +270,6 @@ msgstr "Logged out successfully."
 
 #~ msgid "over the air ad hoc app management"
 #~ msgstr "Over the air Ad Hoc App Management"
-
-#~ msgid "user"
-#~ msgstr "User"
 
 #~ msgid "file name"
 #~ msgstr "File name"
