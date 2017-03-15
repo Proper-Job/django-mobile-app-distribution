@@ -3,7 +3,7 @@
 {% block title %}{% trans "customer login" %}{% endblock %}
 {% block content %}
 
-    <form method="post" action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
+    <form method="post" action="{% url 'auth_login' %}">{% csrf_token %}
         <fieldset>
 
             <div class="row collapse center">

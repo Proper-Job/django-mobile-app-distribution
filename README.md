@@ -40,15 +40,13 @@ It is made up of 2 components:
 
 Inside your project's `urls.py`
 
-	from django.conf.urls import patterns, include, url
+	from django.conf.urls import include, url
 	from django.contrib import admin
-	admin.autodiscover()
-
-	urlpatterns = patterns('',
+	urlpatterns = [
 		url(r'^admin/', include(admin.site.urls)),
 		url(r'^distribute/', include('django_mobile_app_distribution.urls')),
 		url(r'^accounts/', include('django_mobile_app_distribution.auth_urls')),
-	)
+	]
 
 
 Inside your project's `settings.py` file
