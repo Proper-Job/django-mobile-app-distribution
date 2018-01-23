@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AndroidApp',
             fields=[
-                ('app_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='django_mobile_app_distribution.App')),
+                ('app_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='django_mobile_app_distribution.App', on_delete=models.deletion.CASCADE)),
                 ('operating_system', models.CharField(default=b'Android', verbose_name='Operating System', max_length=50, editable=False, choices=[(b'iOS', b'iOS'), (b'Android', b'Android')])),
                 ('app_binary', models.FileField(upload_to=django_mobile_app_distribution.models.normalize_android_filename, storage=django.core.files.storage.FileSystemStorage(location=b'/Users/moritz/Alp-Phone/Projects/mobile_app_distribution/migrations_generator/migrations_generator/android'), verbose_name='APK file')),
             ],
@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='IosApp',
             fields=[
-                ('app_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='django_mobile_app_distribution.App')),
+                ('app_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='django_mobile_app_distribution.App', on_delete=models.deletion.CASCADE)),
                 ('operating_system', models.CharField(default=b'iOS', verbose_name='Operating System', max_length=50, editable=False, choices=[(b'iOS', b'iOS'), (b'Android', b'Android')])),
                 ('app_binary', models.FileField(upload_to=django_mobile_app_distribution.models.normalize_ios_filename, verbose_name='IPA file')),
                 ('bundle_identifier', models.CharField(default=b'', help_text='e.g. org.example.app', max_length=200, verbose_name='Bundle identifier')),
@@ -63,7 +63,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('language', models.CharField(default=b'en', max_length=20, choices=[(b'en', b'English'), (b'de', b'Deutsch')])),
-                ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL)),
+                ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL, on_delete=models.deletion.CASCADE)),
             ],
             options={
                 'verbose_name': 'Extended user info',
@@ -80,7 +80,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='app',
             name='user',
-            field=models.ForeignKey(related_name='apps', default=None, blank=True, to=settings.AUTH_USER_MODEL, null=True, verbose_name='User'),
+            field=models.ForeignKey(related_name='apps', default=None, blank=True, to=settings.AUTH_USER_MODEL, null=True, verbose_name='User', on_delete=models.deletion.CASCADE),
             preserve_default=True,
         ),
     ]
