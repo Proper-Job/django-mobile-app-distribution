@@ -4,7 +4,12 @@ import logging
 import os
 from unicodedata import normalize
 
-from django.core.urlresolvers import reverse
+import django
+if django.VERSION >= (1, 10):
+    from django.urls import reverse
+else:
+    from django.core.urlresolvers import reverse
+
 from django.contrib.auth.models import User, Group
 from django.contrib.sites.models import Site
 from django.db import models
