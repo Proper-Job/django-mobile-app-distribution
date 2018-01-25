@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
 import logging
 import os
 from unicodedata import normalize
 
 import django
+
 if django.VERSION >= (1, 10):
     from django.urls import reverse
 else:
