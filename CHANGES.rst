@@ -1,6 +1,12 @@
 Changelog for Django Mobile App Distribution
 ============================================
 
+0.5 (2018-01-25)
+----------------
+
+- Django 2.0 compatibility (Josh Marshall)
+
+
 0.4 (2017-03-15)
 ----------------
 

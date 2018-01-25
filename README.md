@@ -6,35 +6,35 @@ It is made up of 2 components:
 
 * A Django Admin interface that allows you to upload and assign apps to users.
 * A mobile optimized, login protected download area where your clients can download apps that were associated with their login credentials.
-* Supports Python 2.7, 3 (tested on 3.4.3) and Django >= 1.7.
+* Supports Python 2.7, 3 (tested on 3.4, 3.5) and Django >= 1.7.
 
 #Installation Django >= 1.7
 
 - ``pip install django-mobile-app-distribution``
-- Add ``django_mobile_app_distribution`` to your ``INSTALLED_APPS`` list in your project's settings.py. Make sure it comes after ``django.contrib.admin`` so the admin login and logout templates are properly overridden.
+- Add ``django_mobile_app_distribution`` to your ``INSTALLED_APPS`` list in your project's settings.py.
 - Add ``django.contrib.sites`` to the list of ``INSTALLED_APPS`` in your project's settings.py.
-- Enable the [messages framework][message_framework_17]
-- Make sure you have set [MEDIA_ROOT][media_root_17], [MEDIA_URL][media_url_17], [STATIC_URL][static_url_17] and [STATIC_ROOT][static_root_17].
+- Enable the [messages framework][message_framework_20]
+- Make sure you have set [MEDIA_ROOT][media_root_20], [MEDIA_URL][media_url_20], [STATIC_URL][static_url_20] and [STATIC_ROOT][static_root_20].
 - Add ``BASE_PATH`` (or ``BASE_DIR``) to your project's settings.py, e.g. ``import os.path BASE_PATH = os.path.dirname(__file__)``. In order to create an Android upload folder on the same level as your project's settings.py this has to be set.
 - Run ``python manage.py migrate``
 - Run ``python manage.py collectstatic``
 - If you like things tidy you can install [django-cleanup][django_cleanup_17], which removes uploaded files when the associated models are deleted.
 - Make sure the ``android/android_apps`` folder on the same level as your project's settings.py is readable and writable by your webserver.
 	*  If your webserver cannot create them for you, you have to create them by hand.  See Security considerations below for more information.
-- Include ``urls.py`` into your project's urls.py file at the mount point of your choosing (see below).  This will be where your client downloads her apps.
-- Include ``auth_urls.py`` into your project's urls.py (see below).
-- Add [LOGIN_REDIRECT_URL][login_redirect_url_17] to your project's settings.py.  This is the URL you chose in step 7.  If you're using the example below, set it to ``/distribute/``.
-- Add the [SITE_ID][site_id_17] value in your project's settings.py to the primary key of the Site object that represents your site.
+- Include ``django_mobile_app_distribution.urls`` into your project's urls.py file at the mount point of your choosing (see below).  This will be where your client downloads her apps.
+- Include ``django_mobile_app_distribution.auth_urls`` into your project's urls.py (see below).
+- Add [LOGIN_REDIRECT_URL][login_redirect_url_20] to your project's settings.py.  This is the URL you chose in step 7.  If you're using the example below, set it to ``/distribute/``.
+- Add the [SITE_ID][site_id_20] value in your project's settings.py to the primary key of the Site object that represents your site.
 - Login to the Django Admin and add your server's URL to the Site object's domain name (create one if necessary). On the development server this would be ``http://127.0.0.1:8000/``
 
-[site_id_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#site-id
+[site_id_20]: https://docs.djangoproject.com/en/2.0/ref/settings/#site-id
 [django_cleanup_17]: https://github.com/un1t/django-cleanup
-[login_redirect_url_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#login-redirect-url
-[message_framework_17]: https://docs.djangoproject.com/en/1.7/ref/contrib/messages/
-[media_root_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#media-root
-[media_url_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#media-url
-[static_root_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#static-root
-[static_url_17]: https://docs.djangoproject.com/en/1.7/ref/settings/#static-url
+[login_redirect_url_20]: https://docs.djangoproject.com/en/2.0/ref/settings/#login-redirect-url
+[message_framework_20]: https://docs.djangoproject.com/en/2.0/ref/contrib/messages/
+[media_root_20]: https://docs.djangoproject.com/en/2.0/ref/settings/#media-root
+[media_url_20]: https://docs.djangoproject.com/en/2.0/ref/settings/#media-url
+[static_root_20]: https://docs.djangoproject.com/en/2.0/ref/settings/#static-root
+[static_url_20]: https://docs.djangoproject.com/en/2.0/ref/settings/#static-url
 
 #URL setup
 
@@ -84,12 +84,12 @@ In order for email messaging to work you need to set the following fields in you
 * [EMAIL_USE_TLS][EMAIL_USE_TLS]
 * [DEFAULT_FROM_EMAIL][DEFAULT_FROM_EMAIL]
 
-[EMAIL_HOST]: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_HOST
-[EMAIL_PORT]: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_PORT
-[EMAIL_HOST_USER]: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_HOST_USER
-[EMAIL_HOST_PASSWORD]: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_HOST_PASSWORD
-[EMAIL_USE_TLS]: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-EMAIL_USE_TLS
-[DEFAULT_FROM_EMAIL]: https://docs.djangoproject.com/en/1.4/ref/settings/#std:setting-DEFAULT_FROM_EMAIL
+[EMAIL_HOST]: https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-EMAIL_HOST
+[EMAIL_PORT]: https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-EMAIL_PORT
+[EMAIL_HOST_USER]: https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-EMAIL_HOST_USER
+[EMAIL_HOST_PASSWORD]: https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-EMAIL_HOST_PASSWORD
+[EMAIL_USE_TLS]: https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-EMAIL_USE_TLS
+[DEFAULT_FROM_EMAIL]: https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-DEFAULT_FROM_EMAIL
 
 
 #Usage
