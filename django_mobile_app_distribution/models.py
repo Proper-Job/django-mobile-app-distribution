@@ -1,10 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
 import logging
 import os
 from unicodedata import normalize
 
-from django.core.urlresolvers import reverse
+import django
+
+if django.VERSION >= (1, 10):
+    from django.urls import reverse
+else:
+    from django.core.urlresolvers import reverse
+
 from django.contrib.auth.models import User, Group
 from django.contrib.sites.models import Site
 from django.db import models
@@ -49,7 +56,7 @@ def normalize_image_filename(instance, filename):
 
 @python_2_unicode_compatible
 class UserInfo(models.Model):
-    user = models.OneToOneField(User, verbose_name=_('user'))
+    user = models.OneToOneField(User, verbose_name=_('user'), on_delete=models.deletion.CASCADE)
     language = models.CharField(max_length=20, choices=app_dist_settings.LANGUAGES, default=app_dist_settings.ENGLISH, verbose_name=_('language'))
 
     def __str__(self):
@@ -62,7 +69,7 @@ class UserInfo(models.Model):
 
 @python_2_unicode_compatible
 class App(models.Model):
-    user = models.ForeignKey(User, blank=True, null=True, default=None, related_name='apps', verbose_name=_('User'))
+    user = models.ForeignKey(User, blank=True, null=True, default=None, related_name='apps', verbose_name=_('User'), on_delete=models.deletion.CASCADE)
     groups = models.ManyToManyField(
         Group,
         blank=True,
